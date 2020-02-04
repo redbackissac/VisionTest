@@ -325,7 +325,7 @@ public:
 "}"));
         label_16 = new QLabel(DengLu);
         label_16->setObjectName(QString::fromUtf8("label_16"));
-        label_16->setGeometry(QRect(20, 10, 121, 31));
+        label_16->setGeometry(QRect(20, 10, 141, 31));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette4.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -1613,7 +1613,7 @@ public:
         retranslateUi(MainWindowClass);
 
         tabWidget->setCurrentIndex(0);
-        Test_Inf_Tab->setCurrentIndex(2);
+        Test_Inf_Tab->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindowClass);

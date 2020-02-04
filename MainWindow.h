@@ -173,34 +173,16 @@ private:
 	QTime *Time_Current;                                          //当前时间		
 	QStandardItemModel *Count_Bottom_Model;                       //下方统计数据标准数据模型	
 	QStandardItemModel *Count_Top_Model;                          //上方统计数据标准数据模型
-	QTabWidget *Test_Inf_Tab;
-	QWidget *Sys_Tab_Widget;
-	QScrollArea *Sys_ScrollArea;                                 //系统状态滚动条
-	QWidget *Sys_Widget;                                         //系统状态滚动条内部容器
-	QTableView *Sys_Table;                                        //系统状态表格
+
 	QStandardItemModel *Sys_Model ;                               //系统状态标准数据模型	
     CQueue<QString> *SysCond_Queue_Left = new CQueue<QString>(8); //系统状态栏左栏队列
 	CQueue<QString> *SysCond_Queue_Right = new CQueue<QString>(8);//系统状态栏右栏队列
-	
-	QWidget *Test_Inf_Widget;	
-	QWidget *Test_Inf_Testing;
-	QWidget *Test_Inf_Failed;
 
 
-
-
-	QScrollArea *Test_Inf_Failed_ScrollArea;                     //检测不合格滚动条
-	QWidget *Test_Inf_Failed_Widget;                             //检测不合格滚动条内部容器
-	QTableView *Test_Inf_Failed_TableView;                       //检测不合格表格
 	QStandardItemModel *Test_Inf_Failed_Model;                   //检测不合格标准数据模型
-	QTableView *Test_Inf_Failed_Title_TableView;                 //检测不合格标题栏表格
 	QStandardItemModel *Test_Inf_Failed_Title_Model;             //检测不合格标题栏标准数据模型
 
-	QScrollArea *Test_Inf_Testing_ScrollArea;                     //正在检测滚动条
-	QWidget *Test_Inf_Testing_Widget;                             //正在检测滚动条内部容器
-	QTableView *Test_Inf_Testing_TableView;                       //正在检测表格
 	QStandardItemModel *Test_Inf_Testing_Model;                   //正在检测标准数据模型
-	QTableView *Test_Inf_Testing_Title_TableView;                 //检测不合格标题栏表格
 	QStandardItemModel *Test_Inf_Testing_Title_Model;             //检测不合格标题栏标准数据模型	
 
 

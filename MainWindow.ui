@@ -897,7 +897,7 @@ border: 0px solid;
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>121</width>
+       <width>141</width>
        <height>31</height>
       </rect>
      </property>
@@ -4103,7 +4103,7 @@ QPushButton#Reset:pressed{
 	   }</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Sys">
      <attribute name="title">
