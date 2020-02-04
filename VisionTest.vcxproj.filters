@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Source Files\Window">
+      <UniqueIdentifier>{0111c1b5-c5fa-481a-8c4b-92353ad95f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window">
+      <UniqueIdentifier>{17a17328-e944-4d39-aa6a-d9adc43591f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Setting">
+      <UniqueIdentifier>{f30f85aa-49af-4503-baf5-7464141d5741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Setting">
+      <UniqueIdentifier>{241a3c99-2974-4649-9650-4fdb513a4126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImgProc">
+      <UniqueIdentifier>{60eb9dd4-d48d-4d59-ba0c-25366dac20cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ImgProc">
+      <UniqueIdentifier>{f3c3ab7b-bc2d-4aa6-8f60-a3cde2b2ed9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="CQueue.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnTable.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="QMovieChild.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMovie.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>Source Files\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="CImgProcess.cpp">
+      <Filter>Source Files\ImgProc</Filter>
+    </ClCompile>
+    <ClCompile Include="mythread.cpp">
+      <Filter>Source Files\ImgProc</Filter>
+    </ClCompile>
+    <ClCompile Include="interactive_view.cpp">
+      <Filter>Source Files\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsRect\sizehandlerect.cpp">
+      <Filter>Source Files\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsRect\graphicsrectitem.cpp">
+      <Filter>Source Files\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsRect\graphicsscene.cpp">
+      <Filter>Source Files\Setting</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="VisionTest.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CQueue.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="CImgProcess.h">
+      <Filter>Header Files\ImgProc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="MainWindow.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="Setting.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Header Files\Window</Filter>
+    </QtMoc>
+    <QtMoc Include="TurnTable.h">
+      <Filter>Header Files\Window</Filter>
+    </QtMoc>
+    <QtMoc Include="QMovieChild.h">
+      <Filter>Header Files\Window</Filter>
+    </QtMoc>
+    <QtMoc Include="Setting.h">
+      <Filter>Header Files\Setting</Filter>
+    </QtMoc>
+    <QtMoc Include="mythread.h">
+      <Filter>Header Files\ImgProc</Filter>
+    </QtMoc>
+    <QtMoc Include="interactive_view.h">
+      <Filter>Header Files\Setting</Filter>
+    </QtMoc>
+    <QtMoc Include="MyMovie.h">
+      <Filter>Header Files\Window</Filter>
+    </QtMoc>
+    <QtMoc Include="GraphicsRect\graphicsrectitem.h">
+      <Filter>Header Files\Setting</Filter>
+    </QtMoc>
+    <QtMoc Include="GraphicsRect\graphicsscene.h">
+      <Filter>Header Files\Setting</Filter>
+    </QtMoc>
+    <QtMoc Include="GraphicsRect\sizehandlerect.h">
+      <Filter>Header Files\Setting</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>

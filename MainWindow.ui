@@ -1,0 +1,4469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowClass</class>
+ <widget class="QMainWindow" name="MainWindowClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>2099</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>135</red>
+        <green>135</green>
+        <blue>135</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>112</red>
+        <green>112</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>60</red>
+        <green>60</green>
+        <blue>60</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>136</red>
+        <green>136</green>
+        <blue>136</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>220</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="PlaceholderText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="128">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>135</red>
+        <green>135</green>
+        <blue>135</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>112</red>
+        <green>112</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>60</red>
+        <green>60</green>
+        <blue>60</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>136</red>
+        <green>136</green>
+        <blue>136</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>220</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="PlaceholderText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="128">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>135</red>
+        <green>135</green>
+        <blue>135</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>112</red>
+        <green>112</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>60</red>
+        <green>60</green>
+        <blue>60</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>90</red>
+        <green>90</green>
+        <blue>90</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>220</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="PlaceholderText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="128">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>VisionTest</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>221</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>127</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>127</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>45</red>
+          <green>45</green>
+          <blue>45</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="text">
+     <string>XXX电池检测系统</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1920</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255,255,255);
+border-width: 3px;
+border-style: solid;
+border-color: rgb(0, 0, 0)</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ShangChuan">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>370</y>
+      <width>80</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>方正粗黑宋简体</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#ShangChuan{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#ShangChuan:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#ShangChuan:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+    </property>
+    <property name="text">
+     <string>上传</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="DengLu">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>130</y>
+      <width>250</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox#DengLu{
+border-image:url(:/VisionTest/Resources/Pictures/DengLu.jpg);
+border: 0px solid;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <family>方正粗黑宋简体</family>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>操作员登陆</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>211</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
+      </property>
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <property name="labelAlignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="horizontalSpacing">
+       <number>10</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>班别</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>站别</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>线别</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox_2">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="comboBox_3">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBox_4">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="ShenFen">
+    <property name="geometry">
+     <rect>
+      <x>1650</x>
+      <y>130</y>
+      <width>220</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox#ShenFen{
+border-image:url(:/VisionTest/Resources/Pictures/ShenFen.jpg);
+border: 0px solid;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QWidget" name="formLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>14</x>
+       <y>50</y>
+       <width>201</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <property name="horizontalSpacing">
+       <number>5</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>10</number>
+      </property>
+      <property name="leftMargin">
+       <number>5</number>
+      </property>
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>身份   </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox">
+        <property name="palette">
+         <palette>
+          <active>
+           <colorrole role="WindowText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="Text">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="PlaceholderText">
+            <brush brushstyle="NoBrush">
+             <color alpha="128">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="WindowText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="Text">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="PlaceholderText">
+            <brush brushstyle="NoBrush">
+             <color alpha="128">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="WindowText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>45</red>
+              <green>45</green>
+              <blue>45</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="Text">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>45</red>
+              <green>45</green>
+              <blue>45</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="PlaceholderText">
+            <brush brushstyle="NoBrush">
+             <color alpha="128">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="currentText">
+         <string>管理员</string>
+        </property>
+        <property name="duplicatesEnabled">
+         <bool>false</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>管理员</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>操作员</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>技术人员</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_18">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>密码</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="MiMa">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="DengLu_2">
+     <property name="geometry">
+      <rect>
+       <x>65</x>
+       <y>130</y>
+       <width>80</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="Button">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Button">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Button">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <family>方正粗黑宋简体</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#DengLu_2{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#DengLu_2:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#DengLu_2:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+     </property>
+     <property name="text">
+      <string>登陆</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>8</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>管理人员登陆</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>110</y>
+      <width>970</width>
+      <height>560</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>45</red>
+          <green>45</green>
+          <blue>45</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>45</red>
+          <green>45</green>
+          <blue>45</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="TuXiang">
+     <attribute name="title">
+      <string>图像</string>
+     </attribute>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>964</width>
+        <height>535</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="JiGuang">
+     <attribute name="title">
+      <string>激光</string>
+     </attribute>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>290</y>
+        <width>72</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>激光</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="CaoZuo">
+    <property name="geometry">
+     <rect>
+      <x>1650</x>
+      <y>350</y>
+      <width>220</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox#CaoZuo{
+border-image:url(:/VisionTest/Resources/Pictures/CaoZuo.jpg);
+border: 0px solid;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QGroupBox" name="FuCan">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>10</y>
+       <width>111</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox#FuCan{
+border: 0px solid;
+}</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPushButton" name="FuWei">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>110</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>方正粗黑宋简体</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#FuWei{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#FuWei:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#FuWei:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+      </property>
+      <property name="text">
+       <string>复位</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Setting">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>110</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>方正粗黑宋简体</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Setting{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#Setting:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#Setting:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+      </property>
+      <property name="text">
+       <string>设置</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="KaiZanTing">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>115</y>
+       <width>71</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox#KaiZanTing{
+border: 0px solid;
+}</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPushButton" name="KaiShi">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>方正粗黑宋简体</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#KaiShi{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#KaiShi:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#KaiShi:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+      </property>
+      <property name="text">
+       <string>开始</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ZanTing">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>方正粗黑宋简体</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#ZanTing{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#ZanTing:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#ZanTing:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+      </property>
+      <property name="text">
+       <string>暂停</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="TingZhi">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>90</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="ConicalGradientPattern">
+           <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.494318000000000">
+             <color alpha="255">
+              <red>134</red>
+              <green>198</green>
+              <blue>233</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="0.500000000000000">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>234</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>方正粗黑宋简体</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#TingZhi{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#TingZhi:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#TingZhi:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+      </property>
+      <property name="text">
+       <string>停止</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>140</y>
+       <width>69</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="ShouZi">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="radioButton">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>手动</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="font">
+         <font>
+          <family>方正粗黑宋简体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>自动</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="ChaKan">
+     <property name="geometry">
+      <rect>
+       <x>35</x>
+       <y>265</y>
+       <width>150</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="Button">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Button">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Button">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="ConicalGradientPattern">
+          <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+           <gradientstop position="0.494318000000000">
+            <color alpha="255">
+             <red>134</red>
+             <green>198</green>
+             <blue>233</blue>
+            </color>
+           </gradientstop>
+           <gradientstop position="0.500000000000000">
+            <color alpha="255">
+             <red>175</red>
+             <green>215</green>
+             <blue>234</blue>
+            </color>
+           </gradientstop>
+          </gradient>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <family>方正粗黑宋简体</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#ChaKan{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#ChaKan:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#ChaKan:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+     </property>
+     <property name="text">
+      <string>查看所有参数</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Import">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>310</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>加载ROI参数</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_22">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>680</y>
+      <width>461</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Warning:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_9">
+    <property name="geometry">
+     <rect>
+      <x>1670</x>
+      <y>20</y>
+      <width>70</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox#groupBox_9{
+background-image:url(:/VisionTest/Resources/Pictures/Deng_huang.png);
+border: 0px solid;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label_25">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>15</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>83</red>
+           <green>83</green>
+           <blue>83</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>83</red>
+           <green>83</green>
+           <blue>83</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <family>方正粗黑宋简体</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Wait</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_10">
+    <property name="geometry">
+     <rect>
+      <x>1570</x>
+      <y>20</y>
+      <width>70</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox#groupBox_10{
+background-image:url(:/VisionTest/Resources/Pictures/Deng_hong.png);
+border: 0px solid;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label_23">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>15</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>83</red>
+           <green>83</green>
+           <blue>83</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>83</red>
+           <green>83</green>
+           <blue>83</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <family>方正粗黑宋简体</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Fault</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_11">
+    <property name="geometry">
+     <rect>
+      <x>1770</x>
+      <y>20</y>
+      <width>70</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox#groupBox_11{
+background-image:url(:/VisionTest/Resources/Pictures/Deng_lv.png);
+border: 0px solid;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label_24">
+     <property name="geometry">
+      <rect>
+       <x>19</x>
+       <y>15</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>83</red>
+           <green>83</green>
+           <blue>83</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>83</red>
+           <green>83</green>
+           <blue>83</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <family>方正粗黑宋简体</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Run</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="Stop">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>300</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#Stop{
+background-image:url(:/VisionTest/Resources/Pictures/AnNiuHong.png);
+border: 0 px ;
+}
+QPushButton#Stop:hover{
+background-image:url(:/VisionTest/Resources/Pictures/AnNiuHong.png);
+  border-radius:8px;
+  border: 0px;
+}
+QPushButton#Stop:pressed{
+background-image:url(:/VisionTest/Resources/Pictures/AnNiuHuiTing.png);
+  border: 0px ;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Open">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>200</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#Open{
+background-image:url(:/VisionTest/Resources/Pictures/AnNiu.png);
+border: 0 px ;
+}
+QPushButton#Open:hover{
+background-image:url(:/VisionTest/Resources/Pictures/AnNiu.png);
+  border-radius:8px;
+  border: 0px;
+}
+QPushButton#Open:pressed{
+background-image:url(:/VisionTest/Resources/Pictures/AnNiu.png);
+  border: 0px ;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Reset">
+    <property name="geometry">
+     <rect>
+      <x>1340</x>
+      <y>760</y>
+      <width>110</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="ConicalGradientPattern">
+         <gradient centralx="0.500000000000000" centraly="0.522909000000000" angle="179.900000000000006" type="ConicalGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+          <gradientstop position="0.494318000000000">
+           <color alpha="255">
+            <red>134</red>
+            <green>198</green>
+            <blue>233</blue>
+           </color>
+          </gradientstop>
+          <gradientstop position="0.500000000000000">
+           <color alpha="255">
+            <red>175</red>
+            <green>215</green>
+            <blue>234</blue>
+           </color>
+          </gradientstop>
+         </gradient>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>方正粗黑宋简体</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#Reset{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(175, 215, 234, 255));
+border: 1px solid rgb(124, 124, 124);
+border-radius:8px;
+}
+QPushButton#Reset:hover{
+background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:8px;
+  border: 1px solid #3C80B1;
+}
+QPushButton#Reset:pressed{
+ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));
+  border-radius:8px;
+  border: 1px solid #5F92B2;
+}</string>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="Count_Bottom">
+    <property name="geometry">
+     <rect>
+      <x>1470</x>
+      <y>740</y>
+      <width>400</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(255, 255, 255,0);
+		color:rgb(255,255,255);
+		gridline-color: rgb(255, 255,255);
+		border-radius:0px</string>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="autoScroll">
+     <bool>false</bool>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::NoSelection</enum>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>40</number>
+    </attribute>
+   </widget>
+   <widget class="QTableView" name="Count_Top">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>60</y>
+      <width>800</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(255, 255, 255,0);
+		color:rgb(0,0,0);
+		border-color:rgba(0,0,0,0);
+		border-radius:0px;</string>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::NoSelection</enum>
+    </property>
+    <property name="showGrid">
+     <bool>false</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::NoPen</enum>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>40</number>
+    </attribute>
+   </widget>
+   <widget class="QTabWidget" name="Test_Inf_Tab">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>850</y>
+      <width>1820</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabBar::tab{
+		height:20;
+		width:90;
+		background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 : 1,
+			stop : 0 #808080, stop: 0.4 #858585,
+			stop: 0.5 #3A3A3A, stop: 1.0 #505050);
+		color:rgba(255,255,255,150);
+		border: 1px solid #C4C4C3;
+		border-bottom: 0px;
+		border-radius:0px;
+		}
+		QTabBar::tab:hover{
+	    background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 : 1,
+			stop : 0 #fafafa, stop: 0.4 #f4f4f4,
+			stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);}
+		QTabBar::tab:selected{
+		color:rgba(0,0,255,150);
+		background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 : 1,
+		stop : 0 #9A9A9A, stop: 0.4 #9F9F9F,
+		stop: 0.5 #5B5B5B, stop: 1.0 #6A6A6A);
+	   }</string>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="Sys">
+     <attribute name="title">
+      <string>系统状态</string>
+     </attribute>
+     <widget class="QScrollArea" name="Sys_ScrollArea">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1820</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(50,50, 50);
+		border-radius:0px;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="Sys_Widget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1800</width>
+         <height>300</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>1800</width>
+         <height>300</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>500</height>
+        </size>
+       </property>
+       <widget class="QTableView" name="Sys_Table">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1805</width>
+          <height>240</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTableView{
+		background-color:rgba(255, 255, 255,0);
+		color:rgb(255,255,255);
+		gridline-color: rgb(255, 255,255);
+		border-radius:0px;
+		}</string>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::NoSelection</enum>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>30</number>
+        </attribute>
+        <attribute name="verticalHeaderMinimumSectionSize">
+         <number>15</number>
+        </attribute>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Testing">
+     <attribute name="title">
+      <string>正在检测</string>
+     </attribute>
+     <widget class="QTableView" name="Test_Inf_Testing_Title_TableView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1805</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:0px;
+gridline - radius:0px;
+background-color: rgb(50,50, 50);
+</string>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::NoSelection</enum>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QScrollArea" name="Test_Inf_Testing_ScrollArea">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1820</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(50,50, 50);
+		border-radius:0px;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="Test_Inf_Testing_Widget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1820</width>
+         <height>330</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>1820</width>
+         <height>330</height>
+        </size>
+       </property>
+       <widget class="QTableView" name="Test_Inf_Testing_TableView">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>1800</width>
+          <height>300</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:0px;
+		gridline - radius:0px;</string>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::NoSelection</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>30</number>
+        </attribute>
+        <attribute name="verticalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderMinimumSectionSize">
+         <number>15</number>
+        </attribute>
+       </widget>
+      </widget>
+     </widget>
+     <zorder>Test_Inf_Testing_ScrollArea</zorder>
+     <zorder>Test_Inf_Testing_Title_TableView</zorder>
+    </widget>
+    <widget class="QWidget" name="Failed">
+     <attribute name="title">
+      <string>检测未通过</string>
+     </attribute>
+     <widget class="QScrollArea" name="Test_Inf_Failed_ScrollArea">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1820</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(50,50, 50);
+		border-radius:0px;</string>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="Test_Inf_Failed_Widget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1850</width>
+         <height>330</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>1850</width>
+         <height>330</height>
+        </size>
+       </property>
+       <widget class="QTableView" name="Test_Inf_Failed_TableView">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>1850</width>
+          <height>300</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:0px;
+		gridline - radius:0px;</string>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::NoSelection</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>30</number>
+        </attribute>
+        <attribute name="verticalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <zorder>Test_Inf_Tab</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label</zorder>
+   <zorder>ShangChuan</zorder>
+   <zorder>DengLu</zorder>
+   <zorder>ShenFen</zorder>
+   <zorder>tabWidget</zorder>
+   <zorder>CaoZuo</zorder>
+   <zorder>label_22</zorder>
+   <zorder>groupBox_9</zorder>
+   <zorder>groupBox_10</zorder>
+   <zorder>groupBox_11</zorder>
+   <zorder>Stop</zorder>
+   <zorder>Open</zorder>
+   <zorder>Reset</zorder>
+   <zorder>Count_Bottom</zorder>
+   <zorder>Count_Top</zorder>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>ShangChuan</tabstop>
+ </tabstops>
+ <resources>
+  <include location="VisionTest.qrc"/>
+ </resources>
+ <connections/>
+</ui>

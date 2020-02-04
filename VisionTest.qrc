@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="VisionTest">
+    <file>Resources/Pictures/Redbattery.png</file>
+    <file>Resources/Pictures/AnNiuHuiTing.png</file>
+    <file>Resources/Pictures/Deng_hong.png</file>
+    <file>Resources/Pictures/Deng_lv.png</file>
+    <file>Resources/Pictures/Deng_huang.png</file>
+    <file>Resources/Pictures/ChuanSongDai_2.png</file>
+    <file>Resources/Pictures/ChuanSongDai.png</file>
+    <file>Resources/Pictures/zhuanpan.png</file>
+    <file>Resources/Pictures/AnNiuHong.png</file>
+    <file>Resources/Pictures/CaoZuo.jpg</file>
+    <file>Resources/Pictures/AnNiu.png</file>
+    <file>Resources/Pictures/ShenFen.jpg</file>
+    <file>Resources/Pictures/DengLu.jpg</file>
+  </qresource>
+</RCC>
