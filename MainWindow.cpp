@@ -76,16 +76,6 @@ void MainWindow::on_Display_Timer_timeout()
 	}
 }
 
-/*
-Reset按钮点击后
-*/
-void MainWindow::on_Reset_clicked()
-{	
-	Count_Bottom_Data.Since_Start = Time_Current->currentTime().toString("hh:mm:ss"); //开始时间设为当前时间
-	Count_Bottom_Data.Total = 0;                                                      //统计数据清零
-	Count_Bottom_Data.Pass = 0;                                                       //统计数据清零
-	Count_Bottom_Data.Fail = 0;                                                       //统计数据清零		
-}
 
 /*
 测试内容
@@ -369,7 +359,7 @@ void MainWindow::Test_Inf()
 	Test_Inf_Testing_Model->item(9, 1)->setForeground((QBrush(QColor(255, 0, 0))));
 	Test_Inf_Testing_Model->item(9, 0)->setForeground((QBrush(QColor(255, 0, 0))));	
 
-	ui.Test_Inf_Testing_TableView->setModel(Test_Inf_Testing_Model);
+	ui.Test_Inf_Testing_TableView->setModel(Test_Inf_Testing_Model);//数据模型应用于表格
 
 	ui.Test_Inf_Testing_TableView->setColumnWidth(0, 300);   //设置列宽
 	ui.Test_Inf_Testing_TableView->setColumnWidth(1, 1500);
@@ -377,59 +367,33 @@ void MainWindow::Test_Inf()
 }
 
 /*
-系统状态初始化0
+系统状态初始化
 */
 void MainWindow::System_Condition()
 {	
 	/*********************左栏初始化*********************/
-	//字符初始化为空白	
-	Sys_Cond.line_1_Left = " ";
-	Sys_Cond.line_2_Left = " ";
-	Sys_Cond.line_3_Left = " ";
-	Sys_Cond.line_4_Left = " ";
-	Sys_Cond.line_5_Left = " ";
-	Sys_Cond.line_6_Left = " ";
-	Sys_Cond.line_7_Left = " ";
-	Sys_Cond.line_8_Left = " ";
+	//字符初始化为空白		
+	Sys_Cond_Left << " " << " " << " " << " " << " " << " " << " " << " ";
 
-	/*******************************右栏初始化***********************************/
-	//字符初始化为空白	
-	Sys_Cond.line_1_Right = " ";
-	Sys_Cond.line_2_Right = " ";
-	Sys_Cond.line_3_Right = " ";
-	Sys_Cond.line_4_Right = " ";
-	Sys_Cond.line_5_Right = " ";
-	Sys_Cond.line_6_Right = " ";
-	Sys_Cond.line_7_Right = " ";
-	Sys_Cond.line_8_Right = " ";
+	/********************右栏初始化********************/
+	//字符初始化为空白
 
+	Sys_Cond_Right << " " << " " << " " << " " << " " << " " << " " << " ";
 	/*********************数据模型获取各行字符**************************/
-	//左栏
-	Sys_Model->setItem(0, 0, new QStandardItem(Sys_Cond.line_1_Left));
-	Sys_Model->setItem(1, 0, new QStandardItem(Sys_Cond.line_2_Left));
-	Sys_Model->setItem(2, 0, new QStandardItem(Sys_Cond.line_3_Left));
-	Sys_Model->setItem(3, 0, new QStandardItem(Sys_Cond.line_4_Left));
-	Sys_Model->setItem(4, 0, new QStandardItem(Sys_Cond.line_5_Left));
-	Sys_Model->setItem(5, 0, new QStandardItem(Sys_Cond.line_6_Left));
-	Sys_Model->setItem(6, 0, new QStandardItem(Sys_Cond.line_7_Left));
-	Sys_Model->setItem(7, 0, new QStandardItem(Sys_Cond.line_8_Left));
-	//右栏
-	Sys_Model->setItem(0, 1, new QStandardItem(Sys_Cond.line_1_Right));
-	Sys_Model->setItem(1, 1, new QStandardItem(Sys_Cond.line_2_Right));
-	Sys_Model->setItem(2, 1, new QStandardItem(Sys_Cond.line_3_Right));
-	Sys_Model->setItem(3, 1, new QStandardItem(Sys_Cond.line_4_Right));
-	Sys_Model->setItem(4, 1, new QStandardItem(Sys_Cond.line_5_Right));
-	Sys_Model->setItem(5, 1, new QStandardItem(Sys_Cond.line_6_Right));
-	Sys_Model->setItem(6, 1, new QStandardItem(Sys_Cond.line_7_Right));
-	Sys_Model->setItem(7, 1, new QStandardItem(Sys_Cond.line_8_Right));
-
+	//左栏	
+	for (int i = 0; i < 8; i++)
+		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i]));
+	
+	//右栏	
+	for (int i = 0; i < 8; i++)
+		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));
+	
+    //设置item为不可编辑不可选中
 	for (int i = 0; i < 8; i++)
 		for (int j = 0; j < 2; j++)
-		{
-			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);
-		}
+			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);		
 
-	ui.Sys_Table->setModel(Sys_Model);
+	ui.Sys_Table->setModel(Sys_Model);//数据模型应用于表格
 
 	ui.Sys_Table->setColumnWidth(0, 500);   //设置列宽
 	ui.Sys_Table->setColumnWidth(1, 1305);
@@ -444,111 +408,88 @@ void MainWindow::System_Condition_Update()
 	//左栏
 	//队不满时
 	if (!SysCond_Queue_Left->isFull())
-	{
+	{		
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front)
-			Sys_Cond.line_1_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front);
-		else Sys_Cond.line_1_Left = " ";
+			Sys_Cond_Left[0] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front);
+		else Sys_Cond_Left[0] = " ";
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 1)
-			Sys_Cond.line_2_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 1);
-		else Sys_Cond.line_2_Left = " ";
+			Sys_Cond_Left[1] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 1);
+		else Sys_Cond_Left[1] = " ";
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 2)
-			Sys_Cond.line_3_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 2);
-		else Sys_Cond.line_3_Left = " ";
+			Sys_Cond_Left[2] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 2);
+		else Sys_Cond_Left[2] = " ";
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 3)
-			Sys_Cond.line_4_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 3);
-		else Sys_Cond.line_4_Left = " ";
+			Sys_Cond_Left[3] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 3);
+		else Sys_Cond_Left[3] = " ";
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 4)
-			Sys_Cond.line_5_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 4);
-		else Sys_Cond.line_5_Left = " ";
+			Sys_Cond_Left[4] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 4);
+		else Sys_Cond_Left[4] = " ";
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 5)
-			Sys_Cond.line_6_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 5);
-		else Sys_Cond.line_6_Left = " ";
+			Sys_Cond_Left[5] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 5);
+		else Sys_Cond_Left[5] = " ";
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 6)
-			Sys_Cond.line_7_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 6);
-		else Sys_Cond.line_7_Left = " ";
+			Sys_Cond_Left[6] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 6);
+		else Sys_Cond_Left[6] = " ";
 		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 7)
-			Sys_Cond.line_8_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 7);
-		else Sys_Cond.line_8_Left = " ";
+			Sys_Cond_Left[7] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 7);
+		else Sys_Cond_Left[7] = " ";
 
 	}
 	//队满时
 	else
-	{
-		Sys_Cond.line_1_Left = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front);
-		Sys_Cond.line_2_Left = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + 1 + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
-		Sys_Cond.line_3_Left = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + 2 + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
-		Sys_Cond.line_4_Left = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + 3 + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
-		Sys_Cond.line_5_Left = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + 4 + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
-		Sys_Cond.line_6_Left = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + 5 + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
-		Sys_Cond.line_7_Left = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + 6 + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
-		Sys_Cond.line_8_Left = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + 7 + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
-	}
+		for (int i = 0; i < 8; i++)
+			Sys_Cond_Left[i] = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + i + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
+	
 	//右栏
 	//队不满时
 	if (!SysCond_Queue_Right->isFull())
-	{
+	{		
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front)
-			Sys_Cond.line_1_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front);
-		else Sys_Cond.line_1_Left = " ";
+			Sys_Cond_Right[0] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front);
+		else Sys_Cond_Right[0] = " ";
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 1)
-			Sys_Cond.line_2_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 1);
-		else Sys_Cond.line_2_Right = " ";
+			Sys_Cond_Right[1] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 1);
+		else Sys_Cond_Right[1] = " ";
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 2)
-			Sys_Cond.line_3_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 2);
-		else Sys_Cond.line_3_Right = " ";
+			Sys_Cond_Right[2] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 2);
+		else Sys_Cond_Right[2] = " ";
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 3)
-			Sys_Cond.line_4_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 3);
-		else Sys_Cond.line_4_Right = " ";
+			Sys_Cond_Right[3] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 3);
+		else Sys_Cond_Right[3] = " ";
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 4)
-			Sys_Cond.line_5_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 4);
-		else Sys_Cond.line_5_Right = " ";
+			Sys_Cond_Right[4] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 4);
+		else Sys_Cond_Right[4] = " ";
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 5)
-			Sys_Cond.line_6_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 5);
-		else Sys_Cond.line_6_Right = " ";
+			Sys_Cond_Right[5] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 5);
+		else Sys_Cond_Right[5] = " ";
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 6)
-			Sys_Cond.line_7_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 6);
-		else Sys_Cond.line_7_Right = " ";
+			Sys_Cond_Right[6] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 6);
+		else Sys_Cond_Right[6] = " ";
 		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 7)
-			Sys_Cond.line_8_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 7);
-		else Sys_Cond.line_8_Right = " ";
+			Sys_Cond_Right[7] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 7);
+		else Sys_Cond_Right[7] = " ";
 	}
 	//队满时
 	else
-	{
-		Sys_Cond.line_1_Right = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front);
-		Sys_Cond.line_2_Right = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + 1 + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
-		Sys_Cond.line_3_Right = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + 2 + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
-		Sys_Cond.line_4_Right = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + 3 + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
-		Sys_Cond.line_5_Right = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + 4 + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
-		Sys_Cond.line_6_Right = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + 5 + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
-		Sys_Cond.line_7_Right = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + 6 + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
-		Sys_Cond.line_8_Right = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + 7 + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
-	}
+		for (int i = 0; i < 8; i++)
+			Sys_Cond_Right[i] = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + i + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
+	
 	/*********************Item更新**********************/
-	//左栏
-	Sys_Model->setItem(0, 0, new QStandardItem(Sys_Cond.line_1_Left));
-	Sys_Model->setItem(1, 0, new QStandardItem(Sys_Cond.line_2_Left));
-	Sys_Model->setItem(2, 0, new QStandardItem(Sys_Cond.line_3_Left));
-	Sys_Model->setItem(3, 0, new QStandardItem(Sys_Cond.line_4_Left));
-	Sys_Model->setItem(4, 0, new QStandardItem(Sys_Cond.line_5_Left));
-	Sys_Model->setItem(5, 0, new QStandardItem(Sys_Cond.line_6_Left));
-	Sys_Model->setItem(6, 0, new QStandardItem(Sys_Cond.line_7_Left));
-	Sys_Model->setItem(7, 0, new QStandardItem(Sys_Cond.line_8_Left));
-	//右栏
-	Sys_Model->setItem(0, 1, new QStandardItem(Sys_Cond.line_1_Right));
-	Sys_Model->setItem(1, 1, new QStandardItem(Sys_Cond.line_2_Right));
-	Sys_Model->setItem(2, 1, new QStandardItem(Sys_Cond.line_3_Right));
-	Sys_Model->setItem(3, 1, new QStandardItem(Sys_Cond.line_4_Right));
-	Sys_Model->setItem(4, 1, new QStandardItem(Sys_Cond.line_5_Right));
-	Sys_Model->setItem(5, 1, new QStandardItem(Sys_Cond.line_6_Right));
-	Sys_Model->setItem(6, 1, new QStandardItem(Sys_Cond.line_7_Right));
-	Sys_Model->setItem(7, 1, new QStandardItem(Sys_Cond.line_8_Right));
+	//左栏	
+	for (int i = 0; i < 8; i++)
+		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i]));
 
+	//右栏
+	for (int i = 0; i < 8; i++)
+		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));	
+
+	//设置item不可编辑，不可选中
 	for (int i = 0; i < 8; i++)
 		for (int j = 0; j < 2; j++)
 		{
 			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);
-		}	
+		}
+
 	ui.Sys_Table->setColumnWidth(0, 500);   //设置列宽
 	ui.Sys_Table->setColumnWidth(1, 1305);
 }
@@ -591,6 +532,17 @@ QImage MainWindow::Mat2QImage(Mat &mat)
 	{
 		return QImage();
 	}
+}
+
+/*
+统计数据复位
+*/
+void MainWindow::on_Reset_clicked()
+{
+	Count_Bottom_Data.Since_Start = Time_Current->currentTime().toString("hh:mm:ss"); //开始时间设为当前时间
+	Count_Bottom_Data.Total = 0;                                                      //统计数据清零
+	Count_Bottom_Data.Pass = 0;                                                       //统计数据清零
+	Count_Bottom_Data.Fail = 0;                                                       //统计数据清零		
 }
 
 /*

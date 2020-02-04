@@ -59,10 +59,10 @@ public:
 
 	Mat src, dst;
 	QImage dstImg;	
-	ROI_pars m_roipars;	
+	ROI_pars m_roipars;	//存储从配置文件中读取的ROI参数
 
 	int TurnTable_ZeroPos = 0;
-	MainWindow(QWidget *parent = Q_NULLPTR);		
+	MainWindow(QWidget *parent = Q_NULLPTR);	//主界面构造函数	
 	struct Count_Bottom          //右下方统计数据
 	{
 		QString Since_Start;     //起始时间
@@ -82,27 +82,8 @@ public:
 		int16_t CT;              //我也不知道是啥玩意
 	}Count_Top_Data;
 
-	struct Sys_Condition         //系统状态
-	{
-		QString line_1_Left;
-		QString line_2_Left;
-		QString line_3_Left;
-		QString line_4_Left;
-		QString line_5_Left;
-		QString line_6_Left;
-		QString line_7_Left;
-		QString line_8_Left;
-
-		QString line_1_Right;
-		QString line_2_Right;
-		QString line_3_Right;
-		QString line_4_Right;
-		QString line_5_Right;
-		QString line_6_Right;
-		QString line_7_Right;
-		QString line_8_Right;
-
-	}Sys_Cond;
+	QList<QString>  Sys_Cond_Left;  //系统状态左栏
+	QList<QString>  Sys_Cond_Right; //系统状态右栏
 
 	QString SysCond_belt_Left = "传送带状态";
 	QString SysCond_turntable_Left = "转盘状态";
@@ -130,17 +111,7 @@ public:
 	QString SysCond_ST7_Right = "测量完成";
 	QString SysCond_ST8_Right = "测量完成";
 	QString SysCond_blank_Right = "下料线程完成";
-	QString SysCond_sys_Right = "系统停止,停止工作";
-
-
-	void sys_Test(int i);                           //测试用
-	void Count_Bottom();                            //下方统计数据初始化
-	void Count_Bottom_Update();                     //下方统计数据更新
-	void Count_Top();                               //标题栏统计数据初始化
-	void Count_Top_Update();                        //标题栏统计数据更新
-	void System_Condition();                        //左侧系统状态初始化
-	void System_Condition_Update();                 //系统状态更新
-	void Test_Inf();                                //检测信息
+	QString SysCond_sys_Right = "系统停止,停止工作";	
 	
 	QImage Mat2QImage(Mat &mat);                    //将Mat类型转换为QImage类型
 	void slot_handle_finish();                      //处理多线程结束
@@ -158,8 +129,7 @@ private slots:
 	void on_Stop_clicked();                         //停止按钮
 	void on_Display_Timer_timeout();                //定时器中断服务函数
 	void on_Setting_clicked();                      //用于打开设置界面
-	void on_Import_clicked();                       //加载ROI参数
-	
+	void on_Import_clicked();                       //加载ROI参数	
 
 private:
 	
@@ -170,7 +140,8 @@ private:
 	MyMovie *mymovie;                                            //转盘动画
 
 	QTimer *Timer_Control;                                        //用于控制数据更新的定时器
-	QTime *Time_Current;                                          //当前时间		
+	QTime *Time_Current;                                          //当前时间	
+
 	QStandardItemModel *Count_Bottom_Model;                       //下方统计数据标准数据模型	
 	QStandardItemModel *Count_Top_Model;                          //上方统计数据标准数据模型
 
@@ -178,16 +149,23 @@ private:
     CQueue<QString> *SysCond_Queue_Left = new CQueue<QString>(8); //系统状态栏左栏队列
 	CQueue<QString> *SysCond_Queue_Right = new CQueue<QString>(8);//系统状态栏右栏队列
 
-
 	QStandardItemModel *Test_Inf_Failed_Model;                   //检测不合格标准数据模型
 	QStandardItemModel *Test_Inf_Failed_Title_Model;             //检测不合格标题栏标准数据模型
 
 	QStandardItemModel *Test_Inf_Testing_Model;                   //正在检测标准数据模型
-	QStandardItemModel *Test_Inf_Testing_Title_Model;             //检测不合格标题栏标准数据模型	
-
+	QStandardItemModel *Test_Inf_Testing_Title_Model;             //检测不合格标题栏标准数据模型
 
 	QGraphicsScene *sence;     //创建显示电池图像的图形场景
 
 	void Timer_Init();
+	void sys_Test(int i);                           //测试用
+	void Count_Bottom();                            //下方统计数据初始化
+	void Count_Bottom_Update();                     //下方统计数据更新
+	void Count_Top();                               //标题栏统计数据初始化
+	void Count_Top_Update();                        //标题栏统计数据更新
+	void System_Condition();                        //左侧系统状态初始化
+	void System_Condition_Update();                 //系统状态更新
+	void Test_Inf();                                //检测信息
+
 	Ui::MainWindowClass ui;
 };
