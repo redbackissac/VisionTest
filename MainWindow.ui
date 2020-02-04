@@ -4103,7 +4103,7 @@ QPushButton#Reset:pressed{
 	   }</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Sys">
      <attribute name="title">
@@ -4351,6 +4351,52 @@ background-color: rgb(50,50, 50);
      <attribute name="title">
       <string>检测未通过</string>
      </attribute>
+     <widget class="QTableView" name="Test_Inf_Failed_Title_TableView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1805</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:0px;
+gridline - radius:0px;
+background-color: rgb(50,50, 50);
+</string>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::NoSelection</enum>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
      <widget class="QScrollArea" name="Test_Inf_Failed_ScrollArea">
       <property name="geometry">
        <rect>
@@ -4437,6 +4483,8 @@ background-color: rgb(50,50, 50);
        </widget>
       </widget>
      </widget>
+     <zorder>Test_Inf_Failed_ScrollArea</zorder>
+     <zorder>Test_Inf_Failed_Title_TableView</zorder>
     </widget>
    </widget>
    <zorder>Test_Inf_Tab</zorder>

@@ -306,95 +306,22 @@ void MainWindow::Count_Top_Update()
 检测信息，包括正在检测和检测不合格
 */
 void MainWindow::Test_Inf()
-{	
-	//对象实例化
-	//Test_Inf_Widget = new QWidget(this);
-	//Test_Inf_Tab = new QTabWidget(Test_Inf_Widget);
-	Test_Inf_Tab = new QTabWidget(this);
-	Test_Inf_Testing = new QWidget();
-	Test_Inf_Failed = new QWidget();
-	Sys_Tab_Widget = new QWidget();
-	//窗口设置
-	//Test_Inf_Widget->setGeometry(QRect(50, 850, 1820, 201));
-	//Test_Inf_Widget->setStyleSheet("background-color: rgb(50,50, 50);"
-	//    "border-radius:0px;");
-	//标签页
-	//Test_Inf_Tab->setGeometry(QRect(50, 850, 1820, 201));
-	Test_Inf_Tab->addTab(Sys_Tab_Widget, "系统状态");
-	Test_Inf_Tab->addTab(Test_Inf_Testing, "正在检测");
-	Test_Inf_Tab->addTab(Test_Inf_Failed, "检测未通过");
-	Test_Inf_Tab->setGeometry(QRect(0, 0, 1820, 201));
-	Test_Inf_Tab->setStyleSheet("QTabBar::tab{"
-		"height:20;"
-		"width:90;"
-		"background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 : 1,"
-			"stop : 0 #808080, stop: 0.4 #858585,"
-			"stop: 0.5 #3A3A3A, stop: 1.0 #505050);"
-		"color:rgba(255,255,255,150);"
-		"border: 1px solid #C4C4C3;"
-		"border-bottom: 0px;"
-		"border-radius:0px;"
-		"}"
-		"QTabBar::tab:hover{"
-	     "background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 : 1,"
-			"stop : 0 #fafafa, stop: 0.4 #f4f4f4,"
-			"stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);}"
-		"QTabBar::tab:selected{"
-		"color:rgba(0,0,255,150);"
-		"background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 : 1,"
-		"stop : 0 #9A9A9A, stop: 0.4 #9F9F9F,"
-		"stop: 0.5 #5B5B5B, stop: 1.0 #6A6A6A);"
-	    "}");		
+{		
 	/****************************************************系统状态**************************************************************/
-	Sys_ScrollArea = new QScrollArea(Sys_Tab_Widget);
-	Sys_ScrollArea->setGeometry(0, 0, 1820, 180);
-	Sys_ScrollArea->setStyleSheet("background-color: rgb(50,50, 50);"
-		"border-radius:0px;");
-	Sys_ScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-	Sys_ScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-	QWidget *Sys_Widget = new QWidget(Sys_ScrollArea);
-	Sys_ScrollArea->setWidget(Sys_Widget);
-	Sys_Widget->setGeometry(0, 0, 1850, 300);
-
-	Sys_Table = new QTableView(Sys_Widget);
 	Sys_Model = new QStandardItemModel();
-	//Sys_Table->setGeometry(QRect(50, 500, 1820, 240));
-	Sys_Table->setGeometry(QRect(0, 0, 1805, 240));
 	
 	/*************************************************************检测不合格***************************************************/	
-	//滚动条
-	Test_Inf_Failed_ScrollArea = new QScrollArea(Test_Inf_Failed);
-	Test_Inf_Failed_ScrollArea->setGeometry(0, 0,1820, 180);
-	Test_Inf_Failed_ScrollArea->setStyleSheet("background-color: rgb(50,50, 50);"
-		"border-radius:0px;");
-	Test_Inf_Failed_ScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-	Test_Inf_Failed_ScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	//标题栏
-	Test_Inf_Failed_Title_TableView = new QTableView(Test_Inf_Failed_ScrollArea);
+	//标题栏	
 	Test_Inf_Failed_Title_Model = new QStandardItemModel();
-	Test_Inf_Failed_Title_TableView->setGeometry(QRect(0, 0, 1805, 30));
 	Test_Inf_Failed_Title_Model->setItem(0, 0, new QStandardItem("Failed Barcode"));
 	Test_Inf_Failed_Title_Model->setItem(0, 1, new QStandardItem("Failed Item"));
 	Test_Inf_Failed_Title_Model->item(0, 0)->setForeground((QBrush(QColor(255, 0, 0))));
 	Test_Inf_Failed_Title_Model->item(0, 1)->setForeground((QBrush(QColor(255, 0, 0))));
-	Test_Inf_Failed_Title_TableView->setLineWidth(0);
-	Test_Inf_Failed_Title_TableView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	Test_Inf_Failed_Title_TableView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	Test_Inf_Failed_Title_TableView->setSelectionMode(QAbstractItemView::NoSelection);
-	Test_Inf_Failed_Title_TableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //不可编辑
-	Test_Inf_Failed_Title_TableView->horizontalHeader()->setVisible(false);
-	Test_Inf_Failed_Title_TableView->verticalHeader()->setVisible(false);
-	Test_Inf_Failed_Title_TableView->verticalHeader()->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	Test_Inf_Failed_Title_TableView->verticalHeader()->setDefaultSectionSize(30);
-	Test_Inf_Failed_Title_TableView->setModel(Test_Inf_Failed_Title_Model);
-	Test_Inf_Failed_Title_TableView->setColumnWidth(0, 300);   //设置列宽
-	Test_Inf_Failed_Title_TableView->setColumnWidth(1, 1505);
-	//设置滚动区域
-	QWidget *Test_Inf_Failed_Widget = new QWidget(Test_Inf_Failed_ScrollArea);
-	Test_Inf_Failed_ScrollArea->setWidget(Test_Inf_Failed_Widget);
-	Test_Inf_Failed_Widget->setGeometry(0, 0,1850, 330);	
-
+	
+	ui.Test_Inf_Failed_Title_TableView->setModel(Test_Inf_Failed_Title_Model);
+	ui.Test_Inf_Failed_Title_TableView->setColumnWidth(0, 300);   //设置列宽
+	ui.Test_Inf_Failed_Title_TableView->setColumnWidth(1, 1505);
+	
 	//数据模型初始化
 	Test_Inf_Failed_Model = new QStandardItemModel();
 	Test_Inf_Failed_Model->setItem(0, 0, new QStandardItem("Testing Barcode"));
@@ -418,14 +345,6 @@ void MainWindow::Test_Inf()
 	ui.Test_Inf_Failed_TableView->setColumnWidth(1, 1550);
 
     /********************************************************正在检测****************************************************/
-	//滚动条
-	Test_Inf_Testing_ScrollArea = new QScrollArea(Test_Inf_Testing);
-	//Test_Inf_Testing_ScrollArea = new QScrollArea(ui.Testing);
-	Test_Inf_Testing_ScrollArea->setGeometry(0, 0, 1820, 180);
-	Test_Inf_Testing_ScrollArea->setStyleSheet("background-color: rgb(50,50, 50);"
-		"border-radius:0px;");
-	Test_Inf_Testing_ScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-	Test_Inf_Testing_ScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	//标题栏	
 	Test_Inf_Testing_Title_Model = new QStandardItemModel();
 	Test_Inf_Testing_Title_Model->setItem(0, 0, new QStandardItem("Testing Barcode"));
@@ -510,34 +429,7 @@ void MainWindow::System_Condition()
 			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);
 		}
 
-	/*设置字体*/
-	QFont font_SysCondition;
-	font_SysCondition.setPointSize(11);
-	font_SysCondition.setBold(true);
-	font_SysCondition.setWeight(50);
-	Sys_Table->setFont(font_SysCondition);
-
-	Sys_Table->setStyleSheet("QTableView{\n"
-		"background-color:rgba(255, 255, 255,0);\n"
-		"color:rgb(255,255,255);\n"
-		"gridline-color: rgb(255, 255,255);\n"
-		"border-radius:0px;\n"
-		"}");
-
-	Sys_Table->setLineWidth(0);
-	Sys_Table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	Sys_Table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	Sys_Table->setSelectionMode(QAbstractItemView::NoSelection);    //不可选中
-	Sys_Table->setEditTriggers(QAbstractItemView::NoEditTriggers);  //不可编辑
-	Sys_Table->horizontalHeader()->setVisible(false);               //隐藏水平表头
-	Sys_Table->verticalHeader()->setVisible(false);                 //隐藏垂直表头
-	Sys_Table->verticalHeader()->setDefaultSectionSize(30);         //设置行高
-
-	Sys_Table->setModel(Sys_Model);
 	ui.Sys_Table->setModel(Sys_Model);
-
-	Sys_Table->setColumnWidth(0, 500);   //设置列宽
-	Sys_Table->setColumnWidth(1, 1305);
 
 	ui.Sys_Table->setColumnWidth(0, 500);   //设置列宽
 	ui.Sys_Table->setColumnWidth(1, 1305);
@@ -656,9 +548,7 @@ void MainWindow::System_Condition_Update()
 		for (int j = 0; j < 2; j++)
 		{
 			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);
-		}
-	Sys_Table->setColumnWidth(0, 500);   //设置列宽
-	Sys_Table->setColumnWidth(1, 1305);
+		}	
 	ui.Sys_Table->setColumnWidth(0, 500);   //设置列宽
 	ui.Sys_Table->setColumnWidth(1, 1305);
 }

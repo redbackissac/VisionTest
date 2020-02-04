@@ -97,6 +97,7 @@ public:
     QWidget *Test_Inf_Testing_Widget;
     QTableView *Test_Inf_Testing_TableView;
     QWidget *Failed;
+    QTableView *Test_Inf_Failed_Title_TableView;
     QScrollArea *Test_Inf_Failed_ScrollArea;
     QWidget *Test_Inf_Failed_Widget;
     QTableView *Test_Inf_Failed_TableView;
@@ -1541,6 +1542,23 @@ public:
         Test_Inf_Testing_Title_TableView->raise();
         Failed = new QWidget();
         Failed->setObjectName(QString::fromUtf8("Failed"));
+        Test_Inf_Failed_Title_TableView = new QTableView(Failed);
+        Test_Inf_Failed_Title_TableView->setObjectName(QString::fromUtf8("Test_Inf_Failed_Title_TableView"));
+        Test_Inf_Failed_Title_TableView->setGeometry(QRect(0, 0, 1805, 30));
+        Test_Inf_Failed_Title_TableView->setStyleSheet(QString::fromUtf8("border-radius:0px;\n"
+"gridline - radius:0px;\n"
+"background-color: rgb(50,50, 50);\n"
+""));
+        Test_Inf_Failed_Title_TableView->setLineWidth(0);
+        Test_Inf_Failed_Title_TableView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        Test_Inf_Failed_Title_TableView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        Test_Inf_Failed_Title_TableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        Test_Inf_Failed_Title_TableView->setSelectionMode(QAbstractItemView::NoSelection);
+        Test_Inf_Failed_Title_TableView->horizontalHeader()->setVisible(false);
+        Test_Inf_Failed_Title_TableView->horizontalHeader()->setHighlightSections(false);
+        Test_Inf_Failed_Title_TableView->verticalHeader()->setVisible(false);
+        Test_Inf_Failed_Title_TableView->verticalHeader()->setDefaultSectionSize(30);
+        Test_Inf_Failed_Title_TableView->verticalHeader()->setHighlightSections(false);
         Test_Inf_Failed_ScrollArea = new QScrollArea(Failed);
         Test_Inf_Failed_ScrollArea->setObjectName(QString::fromUtf8("Test_Inf_Failed_ScrollArea"));
         Test_Inf_Failed_ScrollArea->setGeometry(QRect(0, 0, 1820, 180));
@@ -1571,6 +1589,8 @@ public:
         Test_Inf_Failed_TableView->verticalHeader()->setHighlightSections(false);
         Test_Inf_Failed_ScrollArea->setWidget(Test_Inf_Failed_Widget);
         Test_Inf_Tab->addTab(Failed, QString());
+        Test_Inf_Failed_ScrollArea->raise();
+        Test_Inf_Failed_Title_TableView->raise();
         MainWindowClass->setCentralWidget(centralWidget);
         Test_Inf_Tab->raise();
         label_2->raise();
@@ -1593,7 +1613,7 @@ public:
         retranslateUi(MainWindowClass);
 
         tabWidget->setCurrentIndex(0);
-        Test_Inf_Tab->setCurrentIndex(1);
+        Test_Inf_Tab->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindowClass);
