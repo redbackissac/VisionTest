@@ -48,6 +48,8 @@
 
 using namespace cv;
 
+#define LinesOfSysCond 8 //系统信息显示的行数
+
 namespace Ui {
 	class MainWindow;
 }
@@ -146,8 +148,8 @@ private:
 	QStandardItemModel *Count_Top_Model;                          //上方统计数据标准数据模型
 
 	QStandardItemModel *Sys_Model ;                               //系统状态标准数据模型	
-    CQueue<QString> *SysCond_Queue_Left = new CQueue<QString>(8); //系统状态栏左栏队列
-	CQueue<QString> *SysCond_Queue_Right = new CQueue<QString>(8);//系统状态栏右栏队列
+    CQueue<QString> *SysCond_Queue_Left = new CQueue<QString>(LinesOfSysCond); //系统状态栏左栏队列
+	CQueue<QString> *SysCond_Queue_Right = new CQueue<QString>(LinesOfSysCond);//系统状态栏右栏队列
 
 	QStandardItemModel *Test_Inf_Failed_Model;                   //检测不合格标准数据模型
 	QStandardItemModel *Test_Inf_Failed_Title_Model;             //检测不合格标题栏标准数据模型

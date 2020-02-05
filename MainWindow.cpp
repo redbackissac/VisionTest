@@ -371,31 +371,24 @@ void MainWindow::Test_Inf()
 */
 void MainWindow::System_Condition()
 {	
-	/*********************左栏初始化*********************/
-	//字符初始化为空白		
-	Sys_Cond_Left << " " << " " << " " << " " << " " << " " << " " << " ";
-
-	/********************右栏初始化********************/
-	//字符初始化为空白
-
-	Sys_Cond_Right << " " << " " << " " << " " << " " << " " << " " << " ";
-	/*********************数据模型获取各行字符**************************/
-	//左栏	
-	for (int i = 0; i < 8; i++)
-		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i]));
-	
-	//右栏	
-	for (int i = 0; i < 8; i++)
-		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));
-	
-    //设置item为不可编辑不可选中
-	for (int i = 0; i < 8; i++)
+	/*********************左右两栏初始化为空白*********************/
+	for (int i = 0; i < LinesOfSysCond; i++)
+	{
+		//字符初始化为空白
+		Sys_Cond_Left << " "; //左栏		
+		Sys_Cond_Right << " ";//右栏
+		//数据模型获取各行字符
+		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i])); //左栏
+		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));//右栏
+		//设置item为不可编辑不可选中
 		for (int j = 0; j < 2; j++)
-			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);		
+			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);
+	}
 
 	ui.Sys_Table->setModel(Sys_Model);//数据模型应用于表格
 
-	ui.Sys_Table->setColumnWidth(0, 500);   //设置列宽
+	//设置表格列宽
+	ui.Sys_Table->setColumnWidth(0, 500);   
 	ui.Sys_Table->setColumnWidth(1, 1305);
 }
 
@@ -409,88 +402,43 @@ void MainWindow::System_Condition_Update()
 	//队不满时
 	if (!SysCond_Queue_Left->isFull())
 	{		
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front)
-			Sys_Cond_Left[0] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front);
-		else Sys_Cond_Left[0] = " ";
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 1)
-			Sys_Cond_Left[1] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 1);
-		else Sys_Cond_Left[1] = " ";
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 2)
-			Sys_Cond_Left[2] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 2);
-		else Sys_Cond_Left[2] = " ";
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 3)
-			Sys_Cond_Left[3] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 3);
-		else Sys_Cond_Left[3] = " ";
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 4)
-			Sys_Cond_Left[4] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 4);
-		else Sys_Cond_Left[4] = " ";
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 5)
-			Sys_Cond_Left[5] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 5);
-		else Sys_Cond_Left[5] = " ";
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 6)
-			Sys_Cond_Left[6] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 6);
-		else Sys_Cond_Left[6] = " ";
-		if (SysCond_Queue_Left->rear > SysCond_Queue_Left->front + 7)
-			Sys_Cond_Left[7] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + 7);
-		else Sys_Cond_Left[7] = " ";
-
+		//先全部清空，再逐个填入
+		for(int i = 0; i < LinesOfSysCond; i++)            //清空列表
+			Sys_Cond_Left[i] = " ";
+		for(int i = 0; i < SysCond_Queue_Left->rear - SysCond_Queue_Left->front ; i++)     //将队列中元素填入列表中，仅填充队列中已有部分
+			Sys_Cond_Left[i] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + i);
 	}
 	//队满时
 	else
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < LinesOfSysCond; i++)
 			Sys_Cond_Left[i] = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + i + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
 	
 	//右栏
 	//队不满时
 	if (!SysCond_Queue_Right->isFull())
 	{		
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front)
-			Sys_Cond_Right[0] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front);
-		else Sys_Cond_Right[0] = " ";
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 1)
-			Sys_Cond_Right[1] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 1);
-		else Sys_Cond_Right[1] = " ";
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 2)
-			Sys_Cond_Right[2] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 2);
-		else Sys_Cond_Right[2] = " ";
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 3)
-			Sys_Cond_Right[3] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 3);
-		else Sys_Cond_Right[3] = " ";
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 4)
-			Sys_Cond_Right[4] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 4);
-		else Sys_Cond_Right[4] = " ";
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 5)
-			Sys_Cond_Right[5] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 5);
-		else Sys_Cond_Right[5] = " ";
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 6)
-			Sys_Cond_Right[6] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 6);
-		else Sys_Cond_Right[6] = " ";
-		if (SysCond_Queue_Right->rear > SysCond_Queue_Right->front + 7)
-			Sys_Cond_Right[7] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + 7);
-		else Sys_Cond_Right[7] = " ";
+		//先全部清空，再逐个填入
+		for (int i = 0; i < LinesOfSysCond; i++)            //清空列表
+			Sys_Cond_Right[i] = " ";
+		for (int i = 0; i < SysCond_Queue_Right->rear - SysCond_Queue_Right->front; i++)     //将队列中元素填入列表中，仅填充队列中已有部分
+			Sys_Cond_Right[i] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + i);		
 	}
 	//队满时
 	else
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < LinesOfSysCond; i++)
 			Sys_Cond_Right[i] = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + i + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
 	
-	/*********************Item更新**********************/
-	//左栏	
-	for (int i = 0; i < 8; i++)
-		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i]));
-
-	//右栏
-	for (int i = 0; i < 8; i++)
-		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));	
-
-	//设置item不可编辑，不可选中
-	for (int i = 0; i < 8; i++)
+	/*********************Item更新**********************/	
+	for (int i = 0; i < LinesOfSysCond; i++)
+	{
+		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i]));//左栏
+		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));//右栏
+		//设置item不可编辑，不可选中
 		for (int j = 0; j < 2; j++)
-		{
-			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);
-		}
-
-	ui.Sys_Table->setColumnWidth(0, 500);   //设置列宽
+			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);		
+	}
+	//设置列宽
+	ui.Sys_Table->setColumnWidth(0, 500);   
 	ui.Sys_Table->setColumnWidth(1, 1305);
 }
 
