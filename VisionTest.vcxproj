@@ -65,7 +65,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>E:\QT\5.12.2\msvc2015_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -100,7 +100,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>E:\QT\5.12.2\msvc2015_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -126,7 +126,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CImgProcess.cpp" />
+    <ClCompile Include="singlebattery.cpp" />
     <ClCompile Include="CQueue.cpp" />
     <ClCompile Include="GraphicsRect\graphicsrectitem.cpp" />
     <ClCompile Include="GraphicsRect\graphicsscene.cpp" />
@@ -157,7 +157,7 @@
     <QtMoc Include="Setting.h" />
     <QtMoc Include="QMovieChild.h" />
     <QtMoc Include="TurnTable.h" />
-    <ClInclude Include="CImgProcess.h" />
+    <ClInclude Include="singlebattery.h" />
     <ClInclude Include="CQueue.h" />
     <QtMoc Include="MyMovie.h" />
     <QtMoc Include="interactive_view.h" />

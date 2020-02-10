@@ -69,9 +69,6 @@
     <ClCompile Include="Setting.cpp">
       <Filter>Source Files\Setting</Filter>
     </ClCompile>
-    <ClCompile Include="CImgProcess.cpp">
-      <Filter>Source Files\ImgProc</Filter>
-    </ClCompile>
     <ClCompile Include="mythread.cpp">
       <Filter>Source Files\ImgProc</Filter>
     </ClCompile>
@@ -87,6 +84,9 @@
     <ClCompile Include="GraphicsRect\graphicsscene.cpp">
       <Filter>Source Files\Setting</Filter>
     </ClCompile>
+    <ClCompile Include="singlebattery.cpp">
+      <Filter>Source Files\ImgProc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="VisionTest.qrc">
@@ -97,7 +97,7 @@
     <ClInclude Include="CQueue.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
-    <ClInclude Include="CImgProcess.h">
+    <ClInclude Include="singlebattey.h">
       <Filter>Header Files\ImgProc</Filter>
     </ClInclude>
   </ItemGroup>

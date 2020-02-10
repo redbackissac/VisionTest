@@ -9,9 +9,10 @@
 #include <QTextStream>
 #include <QFile>
 #include <QString>
-#include "CImgProcess.h"
+#include "iostream"
+#include "singlebattery.h"
 
-
+using namespace std;
 
 /*用于开启检测进程*/
 class MyThread : public QObject

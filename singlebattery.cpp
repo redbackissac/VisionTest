@@ -1,4 +1,4 @@
-#include "CImgProcess.h"
+#include "singlebattery.h"
 
 /*
 多幅平均滤波
@@ -7,15 +7,17 @@
 */
 Mat SingleBattery::ImageAverage(int imgNum)
 {
-	Mat temp = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + ".jpg");//初始化临时Mat
-	Mat AverageImage = Mat::zeros(temp.size(), CV_32FC3);                                       //初始化平均图像Mat，格式为CV_32FC
+	Mat temp = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + ".jpg", IMREAD_UNCHANGED);//读取图像，不改变通道数	
+	cout << "channels:" << temp.channels() << endl;	//打印图像通道数
+	Mat AverageImage = Mat::zeros(temp.size(), CV_32FC1);                                       //初始化平均图像Mat，格式为CV_32FC
 	for (int i = 1; i <= imgNum; i++)                                                                 //依次打开3张图片
 	{
-		temp = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(i) + ".jpg");//载入第i张图片		                                                       
+		temp = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(i) + ".jpg", IMREAD_UNCHANGED);//载入第i张图片		                                                       
 		accumulate(temp, AverageImage);                                                         //将临时图像与平均图像相加
 	}
 	AverageImage /= imgNum;                                                                     //取平均	
-	AverageImage.convertTo(AverageImage, CV_8UC3);                                              //为显示需要将数据转换为8UC3	
+	AverageImage.convertTo(AverageImage, CV_8UC1);                                              //为显示需要将数据转换为8UC1
+	imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", AverageImage);//保存多幅平均滤波后的图像
 	return AverageImage;
 }
 

@@ -1,12 +1,13 @@
 #pragma once
-#ifndef	CIMGPROCESS_H
-#define CIMGPROCESS_H
+#ifndef	SINGLEBATTERY_H
+#define SINGLEBATTERY_H
 #include <opencv2\opencv.hpp>
 #include <iostream>
 #include <string>
 #include <QImage>
 
 using namespace cv;
+using namespace std;
 
 struct roi_parameters             //roi区域的参数
 {

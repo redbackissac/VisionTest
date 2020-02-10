@@ -372,7 +372,7 @@ void MainWindow::Test_Inf()
 void MainWindow::System_Condition()
 {	
 	/*********************左右两栏初始化为空白*********************/
-	for (int i = 0; i < LinesOfSysCond; i++)
+	for (int i = 0; i < LINES_OF_SYSCOND; i++)
 	{
 		//字符初始化为空白
 		Sys_Cond_Left << " "; //左栏		
@@ -403,14 +403,14 @@ void MainWindow::System_Condition_Update()
 	if (!SysCond_Queue_Left->isFull())
 	{		
 		//先全部清空，再逐个填入
-		for(int i = 0; i < LinesOfSysCond; i++)            //清空列表
+		for(int i = 0; i < LINES_OF_SYSCOND; i++)            //清空列表
 			Sys_Cond_Left[i] = " ";
 		for(int i = 0; i < SysCond_Queue_Left->rear - SysCond_Queue_Left->front ; i++)     //将队列中元素填入列表中，仅填充队列中已有部分
 			Sys_Cond_Left[i] = **(SysCond_Queue_Left->base + SysCond_Queue_Left->front + i);
 	}
 	//队满时
 	else
-		for (int i = 0; i < LinesOfSysCond; i++)
+		for (int i = 0; i < LINES_OF_SYSCOND; i++)
 			Sys_Cond_Left[i] = **(SysCond_Queue_Left->base + (SysCond_Queue_Left->front + i + SysCond_Queue_Left->QueueSize) % SysCond_Queue_Left->QueueSize);
 	
 	//右栏
@@ -418,18 +418,18 @@ void MainWindow::System_Condition_Update()
 	if (!SysCond_Queue_Right->isFull())
 	{		
 		//先全部清空，再逐个填入
-		for (int i = 0; i < LinesOfSysCond; i++)            //清空列表
+		for (int i = 0; i < LINES_OF_SYSCOND; i++)            //清空列表
 			Sys_Cond_Right[i] = " ";
 		for (int i = 0; i < SysCond_Queue_Right->rear - SysCond_Queue_Right->front; i++)     //将队列中元素填入列表中，仅填充队列中已有部分
 			Sys_Cond_Right[i] = **(SysCond_Queue_Right->base + SysCond_Queue_Right->front + i);		
 	}
 	//队满时
 	else
-		for (int i = 0; i < LinesOfSysCond; i++)
+		for (int i = 0; i < LINES_OF_SYSCOND; i++)
 			Sys_Cond_Right[i] = **(SysCond_Queue_Right->base + (SysCond_Queue_Right->front + i + SysCond_Queue_Right->QueueSize) % SysCond_Queue_Right->QueueSize);
 	
 	/*********************Item更新**********************/	
-	for (int i = 0; i < LinesOfSysCond; i++)
+	for (int i = 0; i < LINES_OF_SYSCOND; i++)
 	{
 		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left.at(i)));//左栏,只读方式获得列表中参数
 		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right.at(i)));//右栏,只读方式获得列表中参数
