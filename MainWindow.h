@@ -1,50 +1,21 @@
 #pragma once
 
-#include <stdlib.h>
-#include <QtWidgets/QMainWindow>
+//#include <stdlib.h>
 #include "ui_MainWindow.h"
-#include <QWidget>
-#include <QTableView>
+#include <QMainWindow>
 #include <QStandardItemModel>
-#include <qtimer.h>
-#include <qdatetime.h>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableWidget>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
-#include <QScrollArea>
-#include "CQueue.h"
-#include "CQueue.cpp"
-#include <QtCore/QVariant>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QFormLayout>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableWidget>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QTextBrowser>
+#include <QTimer>
+#include <QDateTime>
 #include <QTextStream>
 #include <QThread>
-#include <QMetaType>
-#include <iostream>
-#include <string>
 #include <QFiledialog>
 #include <QGraphicsScene>
-#include <QGraphicsView>
 #include <opencv2\opencv.hpp>
 #include "mythread.h"
 #include "MyMovie.h"
-#include "singlebattery.h"
 #include "Setting.h"
+#include "CQueue.h"
+#include "CQueue.cpp"
 
 using namespace cv;
 

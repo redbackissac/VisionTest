@@ -1,15 +1,7 @@
 #pragma once
 #pragma execution_character_set("utf-8")
-#include <QWheelEvent>
-#include <QKeyEvent>
+
 #include"Setting.h"
-
-#include <QTextStream>
-
-#include <QFile>
-
-#include <QString>
-
 
 #define VIEW_CENTER viewport()->rect().center()
 #define VIEW_WIDTH  viewport()->rect().width()

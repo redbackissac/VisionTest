@@ -6,25 +6,26 @@
 MyThread::MyThread(QObject* parent) : QObject(parent)
 {
 	isStop = false;
-	imgPro = new SingleBattery;
+	bat = new SingleBattery;
 }
 /*
 子线程中的工作，所有处理内容放在此函数中
 */
 void MyThread::MyWork()
 {
-	Mat scrimage, dstimage, gray_scrimage, grad_x, grad_y, abs_grad_x, abs_grad_y;
-	Mat ROI_top;
-	
-	scrimage = imgPro->ImageAverage(3);                        //多幅平均	
-	//cout << "-------------------- 打印图像参数 ----------------------" << endl;	//标志位	
-	//cout << "flags:" << scrimage.flags << endl;	//图像尺寸	
-	//cout << "size:" << scrimage.size << endl;	//列宽	
-	//cout << "clos:" << scrimage.cols<<endl;	//行高	
-	//cout << "rows:" << scrimage.rows << endl;	//维度	
-	//cout << "dims:" << scrimage.dims << endl;
+	bat->MeasureOneBattery();
+	//Mat scrimage, dstimage, gray_scrimage, grad_x, grad_y, abs_grad_x, abs_grad_y;
+	//Mat ROI_top;
+	//
+	//scrimage = imgPro->ImageAverage(3);                        //多幅平均	
+	////cout << "-------------------- 打印图像参数 ----------------------" << endl;	//标志位	
+	////cout << "flags:" << scrimage.flags << endl;	//图像尺寸	
+	////cout << "size:" << scrimage.size << endl;	//列宽	
+	////cout << "clos:" << scrimage.cols<<endl;	//行高	
+	////cout << "rows:" << scrimage.rows << endl;	//维度	
+	////cout << "dims:" << scrimage.dims << endl;
 
-	
+	//
 	//////遍历参数列表
 	////for (ROI_pars::iterator it = m_roipars.begin(); it != m_roipars.end(); ++it)
 	////{
@@ -60,29 +61,9 @@ void MyThread::acceptROIS(ROI_pars m_pars)
 	{
 		roi_parameters *pars = *it;
 		m_roipars.push_back(pars);//将新接受的参数存入参数列表中
-		imgPro->m_roipars.push_back(pars);//将新接受的参数存入参数列表中		
+		bat->m_roipars.push_back(pars);//将新接受的参数存入参数列表中		
 	}
 }
 
-void MyThread::test()
-{
-	//Mat scrimage, dstimage, gray_scrimage, grad_x, grad_y, abs_grad_x, abs_grad_y;
-	
-
-
-	Mat scrimage = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(3) + ".jpg");//源图像	
-	Mat imageROI = scrimage(Rect(0, 0, scrimage.cols / 2, scrimage.rows / 2));//创建ROI	
-
-	threshold(imageROI, imageROI,170,255,3);
-	
-
-	imshow("roi", imageROI);
-	imshow("src", scrimage);
-	waitKey(0);
-	//dstimage = imgPro->getEdgeVal(ROI_top);
-	//threshold(ROI_top, ROI_top,170,255,3);
-	//imwrite("C:\\Users\\16935\\Desktop\\" + std::to_string(3) + ".jpg", scrimage);//保存多幅平均滤波后的图像	
-	
-}
 
  

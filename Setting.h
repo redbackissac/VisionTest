@@ -1,43 +1,17 @@
 #pragma once
 #include"ui_Setting.h"
-#include <stdlib.h>
 #include <QWidget>
-#include <QTableView>
-#include <QStandardItemModel>
-#include <qtimer.h>
-#include <qdatetime.h>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableWidget>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
-#include <QScrollArea>
-#include <QtCore/QVariant>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QFormLayout>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableWidget>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QTextBrowser>
-#include <iostream>
-#include <string>
 #include <QFiledialog>
-#include <QGraphicsScene>
-#include <QGraphicsView>
+#include <QPushButton>
 #include <QMessageBox>
-#include "interactive_view.h"
+#include <QWheelEvent>
+#include <QKeyEvent>
+#include <QTextStream>
 #include <QGraphicsPixmapItem>
+#include "interactive_view.h"
+
 #include "GraphicsRect/graphicsscene.h"
-#include <QFile>
+
 
 namespace Ui {
 	class Setting;

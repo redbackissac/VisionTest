@@ -8,7 +8,7 @@
 Mat SingleBattery::ImageAverage(int imgNum)
 {
 	Mat temp = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + ".jpg", IMREAD_UNCHANGED);//读取图像，不改变通道数	
-	cout << "channels:" << temp.channels() << endl;	//打印图像通道数
+	//cout << "channels:" << temp.channels() << endl;	//打印图像通道数
 	Mat AverageImage = Mat::zeros(temp.size(), CV_32FC1);                                       //初始化平均图像Mat，格式为CV_32FC
 	for (int i = 1; i <= imgNum; i++)                                                                 //依次打开3张图片
 	{
@@ -59,18 +59,36 @@ void SingleBattery::createROI(Mat srcImg)
 /*
 用二值化的方法提取边缘
 */
-void SingleBattery::edge()
+void SingleBattery::edge(Mat Input)
 {
-	//遍历所有roi区域
-	for (int i = 0; i != m_rois.size(); ++i)
-	{
-		//Mat RoiImgs = it;
-		threshold(*m_rois[i], *m_rois[i], 170, 255, 3);
-	}
+	////遍历所有roi区域
+	//for (int i = 0; i != m_rois.size(); ++i)
+	//{
+	//	//Mat RoiImgs = it;
+	//	threshold(*m_rois[i], *m_rois[i], 170, 255, 3);
+	//}
+	threshold(Input, Input, 170, 255, 3);
 	//for (ROIS::iterator it = m_rois.begin(); it != m_rois.end(); ++it)
 	//{
 	//	Mat RoiImgs = it;		
 	//	//threshold(*RoiImgs, *RoiImgs, 170, 255, 3);
 	//}
+}
+
+/*
+测量一块电池
+*/
+void SingleBattery::MeasureOneBattery()
+{
+	Mat src;//输入图像	
+	src = ImageAverage(3);//多幅平均
+	createROI(src);//创建roi
+	//遍历所有roi区域
+	for (int i = 0; i != m_rois.size(); ++i)
+	{		
+		edge(*m_rois[i]);//提取边缘
+	}
+	
+	imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", src);//保存多幅平均滤波后的图像	
 }
 

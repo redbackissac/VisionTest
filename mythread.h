@@ -3,14 +3,16 @@
 #ifndef MYTHREAD_H
 #define MYTHREAD_H
 
-#include <QObject>
-#include <QFiledialog>
+//#include <QObject>
 #include <QThread>
-#include <QTextStream>
-#include <QFile>
-#include <QString>
-#include "iostream"
 #include "singlebattery.h"
+
+//#include <QFiledialog>
+//#include <QTextStream>
+//#include <QFile>
+//#include <QString>
+//#include "iostream"
+
 
 using namespace std;
 
@@ -25,7 +27,7 @@ public:
 	void setFlag(bool flag = true);
 	
 	ROI_pars m_roipars;
-	SingleBattery *imgPro; //图像处理对象
+	SingleBattery *bat; //图像处理对象
 
 public slots:
 	void MyWork();     //线程处理函数定义
@@ -35,10 +37,7 @@ signals:
 	void singal_back();   //处理结果返回信号
 
 private:
-	int x, y, width, height;
-	bool isStop;	//进程结束标志
-	void getEdgeVal(); //边缘提取
-	void test();
-	
+	//int x, y, width, height;
+	bool isStop;	//进程结束标志	
 };
 #endif
