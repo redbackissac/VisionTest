@@ -378,8 +378,8 @@ void MainWindow::System_Condition()
 		Sys_Cond_Left << " "; //左栏		
 		Sys_Cond_Right << " ";//右栏
 		//数据模型获取各行字符
-		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i])); //左栏
-		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));//右栏
+		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left.at(i))); //左栏,只读方式获得列表中参数
+		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right.at(i)));//右栏,只读方式获得列表中参数
 		//设置item为不可编辑不可选中
 		for (int j = 0; j < 2; j++)
 			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);
@@ -431,8 +431,8 @@ void MainWindow::System_Condition_Update()
 	/*********************Item更新**********************/	
 	for (int i = 0; i < LinesOfSysCond; i++)
 	{
-		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left[i]));//左栏
-		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right[i]));//右栏
+		Sys_Model->setItem(i, 0, new QStandardItem(Sys_Cond_Left.at(i)));//左栏,只读方式获得列表中参数
+		Sys_Model->setItem(i, 1, new QStandardItem(Sys_Cond_Right.at(i)));//右栏,只读方式获得列表中参数
 		//设置item不可编辑，不可选中
 		for (int j = 0; j < 2; j++)
 			Sys_Model->item(i, j)->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable);		
@@ -535,7 +535,7 @@ void MainWindow::on_Import_clicked()
 			QString fileLine = in.readLine();//逐行读取
 			list = fileLine.split(",", QString::SkipEmptyParts);//将每行的数据以","分割	
 																//读取表中内容
-			if (i == 2)
+			if (i >= 2)
 			{
 				roi_parameters *m_roi_parameters = new roi_parameters;//为用于读取数据的临时结构体分配内存
 																	  //读取表中的数据
@@ -549,7 +549,6 @@ void MainWindow::on_Import_clicked()
 		}
 
 	}
-
 	file.close();//读取完毕，关闭文件
 }
 
@@ -580,7 +579,7 @@ void MainWindow::on_Stop_clicked()
 	m_thread->setFlag();
 	subthread->quit();
 	subthread->wait();
-	delete m_thread;	
+	//delete m_thread;	
 	//sss.close();
 	
 	this->close();

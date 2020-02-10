@@ -126,7 +126,7 @@ signals:
 
 //私有槽函数
 private slots:
-	void on_Reset_clicked();                        //reset按钮函数    
+	void on_Reset_clicked();                        //统计信息复位
 	void on_Open_clicked();                         //打开图片按钮
 	void on_Stop_clicked();                         //停止按钮
 	void on_Display_Timer_timeout();                //定时器中断服务函数
@@ -136,8 +136,8 @@ private slots:
 private:
 	
 	Setting sss;
-	MyThread *m_thread;                                          //自定义线程
 	QThread *subthread;                                          //子线程容器
+	MyThread *m_thread;                                          //自定义线程	
 
 	MyMovie *mymovie;                                            //转盘动画
 
@@ -165,7 +165,7 @@ private:
 	void Count_Bottom_Update();                     //下方统计数据更新
 	void Count_Top();                               //标题栏统计数据初始化
 	void Count_Top_Update();                        //标题栏统计数据更新
-	void System_Condition();                        //左侧系统状态初始化
+	void System_Condition();                        //系统状态初始化
 	void System_Condition_Update();                 //系统状态更新
 	void Test_Inf();                                //检测信息
 
