@@ -26,17 +26,17 @@ Mat SingleBattery::getEdgeVal(Mat srcImg)
 {
 	Mat dstimage, gray_scrimage, grad_x, grad_y, abs_grad_x, abs_grad_y;
 
-	cvtColor(srcImg, gray_scrimage, COLOR_RGB2GRAY);   //转变为灰度图
+	//cvtColor(srcImg, gray_scrimage, COLOR_RGB2GRAY);   //转变为灰度图
 
-	Sobel(gray_scrimage, grad_x, CV_16S, 1, 0, 3, 1, 1, BORDER_DEFAULT);    //对x方向使用Sobel()函数
+	Sobel(srcImg, grad_x, CV_16S, 1, 0, 3, 1, 1, BORDER_DEFAULT);    //对x方向使用Sobel()函数
 	convertScaleAbs(grad_x, abs_grad_x);   //边缘与梯度方向垂直，所以输出出来的话呢，边缘是和我们所计算的某一方向的梯度是垂直的
 
 	           
-	Sobel(gray_scrimage, grad_y, CV_16S, 0, 1, 3, 1, 1, BORDER_DEFAULT);
+	Sobel(srcImg, grad_y, CV_16S, 0, 1, 3, 1, 1, BORDER_DEFAULT);
 	convertScaleAbs(grad_y, abs_grad_y);	
 
-	addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, dstimage);    //图像的线性混合，每张图0.5的权重
-	imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", dstimage);//保存多幅平均滤波后的图像		
+	addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, srcImg);    //图像的线性混合，每张图0.5的权重
+	//imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", dstimage);//保存多幅平均滤波后的图像		
 	return dstimage;
 }
 
@@ -46,13 +46,13 @@ Mat SingleBattery::getEdgeVal(Mat srcImg)
 void SingleBattery::createROI(Mat srcImg)
 {
 	m_rois.reserve(0);//清空roi列表，为创建roi做准备
+	//遍历参数列表
 	for (ROI_pars::iterator it = m_roipars.begin(); it != m_roipars.end(); ++it)
 	{
-		roi_parameters *pars = *it;
-		Mat *RoiImgs = new Mat;		
-		*RoiImgs = srcImg(Rect(srcImg.cols * pars->x / 100, srcImg.rows * pars->y / 100, srcImg.cols * pars->width / 100, srcImg.rows * pars->height / 100));
-		//threshold(RoiImgs, RoiImgs, 170, 255, 3);
-		m_rois.push_back(RoiImgs);
+		roi_parameters *pars = *it;//类型转换
+		Mat *RoiImgs = new Mat;//为新的roi开辟内存	
+		*RoiImgs = srcImg(Rect(pars->x, pars->y, pars->width, pars->height));//创建roi
+		m_rois.push_back(RoiImgs);//将新创建的roi加入roi列表	
 	}
 }
 
@@ -61,18 +61,9 @@ void SingleBattery::createROI(Mat srcImg)
 */
 void SingleBattery::edge(Mat Input)
 {
-	////遍历所有roi区域
-	//for (int i = 0; i != m_rois.size(); ++i)
-	//{
-	//	//Mat RoiImgs = it;
-	//	threshold(*m_rois[i], *m_rois[i], 170, 255, 3);
-	//}
+
 	threshold(Input, Input, 170, 255, 3);
-	//for (ROIS::iterator it = m_rois.begin(); it != m_rois.end(); ++it)
-	//{
-	//	Mat RoiImgs = it;		
-	//	//threshold(*RoiImgs, *RoiImgs, 170, 255, 3);
-	//}
+
 }
 
 /*
@@ -80,15 +71,18 @@ void SingleBattery::edge(Mat Input)
 */
 void SingleBattery::MeasureOneBattery()
 {
-	Mat src;//输入图像	
-	src = ImageAverage(3);//多幅平均
-	createROI(src);//创建roi
+	//Mat src;//输入图像	
+	batImg = ImageAverage(3);//多幅平均
+	createROI(batImg);//创建roi
+
 	//遍历所有roi区域
-	for (int i = 0; i != m_rois.size(); ++i)
-	{		
-		edge(*m_rois[i]);//提取边缘
-	}
+	//for (int i = 0; i != m_rois.size(); ++i)
+	//{		
+	//	//edge(*m_rois[i]);//提取边缘
+	//	getEdgeVal(*m_rois[i]);
+	//}
+	getEdgeVal(batImg);
 	
-	imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", src);//保存多幅平均滤波后的图像	
+	imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", batImg);//保存多幅平均滤波后的图像	
 }
 

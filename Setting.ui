@@ -85,6 +85,19 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="look">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>650</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>查看</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

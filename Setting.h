@@ -9,8 +9,11 @@
 #include <QTextStream>
 #include <QGraphicsPixmapItem>
 #include "interactive_view.h"
-
 #include "GraphicsRect/graphicsscene.h"
+
+//用于打印调试信息
+#include <iostream>
+using namespace std;
 
 
 namespace Ui {
@@ -28,7 +31,7 @@ private:
 	typedef QList<GraphicsRectItem*> rectItems;//存贮所有绘制的矩形的QList
 public:
 	QImage QSrc;          //用于显示的QImage	
-	GraphicsScene *scene ;//用于显示矩形框的场景
+	GraphicsScene *myScene ;//用于显示矩形框的场景
 	InteractiveView *SettingView;//交互式视图
 	QGraphicsPixmapItem *m_pPixmapItem;//用于显示电池图像的item
 
@@ -48,4 +51,5 @@ private slots:
 	void on_Save_clicked();       //保存配置
 	void on_Exist_clicked();      //退出设置界面
 	void on_createRect_clicked(); //创建矩形
+	void on_look_clicked();       //点击查看调试信息
 };

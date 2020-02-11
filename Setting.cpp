@@ -16,8 +16,8 @@ Setting::Setting(QWidget*parents )
 	SettingView = new InteractiveView(this);
     SettingView->setGeometry(QRect(0, 0, 1024, 576));      //设置视口在窗口中的位置
 	//SettingView->setGeometry(QRect(0, 0, this->width(), this->width()*0.5625));      //设置视口在窗口中的位置,自适应窗口大小，保持纵横比为1024/576
-	scene = new GraphicsScene;                             //新建自定义场景
-	SettingView->setScene(scene);	                       //向界面的图像口添加场景	
+	myScene = new GraphicsScene;                             //新建自定义场景
+	SettingView->setScene(myScene);	                       //向界面的图像口添加场景	
 	
 }
 
@@ -37,16 +37,21 @@ void Setting::on_New_clicked()
 		}
 		else
 		{
-			QSrc = QSrc.scaled(1024, 576, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  //将图片缩放为与视图一样大		
+			//QSrc = QSrc.scaled(1024, 576, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  //将图片缩放为与视图一样大		
 			m_pPixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(QSrc));                             	
 			m_pPixmapItem->setPos(-m_pPixmapItem->pixmap().width() / 2,	-m_pPixmapItem->pixmap().height() / 2); 
-			scene->addItem(m_pPixmapItem);
+			myScene->addItem(m_pPixmapItem);
 			//记录图像在场景中的坐标及尺寸				
 			QRect rect_pic = m_pPixmapItem->sceneBoundingRect().toRect();
 			pic_x = rect_pic.topLeft().x();
-			pic_y = rect_pic.topLeft().y();
+			pic_y = rect_pic.topLeft().y();			
+			pic_width = rect_pic.width();
 			pic_height = rect_pic.height();
-			pic_width = rect_pic.width();			
+			//打印调试信息
+			cout << "pic_x:" << pic_x << endl;	
+			cout << "pic_y:" << pic_y << endl;
+			cout << "pic_width:" << pic_width << endl;	
+			cout << "pic_height:" << pic_height << endl;
 		}		
 	}		
 }
@@ -64,7 +69,7 @@ void Setting::on_Exist_clicked()
 */
 void Setting::on_createRect_clicked()
 {
-	scene->creatRect();//绘制新矩形	
+	myScene->creatRect();//绘制新矩形	
 }
 
 /*
@@ -88,16 +93,16 @@ void Setting::on_Save_clicked()
 	file.open(QIODevice::WriteOnly | QIODevice::Append);
 	QTextStream txtOutPut(&file);
 	//遍历所有item	
-	for (rectItems::iterator it = scene->m_rectItems.begin(); it != scene->m_rectItems.end(); ++it)
+	for (rectItems::iterator it = myScene->m_rectItems.begin(); it != myScene->m_rectItems.end(); ++it)
 	{		
 		GraphicsRectItem *item = *it;//类型转换
 		QRect rect = item->sceneBoundingRect().toRect();//item的边界框
 		//相对坐标计算
 		item_rect rectSize;
-		rectSize.x = (rect.topLeft().x() - pic_x) * 100 / pic_width;
-		rectSize.y = (rect.topLeft().y() - pic_y) * 100 / pic_height;
-		rectSize.width = rect.width() * 100 / pic_width;
-		rectSize.height = rect.height() * 100 / pic_height;
+		rectSize.x = rect.topLeft().x() - pic_x;
+		rectSize.y = rect.topLeft().y() - pic_y;
+		rectSize.width = rect.width();
+		rectSize.height = rect.height();
 		//保存数据
 		QString msg = QString::number(rectSize.x) + ","\
 			+ QString::number(rectSize.y) + ","\
@@ -107,4 +112,33 @@ void Setting::on_Save_clicked()
 		file.flush();//向文件中写入数据
 	}	
 	file.close();//保存完成后关闭文件
+}
+
+
+void Setting::on_look_clicked()
+{
+	//遍历所有item	
+	for (rectItems::iterator it = myScene->m_rectItems.begin(); it != myScene->m_rectItems.end(); ++it)
+	{
+		GraphicsRectItem *item = *it;//类型转换
+		QRect rect = item->sceneBoundingRect().toRect();//item的边界框
+														//相对坐标计算
+														//打印数据
+		cout << "rectregion.x" << rect.topLeft().x() - pic_x << endl;
+		cout << "rectregion.y" << rect.topLeft().y() - pic_y << endl;
+		cout << "rectregion.width" << rect.width() << endl;
+		cout << "rectregion.height" << rect.height() << endl;
+
+		//item_rect rectSize;
+		//rectSize.x = (rect.topLeft().x() - pic_x) * 100 / pic_width;
+		//rectSize.y = (rect.topLeft().y() - pic_y) * 100 / pic_height;
+		//rectSize.width = rect.width() * 100 / pic_width;
+		//rectSize.height = rect.height() * 100 / pic_height;
+
+		item_rect rectSize;
+		rectSize.x = rect.topLeft().x() - pic_x;
+		rectSize.y = rect.topLeft().y() - pic_y;
+		rectSize.width = rect.width();
+		rectSize.height = rect.height();		
+	}
 }

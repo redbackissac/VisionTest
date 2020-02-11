@@ -31,6 +31,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *createRect;
     QPushButton *getRect;
+    QPushButton *look;
 
     void setupUi(QWidget *Setting)
     {
@@ -84,6 +85,9 @@ public:
 
         horizontalLayout->addWidget(getRect);
 
+        look = new QPushButton(Setting);
+        look->setObjectName(QString::fromUtf8("look"));
+        look->setGeometry(QRect(600, 650, 93, 28));
 
         retranslateUi(Setting);
 
@@ -99,6 +103,7 @@ public:
         Exist->setText(QApplication::translate("Setting", "\351\200\200\345\207\272", nullptr));
         createRect->setText(QApplication::translate("Setting", "\345\210\233\345\273\272\347\237\251\345\275\242", nullptr));
         getRect->setText(QApplication::translate("Setting", "\350\216\267\345\217\226\347\237\251\345\275\242\345\235\220\346\240\207", nullptr));
+        look->setText(QApplication::translate("Setting", "\346\237\245\347\234\213", nullptr));
     } // retranslateUi
 
 };

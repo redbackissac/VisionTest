@@ -3,7 +3,6 @@
 #define SINGLEBATTERY_H
 #include <opencv2\opencv.hpp>
 #include <iostream>
-//#include <string>
 #include <QImage>
 
 using namespace cv;
@@ -30,7 +29,8 @@ public:
 	void createROI(Mat srcImg);//根据子线程中接收的参数列表创建roi区域	
 	void edge(Mat Input);//用二值化的方法提取边缘
 	
-//private:
+private:
+	Mat batImg; //电池图像
 	
 };
 
