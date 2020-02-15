@@ -87,6 +87,9 @@
     <ClCompile Include="singlebattery.cpp">
       <Filter>Source Files\ImgProc</Filter>
     </ClCompile>
+    <ClCompile Include="subPixelCal.cpp">
+      <Filter>Source Files\ImgProc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="VisionTest.qrc">
@@ -97,7 +100,13 @@
     <ClInclude Include="CQueue.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
-    <ClInclude Include="singlebattey.h">
+    <ClInclude Include="singlebattery.h">
+      <Filter>Header Files\ImgProc</Filter>
+    </ClInclude>
+    <ClInclude Include="subPixelCal.h">
+      <Filter>Header Files\ImgProc</Filter>
+    </ClInclude>
+    <ClInclude Include="zernikeMask.h">
       <Filter>Header Files\ImgProc</Filter>
     </ClInclude>
   </ItemGroup>

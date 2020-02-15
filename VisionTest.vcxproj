@@ -137,6 +137,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="mythread.cpp" />
     <ClCompile Include="Setting.cpp" />
+    <ClCompile Include="subPixelCal.cpp" />
     <ClCompile Include="TurnTable.cpp" />
     <ClCompile Include="QMovieChild.cpp" />
   </ItemGroup>
@@ -151,6 +152,8 @@
     <QtRcc Include="VisionTest.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="subPixelCal.h" />
+    <ClInclude Include="zernikeMask.h" />
     <QtMoc Include="GraphicsRect\graphicsscene.h" />
     <QtMoc Include="GraphicsRect\graphicsrectitem.h" />
     <QtMoc Include="GraphicsRect\sizehandlerect.h" />
