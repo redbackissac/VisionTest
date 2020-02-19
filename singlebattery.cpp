@@ -1,4 +1,5 @@
 #include "singlebattery.h"
+#include<limits.h>
 
 /*
 多幅平均滤波
@@ -78,7 +79,7 @@ void SingleBattery::MeasureOneBattery()
 	batImg = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(sb).jpg", IMREAD_UNCHANGED);//读取图像，不改变通道数
 	//cout << "channels:" << batImg.channels() << endl;	//打印图像通道数//cout << "channels:" << temp.channels() << endl;	//打印图像通道数
 	createROI(batImg);//创建roi	
-	
+	//subpixeltest(batImg);
 	//print_px_value(IGrad);
 	//int i= imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\1(new).jpg", roughEdge);//保存多幅平均滤波后的图像	
 	//cout << i << endl;
@@ -86,91 +87,32 @@ void SingleBattery::MeasureOneBattery()
 	for (int i = 0; i != m_rois.size(); ++i)
 	{
 		/*获得粗边缘位置vecEdgePoint*/
-		vector<Point2i> vecEdgePoint;
-		//vector<Point2i> vecEdgePointPart;//(row,col)
-		//getCovPoint(*m_rois[i], vecEdgePoint, 240, 250, 5);
-		getRoughEdge(*m_rois[i], vecEdgePoint);
+		vector<Point2i> vecEdgePoint;//粗边缘坐标		
+		getRoughEdge(*m_rois[i], vecEdgePoint);//提取粗略边缘坐标
+
+		/*创建粗边缘点的7*7邻域*/		
+		int neiborNum;//邻域的数量，即边缘点的数量
+		Mat AllNeibor;//粗边缘点的7*7邻域
+		neiborNum = vecEdgePoint.size();
+		//AllNeibor = new Mat[neiborNum];		
+		//getNeibor(vecEdgePoint, *m_rois[i], AllNeibor);
+		getNewROI(vecEdgePoint, *m_rois[i], AllNeibor);
+
+		///*对邻域进行插值并且计算边缘参数*/
+		//Mat* matResizeNeibor;//插值后得到的邻域
+		//matResizeNeibor = new Mat[neiborNum];
+		//resizeNeibor(matAllNeibor, matResizeNeibor, vecResizeXY, neiborNum);
+		
+
+		/*亚像素精确边缘位置*/
+		vector<Vec4d> vecPara;
+		vector<Point2d> subPixelRela;
+		m_calEdgePara(AllNeibor, vecPara, subPixelRela);	
+		//subpixeltest(AllNeibor);
+		int j = INT_MAX;
 	}
-
-
-	//for (int i = 0; i != m_rois.size(); ++i)
-	//{	
-	//	
-	//	//中值滤波
-	//	//medianBlur(*m_rois[i], *m_rois[i], 3);
-
-	//	//subpixeltest(*m_rois[i]);
-	//	///*获得粗边缘位置vecEdgePoint*/
-	//	//vector<Point2i> vecEdgePoint;
-	//	//vector<Point2i> vecEdgePointPart;//(row,col)
-	//	//getCovPoint(*m_rois[i], vecEdgePoint, 240, 250, 5);
-
-
-
-	//	///*获得边缘7*7邻域matAllNeibor*/
-	//	//int neiborNum;//邻域的数量
-	//	//Mat* matAllNeibor;//粗边缘点的7*7邻域
-	//	//neiborNum = vecEdgePoint.size();
-	//	//matAllNeibor = new Mat[neiborNum];		
-	//	//getNeibor(vecEdgePoint, *m_rois[i], matAllNeibor, 7);
-
-
-	//	
-	//	
-	//	///*邻域内卷积*/
-	//	///*计算边缘点dx,dy*/
-	//	//vector<Point2i> vecDxdy;//梯度
-	//	////基于标准数学坐标
-	//	//calEdgedxdy(matAllNeibor, neiborNum, vecDxdy);
-
-	//	///*通过梯度（dx，dy）确定邻域插值方向（比例）*/
-	//	//vector<Point2i> vecResizeXY;//插值的比例
-	//	////Point2i VHtime = (4,4);
-	//	//calInterTime(vecDxdy, neiborNum, vecResizeXY, Point2i(4, 4));
-
-	//	///*对邻域进行插值并且计算边缘参数*/
-	//	//Mat* matResizeNeibor;//插值后得到的邻域
-	//	//matResizeNeibor = new Mat[neiborNum];
-	//	//resizeNeibor(matAllNeibor, matResizeNeibor, vecResizeXY, neiborNum);
-
-	//
-	//	
-
-	//	///*计算单个邻域的绝对边缘参数*/
-	//	//vector<Vec4d> vecPara;
-	//	//vector<Point2d> subPixelRela;
-	//	//vector<Point2d> subPixelabs;
-	//	//Point2d tempPoint;
-
-	//	//for (int i = 0; i < neiborNum; i++)
-	//	//{
-	//	//	calEdgePara(matResizeNeibor[i], vecResizeXY[i], vecPara, subPixelRela, 7, 10, 50);
-	//	//	for (int in = 0; in<subPixelRela.size(); in++)
-	//	//	{
-	//	//		/*相对坐标转成图像（整图）的绝对坐标*/
-	//	//		tempPoint.x = (double)vecEdgePointPart[i].y + (subPixelRela[in].x - (7.00 - 1.00) / 2.00);
-	//	//		tempPoint.y = (double)vecEdgePointPart[i].x + (subPixelRela[in].y - (7.00 - 1.00) / 2.00);
-	//	//		/*获得亚pixel坐标*/
-	//	//		subPixelabs.push_back(tempPoint);
-	//	//	}
-	//	//	subPixelRela.clear();
-	//	//}
-	//	///*示意部分，将亚pixel坐标取整绘制在黑色背景上*/
-	//	//Mat matBlackboard((*m_rois[i]).size(), CV_8UC1, Scalar(0));
-
-	//	//Point center_forshow;
-	//	//for (int i = 0; i < subPixelabs.size(); i++)
-	//	//{
-	//	//	center_forshow.x = cvRound(subPixelabs[i].x);
-	//	//	center_forshow.y = cvRound(subPixelabs[i].y);
-	//	//	circle(matBlackboard, center_forshow, 0.01, Scalar(255), -1);
-	//	//}
-	//	//imshow("test", matBlackboard);
-
-	//}
-	//getEdgeVal(batImg);
 	
-	//imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", batImg);//保存多幅平均滤波后的图像	
+
 }
 
 
@@ -199,21 +141,24 @@ void SingleBattery::getCovPoint(Mat& matIn, vector<Point2i>& vecEdgePoint, int c
 
 /*
 获得边缘7 * 7邻域
-vecEdgePoint:要处理的边缘点(y,x)
+EdgePoint:要处理的边缘点(y,x)
 matIn:输入矩阵
 matNeibor:输出的邻域矩阵
 nbsize:邻域大小
 */
-void SingleBattery::getNeibor(vector<Point2i>& vecEdgePoint, Mat& matIn, Mat* matNeibor, int nbsize)
+void SingleBattery::getNeibor(vector<Point2i>& EdgePoint, Mat& matIn, Mat* matNeibor, int nbsize)
 {
 	Mat matInRoi, matNewRoi;
 	int halfN = (nbsize - 1) / 2;
 	//遍历所有储存的边缘点
-	for (int i = 0; i < vecEdgePoint.size(); i++)
+	for (int i = 0; i < EdgePoint.size(); i++)
 	{
-		matInRoi = matIn(Rect(vecEdgePoint[i].y, vecEdgePoint[i].x, 1, 1));//在输入图像上选取roi
+		matInRoi = matIn(Rect(EdgePoint[i].y, EdgePoint[i].x, 1, 1));//在输入图像上选取roi
 		matInRoi.adjustROI(halfN, halfN, halfN, halfN);//将roi调整为7*7
-		matNeibor[i] = matInRoi;		
+		matNeibor[i] = matInRoi;
+		/*print_px_value(matInRoi);
+		imshow("roi",matInRoi);
+		waitKey(0);*/
 	}
 }
 
@@ -329,15 +274,15 @@ void SingleBattery::calEdgePara(Mat& matSingleResizeNeibor, Point2i resizeXY, ve
 
 	//卷积
 	filter2D(matSingleResizeNeibor, mZerImageM00, CV_64F, ZERPOLY00);
-	print_px_value(mZerImageM00);
+	//print_px_value(mZerImageM00);
 	filter2D(matSingleResizeNeibor, mZerImageM11R, CV_64F, ZERPOLY11R);
 	filter2D(matSingleResizeNeibor, mZerImageM11I, CV_64F, ZERPOLY11I);
 	filter2D(matSingleResizeNeibor, mZerImageM20, CV_64F, ZERPOLY20);
-	print_px_value(mZerImageM20);
+	//print_px_value(mZerImageM20);
 	filter2D(matSingleResizeNeibor, mZerImageM31R, CV_64F, ZERPOLY31R);
 	filter2D(matSingleResizeNeibor, mZerImageM31I, CV_64F, ZERPOLY31I);
 	filter2D(matSingleResizeNeibor, mZerImageM40, CV_64F, ZERPOLY40);
-	print_px_value(mZerImageM40);
+	//print_px_value(mZerImageM40);
 	double rotated_z11 = 0.0;
 	double rotated_z31 = 0.0;
 	double l_method1 = 0.0;
@@ -348,6 +293,11 @@ void SingleBattery::calEdgePara(Mat& matSingleResizeNeibor, Point2i resizeXY, ve
 
 	int row_number = matSingleResizeNeibor.rows;
 	int col_number = matSingleResizeNeibor.cols;
+	//使用7个的7*7的Zernike模板（其本质是个矩阵）M00、M11R、M11I、M20、M31R、M31I、M40，分别与图像进行卷积，得到每个像素点的七个Zernike矩Z00、Z11R、Z11I、Z20、Z31R、Z31I、Z40
+
+	//对于每个点，根据它的七个Zernike矩，求得距离参数l和灰度差参数k，当l和k都满足设定的条件时，则判读该点为边缘点，并进一步利用上述7个Zernike矩求出该点的亚像素级坐标
+
+	//如果l或k不满足设定的条件，则该点不是边缘点，转到下一个点求解距离参数l和灰度差参数k
 	for (int i = 0; i < row_number; i++)
 	{
 		for (int j = 0; j < col_number; j++)
@@ -384,7 +334,6 @@ void SingleBattery::calEdgePara(Mat& matSingleResizeNeibor, Point2i resizeXY, ve
 				point.x = (j + para[L] * nbsize*cos(para[THETA]) / 2.00) / (double)resizeXY.x;
 				point.y = (i + para[L] * nbsize*sin(para[THETA]) / 2.00) / (double)resizeXY.y;
 				subPixelRela.push_back(point);
-
 			}
 
 		}
@@ -679,8 +628,8 @@ void subpixeltest(Mat OriginalImage)
 
 			double absl = abs(l_method2 - l_method1);
 
-			if (k >= k_value && absl <= l_value)
-
+			//if (k >= k_value && absl <= l_value)
+			if (1)
 			{
 
 				Point2d point_temporary;
@@ -778,7 +727,8 @@ void SingleBattery::getRoughEdge(Mat& input, vector<Point2i>& vecEdgePoint)
 	threshold(output, output, 130, 255, THRESH_BINARY); //阈值化
 
 	imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(new).jpg", output);//保存多幅平均滤波后的图像	
-
+	
+    //记录所有粗边缘点的坐标
 	Point2i  pointTemp;
 	for (int i = 0; i < output.rows; i++)
 	{
@@ -807,7 +757,7 @@ void SingleBattery::print_px_value(Mat& im)
 	 //双重循环，遍历所有的像素值
 	for (int i = 0; i < rowNumber; i++)  //行循环
 	{
-		int* data = im.ptr<int>(i);  //获取第i行的首地址
+		uchar* data = im.ptr<uchar>(i);  //获取第i行的首地址
 		for (int j = 0; j < colNumber; j++)   //列循环
 		{
 			//data[j] = data[j] / div * div + div / 2;
@@ -818,3 +768,148 @@ void SingleBattery::print_px_value(Mat& im)
 	cout <<""<< endl;
 }
 
+
+
+
+void SingleBattery::m_calEdgePara(Mat& matSingleResizeNeibor, vector<Vec4d>& vecPara, vector<Point2d>& subPixelRela, int nbsize, int ZerBgrL, int ZerBgrH)
+{
+
+	Vec4d  para;
+	Point2d point;
+
+	Mat mZerImageM00;
+	Mat mZerImageM11R;
+	Mat mZerImageM11I;
+	Mat mZerImageM20;
+	Mat mZerImageM31R;
+	Mat mZerImageM31I;
+	Mat mZerImageM40;
+
+	//卷积
+	filter2D(matSingleResizeNeibor, mZerImageM00, CV_64F, ZERPOLY00);
+	filter2D(matSingleResizeNeibor, mZerImageM11R, CV_64F, ZERPOLY11R);
+	filter2D(matSingleResizeNeibor, mZerImageM11I, CV_64F, ZERPOLY11I);
+	filter2D(matSingleResizeNeibor, mZerImageM20, CV_64F, ZERPOLY20);
+	filter2D(matSingleResizeNeibor, mZerImageM31R, CV_64F, ZERPOLY31R);
+	filter2D(matSingleResizeNeibor, mZerImageM31I, CV_64F, ZERPOLY31I);
+	filter2D(matSingleResizeNeibor, mZerImageM40, CV_64F, ZERPOLY40);
+
+	double rotated_z11 = 0.0;
+	double rotated_z31 = 0.0;
+	double l_method1 = 0.0;
+	double l_method2 = 0.0;
+
+	double l_t1 = sqrt(2) / (2.00 * nbsize);
+	double l_t2 = sqrt(2) / 2.00;
+
+	int row_number = matSingleResizeNeibor.rows;
+	int col_number = matSingleResizeNeibor.cols;
+	//使用7个的7*7的Zernike模板（其本质是个矩阵）M00、M11R、M11I、M20、M31R、M31I、M40，分别与图像进行卷积，得到每个像素点的七个Zernike矩Z00、Z11R、Z11I、Z20、Z31R、Z31I、Z40
+
+	//对于每个点，根据它的七个Zernike矩，求得距离参数l和灰度差参数k，当l和k都满足设定的条件时，则判读该点为边缘点，并进一步利用上述7个Zernike矩求出该点的亚像素级坐标
+
+	//如果l或k不满足设定的条件，则该点不是边缘点，转到下一个点求解距离参数l和灰度差参数k
+	for (int i = 0; i < row_number; i++)
+	{
+		for (int j = 0; j < col_number; j++)
+		{
+			if (mZerImageM00.at<double>(i, j) == 0)
+			{
+				continue;
+			}
+			para[THETA] = atan2(mZerImageM31I.at<double>(i, j), mZerImageM31R.at<double>(i, j));
+
+			//计算Z11'和Z31'为计算L1,L2做准备,rotated_z11=Z11',rotated_z31=Z31'
+
+			rotated_z11 = sin(para[THETA])*(mZerImageM11I.at<double>(i, j)) + cos(para[THETA])*(mZerImageM11R.at<double>(i, j));
+			rotated_z31 = sin(para[THETA])*(mZerImageM31I.at<double>(i, j)) + cos(para[THETA])*(mZerImageM31R.at<double>(i, j));
+
+			//计算L1，L2,
+		/*	cout << "mZerImageM40.at<double>(i, j)" << mZerImageM40.at<double>(i, j) << endl;
+			cout << "mZerImageM20.at<double>(i, j)" << mZerImageM20.at<double>(i, j) << endl;
+			cout << " " << endl;*/
+			l_method1 = sqrt((5 * mZerImageM40.at<double>(i, j) + 3 * mZerImageM20.at<double>(i, j)) / (8 * mZerImageM20.at<double>(i, j)));
+			l_method2 = sqrt((5 * rotated_z31 + rotated_z11) / (6 * rotated_z11));
+			para[L] = (l_method1 + l_method2) / 2;
+			//l = l - 0.207107;//减去修正值k
+
+			//计算k和h 
+			para[K] = 3 * rotated_z11 / 2 / pow((1 - l_method2*l_method2), 1.5);
+			para[H] = (mZerImageM00.at<double>(i, j) - para[K] * PI / 2 + para[K] * asin(l_method2) + para[K] * l_method2*sqrt(1 - l_method2*l_method2)) / PI;
+
+			vecPara.push_back(para);
+			/*阈值过滤*/
+			//if (para[L]>l_t1 &&  para[L]<l_t2 &&  para[K]>ZerBgrL && para[H]>ZerBgrH) 
+			if (abs(l_method1 - l_method2) <= (sqrt(2) / (2.00*7.00)) && para[L]<l_t2 && para[K]>ZerBgrL && para[H] <50)
+			//if (1)
+			{
+				/*边缘尺度恢复*/
+				point.x = (j + para[L] * nbsize*cos(para[THETA]) / 2.00);
+				point.y = (i + para[L] * nbsize*sin(para[THETA]) / 2.00);
+				subPixelRela.push_back(point);				
+			}
+			else
+			{
+				continue;
+			}
+
+		}
+	}
+
+
+	//显示所检测到的亚像素边缘
+
+ 	for (size_t i = 0; i < subPixelRela.size(); i++)
+
+	{
+
+		Point center_forshow(cvRound(subPixelRela[i].x), cvRound(subPixelRela[i].y));
+
+		circle(matSingleResizeNeibor, center_forshow, 1, 255, 1, 8, 0);
+
+	}
+	//int i = 0;
+	//imshow("亚像素边缘", matSingleResizeNeibor);
+	////imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\亚像素边缘.jpg", matSingleResizeNeibor);//保存多幅平均滤波后的图像	
+
+	//waitKey(0);
+}
+
+
+
+/*
+获得边缘7 * 7邻域
+EdgePoint:要处理的边缘点(y,x)
+matIn:输入矩阵
+matNeibor:输出的邻域矩阵
+nbsize:邻域大小
+*/
+void SingleBattery::getNewROI(vector<Point2i>& EdgePoint, Mat& matIn, Mat& matNeibor, int nbsize)
+{
+	Mat matInRoi, matNewRoi;
+	int halfN = (nbsize - 1) / 2;
+	int x_MAX = 0;
+	int x_MIN = INT_MAX;
+	int y_MAX = 0;
+	int y_MIN = INT_MAX;
+	//遍历所有储存的边缘点
+	for (int i = 0; i < EdgePoint.size(); i++)
+	{
+		if (x_MAX < EdgePoint[i].x) x_MAX = EdgePoint[i].x;
+		if (x_MIN > EdgePoint[i].x) x_MIN = EdgePoint[i].x;
+		if (y_MAX < EdgePoint[i].y) y_MAX = EdgePoint[i].y;
+		if (y_MIN > EdgePoint[i].y) y_MIN = EdgePoint[i].y;
+		//matInRoi = matIn(Rect(EdgePoint[i].y, EdgePoint[i].x, 1, 1));//在输入图像上选取roi
+		//matInRoi.adjustROI(halfN, halfN, halfN, halfN);//将roi调整为7*7
+		//matNeibor[i] = matInRoi;
+		/*print_px_value(matInRoi);
+		imshow("roi",matInRoi);
+		waitKey(0);*/
+	}
+	matInRoi = matIn(Range(x_MIN, x_MAX),Range(y_MIN, y_MAX));//在输入图像上选取roi
+	matInRoi.adjustROI(halfN, halfN, halfN, halfN);//将roi调整为7*7
+	matNeibor = matInRoi;
+	imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\亚像素边缘.jpg", matInRoi);//保存多幅平均滤波后的图像	
+	/*imshow("roi",matNeibor);
+	waitKey(0);*/
+}
