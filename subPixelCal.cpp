@@ -223,8 +223,8 @@ void drawLine(cv::Mat &image, double theta, double rho, cv::Scalar color)
 //	char key;
 //	int i;
 //	int count = vecLine.size();;
-//	CvPoint* points = (CvPoint*)malloc(count * sizeof(points[0])); //存放随机产生的点点，数目为count
-//	CvMat pointMat = cvMat(1, count, CV_32SC2, points); //点集, 存储count个随机点points
+//	Point* points = (Point*)malloc(count * sizeof(points[0])); //存放随机产生的点点，数目为count
+//	Mat pointMat = Mat(1, count, CV_32SC2, points); //点集, 存储count个随机点points
 //
 //	for (int i = 0; i <count; i++)
 //	{
@@ -232,7 +232,7 @@ void drawLine(cv::Mat &image, double theta, double rho, cv::Scalar color)
 //		points[i].y = vecLine[i].y;
 //	}
 //
-//	cvFitLine(&pointMat, CV_DIST_HUBER, 1, 0.000001, 0.000001, line);
+//	fitLine(pointMat, line, CV_DIST_HUBER, 1, 0.000001, 0.000001, );
 //
 //}
 ZerResult CalDistanceSquare(Mat& matRoi, double rto, int drawColor,

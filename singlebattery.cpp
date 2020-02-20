@@ -109,6 +109,11 @@ void SingleBattery::MeasureOneBattery()
 		vector<Point2d> subPixelRela;
 		m_calEdgePara(AllNeibor, vecPara, subPixelRela);	
 		//subpixeltest(AllNeibor);
+
+
+		/*直线拟合*/
+		Vec4f line_para;//拟合出直线的参数
+		fitLine(subPixelRela, line_para, DIST_HUBER, 0, 0.000001, 0.000001);
 		int j = INT_MAX;
 	}
 	
