@@ -126,6 +126,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="calibration.cpp" />
     <ClCompile Include="singlebattery.cpp" />
     <ClCompile Include="CQueue.cpp" />
     <ClCompile Include="GraphicsRect\graphicsrectitem.cpp" />
@@ -152,6 +153,7 @@
     <QtRcc Include="VisionTest.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calibration.h" />
     <ClInclude Include="subPixelCal.h" />
     <ClInclude Include="zernikeMask.h" />
     <QtMoc Include="GraphicsRect\graphicsscene.h" />

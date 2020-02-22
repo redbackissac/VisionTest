@@ -1,5 +1,4 @@
 #include "singlebattery.h"
-#include<limits.h>
 
 /*
 ¶à·ùÆ½¾ùÂË²¨

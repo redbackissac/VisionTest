@@ -4,6 +4,7 @@
 #include <opencv2\opencv.hpp>
 #include <iostream>
 #include <QImage>
+#include<limits.h>
 #include "zernikeMask.h"
 
 using namespace cv;
@@ -37,12 +38,13 @@ public:
 	void calInterTime(vector<Point2i>& vecDxdy, int neiborNum, vector<Point2i>& vecResizeXY, Point2i VHtime);
 	void calEdgePara(Mat& matSingleResizeNeibor, Point2i resizeXY, vector<Vec4d>& vecPara, vector<Point2d>& subPixelRela, int nbsize, int ZerBgrL, int ZerBgrH);
 	void m_calEdgePara(Mat& matSingleResizeNeibor, vector<Vec4d>& vecPara, vector<Point2d>& subPixelRela, int nbsize = N, int ZerBgrL = 120, int ZerBgrH = 255);
-private:
-	Mat batImg; //电池图像
 	void getIGrad(Mat& input, Mat& output, Mat &element);//计算改进形态学梯度算子
 	void getRoughEdge(Mat& input, vector<Point2i>& vecEdgePoint);//边缘粗定位
 	void getNewROI(vector<Point2i>& EdgePoint, Mat& matIn, Mat& matNeibor, int nbsize = 7);//获取以粗边缘为中心的roi
 	void print_px_value(Mat& im);//打印所有像素值,调试用
+private:
+	Mat batImg; //电池图像
+	
 	
 };
 

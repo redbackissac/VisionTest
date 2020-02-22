@@ -1,6 +1,6 @@
 #pragma execution_character_set("utf-8")
 #include "mythread.h"
-
+#include "calibration.h"
 #include "MainWindow.h"
 
 MyThread::MyThread(QObject* parent) : QObject(parent)
