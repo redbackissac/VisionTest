@@ -76,7 +76,7 @@ void SingleBattery::MeasureOneBattery()
 	//Mat src;//输入图像	
 	//batImg = ImageAverage(1);//多幅平均
 	batImg = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(sb).jpg", IMREAD_UNCHANGED);//读取图像，不改变通道数
-	//cout << "channels:" << batImg.channels() << endl;	//打印图像通道数//cout << "channels:" << temp.channels() << endl;	//打印图像通道数
+	cout << "channels:" << batImg.channels() << endl;	//打印图像通道数//cout << "channels:" << temp.channels() << endl;	//打印图像通道数
 	createROI(batImg);//创建roi	
 	//subpixeltest(batImg);
 	//print_px_value(IGrad);

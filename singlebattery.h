@@ -34,7 +34,7 @@ public:
 	void resizeNeibor(Mat* matNeibor, Mat* matResizeNeibor, vector<Point2i>& vecResizeXY, int neiborNum);//对邻域进行插值
 	void getNeibor(vector<Point2i>& vecEdgePoint, Mat& matIn, Mat* matNeibor, int nbsize = 7);//获得边缘7*7邻域matNeibor
 	void calEdgedxdy(Mat* matNeibor, int neiborNum, vector<Point2i>& vecDxdy);//获取边缘梯度
-	double SingleBattery::calRratio(double absdx, double absdy);
+	double calRratio(double absdx, double absdy);
 	void calInterTime(vector<Point2i>& vecDxdy, int neiborNum, vector<Point2i>& vecResizeXY, Point2i VHtime);
 	void calEdgePara(Mat& matSingleResizeNeibor, Point2i resizeXY, vector<Vec4d>& vecPara, vector<Point2d>& subPixelRela, int nbsize, int ZerBgrL, int ZerBgrH);
 	void m_calEdgePara(Mat& matSingleResizeNeibor, vector<Vec4d>& vecPara, vector<Point2d>& subPixelRela, int nbsize = N, int ZerBgrL = 120, int ZerBgrH = 255);
