@@ -1,5 +1,15 @@
 #include "calibration.h"
 
+/*排序比较规则*/
+bool cmp(const Rect& a, const Rect& b)
+{
+	if (a.x < b.x)
+		return true;
+	else
+		return false;
+}
+
+
 /*
 计算标定值k
 */
@@ -33,7 +43,7 @@ void Calibration::getK()
 		/*在原图中显示出提取出的边缘，用于测试*/
 		Mat test;
 		test = m_rois[i]->clone();
-		cvtColor(test, test, COLOR_GRAY2RGB);   //转变为灰度图
+		cvtColor(test, test, COLOR_GRAY2RGB);   //转变为rgb图
 		cout << "channels:" << test.channels() << endl;
 		Point center_forshow;
 		for (int j = 0; j < vecEdgePoint.size(); j++)
@@ -67,6 +77,10 @@ void Calibration::getK()
 		int j = INT_MAX;
 	}
 }
+
+
+
+
 
 
 /*
@@ -126,6 +140,20 @@ void Calibration::getSmallEdgePoint(Mat &Input,Mat Output, vector<Point2i> EdgeP
 	imshow("Edge_XY", Edge_XY);
 	waitKey(0);
 
+
+
+	vector<vector<Point> > contours_out;
+	vector<Vec4i> hierarchy;
+	findContours(Edge_XY, contours_out, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_NONE);
+	// re-arrange location according to the real position in the original image 
+	const size_t size = contours_out.size();
+	vector<Rect> num_location;
+	for (int i = 0; i < contours_out.size(); i++)
+	{
+		num_location.push_back(boundingRect(Mat(contours_out[i])));// 转换为矩形轮廓
+	}
+	sort(num_location.begin(), num_location.end(), cmp); // 重排轮廓信息
+
 	Point2i  pointTemp;
 	for (int i = 0; i < AllEdge.rows; i++)
 	{
@@ -140,8 +168,7 @@ void Calibration::getSmallEdgePoint(Mat &Input,Mat Output, vector<Point2i> EdgeP
 			}
 		}
 	}
-
-
-	
-
 }
+
+
+
