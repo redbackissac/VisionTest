@@ -683,7 +683,7 @@ input:ÊäÈëÍ¼Ïñ
 output:Êä³öÍ¼Ïñ
 element:Ä£°å
 */
-void  SingleBattery::getIGrad(Mat& input, Mat& output, Mat &element)
+void  SingleBattery::getIGrad(const Mat input, Mat& output, Mat &element)
 {
 	//IGrad(f) = (f open g)	dilate g - (f close g) erode g
 
