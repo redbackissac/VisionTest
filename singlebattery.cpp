@@ -863,15 +863,15 @@ void SingleBattery::m_calEdgePara(Mat& matSingleResizeNeibor, vector<Vec4d>& vec
 
 	//显示所检测到的亚像素边缘
 
- 	for (size_t i = 0; i < subPixelRela.size(); i++)
+ //	for (size_t i = 0; i < subPixelRela.size(); i++)
 
-	{
+	//{
 
-		Point center_forshow(cvRound(subPixelRela[i].x), cvRound(subPixelRela[i].y));
+	//	Point center_forshow(cvRound(subPixelRela[i].x), cvRound(subPixelRela[i].y));
 
-		circle(matSingleResizeNeibor, center_forshow, 1, 255, 1, 8, 0);
+	//	circle(matSingleResizeNeibor, center_forshow, 1, 255, 1, 8, 0);
 
-	}
+	//}
 	//int i = 0;
 	//imshow("亚像素边缘", matSingleResizeNeibor);
 	////imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\亚像素边缘.jpg", matSingleResizeNeibor);//保存多幅平均滤波后的图像	

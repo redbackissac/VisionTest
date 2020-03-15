@@ -28,6 +28,14 @@ bool cmpDecisions(const Vec2i& a, const Vec2i& b)
 		return false;
 }
 
+bool cmpSubPix(const Point2d& a, const Point2d& b)
+{
+	if (a.x < b.x)
+		return true;
+	else
+		return false;
+}
+
 /*
 计算粗边缘轮廓分类标准
 Input:输入图像
@@ -85,6 +93,49 @@ void Calibration::resetROI(Mat &InputROI, vector<Rect> num_location, const Vec3i
 		InputROI.adjustROI(0, 0, 0, -num_location[max - 1].x);
 }
 
+/*
+将拟合的直线转换为ax + by + c = 0的标准形式
+y0=(m/n)x0+b  -> mx-ny+(-mx0+ny0)=0
+m=InputLine[1]
+n=InputLine[0]
+x0=InputLine[2]
+y0=InputLine[3]
+*/
+void Calibration::changeLine2std(const Vec4f InputLine, Vec3f &OutputLine)
+{
+	float a, b, c;
+	a = InputLine[1];
+	b = -InputLine[0];
+	c = -InputLine[1] * InputLine[2] + InputLine[0] * InputLine[3];
+	OutputLine[0] = a;
+	OutputLine[1] = b;
+	OutputLine[2] = c;
+}
+
+
+/*
+计算两条直线距离
+设直线 L 的方程为Ax+By+C=0，点 P 的坐标为（X0，Y0），则点 P 到直线 L 的距离为:|AX0+BY0+C|/sqrt(A^2+B^2)
+*/
+double Calibration::calDist(const Vec3f Line_1, const Vec2d EndPoint_1, const Vec3f Line_2, const Vec2d EndPoint_2)
+{
+	int a = 0, b = 1, c = 2;
+	int left = 0, right = 1;
+	double x1 = EndPoint_1[left], x2 = EndPoint_2[right];//Line_1使用左端点,Line_2使用右端点
+	double y1,y2,distance, distance_1, distance_2;
+	//计算y1,y2
+	//y = -(ax+c)/b
+	y1 = -(Line_1[a] * x1 + Line_1[c]) / Line_1[b];
+	y2 = -(Line_2[a] * x2 + Line_2[c]) / Line_2[b];
+
+	//计算端点到另一条直线的距离
+	distance_1 = abs(Line_2[a] * x1 + Line_2[b] * y1 + Line_2[c]) / sqrtl(Line_2[a] * Line_2[a] + Line_2[b] * Line_2[b]);
+	distance_2 = abs(Line_1[a] * x2 + Line_1[b] * y2 + Line_1[c]) / sqrtl(Line_1[a] * Line_1[a] + Line_1[b] * Line_1[b]);
+
+	//取平均
+	distance = (distance_1 + distance_2) / 2;
+	return distance;
+}
 
 /*
 计算标定值k
@@ -104,8 +155,9 @@ void Calibration::getK()
 		vector<Rect> num_location;//粗边缘轮廓
 		Mat BinImg = m_rois[i]->clone();//克隆一份roi用于存放处理后的二值图
 		getSmallEdgePoint(*m_rois[i], BinImg, num_location);//只保留水平及垂直方向的边缘点
-		imshow("BinImg", BinImg);
-		waitKey(0);
+
+	/*	imshow("BinImg", BinImg);
+		waitKey(0);*/
 
 		/*建立粗边缘轮廓分类标准*/
 		Vec3i Sequence;//粗边缘轮廓分类标准
@@ -126,21 +178,21 @@ void Calibration::getK()
 			//num_location.erase(num_location.end());
 		}	
 
+
 		//重新提取粗边缘轮廓
 		num_location.clear();
 		BinImg = m_rois[i]->clone();//克隆一份roi用于存放处理后的二值图
 		getSmallEdgePoint(*m_rois[i], BinImg, num_location);//只保留水平及垂直方向的边缘点
-		imshow("BinImg", BinImg);
-		waitKey(0);
-
-
-		/*imshow("NewBinImg", BinImg);	
-		imshow("NewROI", *m_rois[i]);
+	/*	imshow("BinImg", BinImg);
 		waitKey(0);*/
+
+
 		vector<vector<double> > Ks(m_rois[i]->rows, vector<double>(m_rois[i]->cols));;//计算出的K值,> >中间空格不能省略
 		for (int m = 0; m < m_rois[i]->rows; m++) //初始化为0
 			for (int n = 0; n < m_rois[i]->cols; n++)
-				Ks[m][n] = 0.0;		
+				Ks[m][n] = 0.0;
+
+
 		//遍历所有粗边缘轮廓
 		for (int m = 0; m < num_location.size(); m++)
 		{
@@ -155,28 +207,53 @@ void Calibration::getK()
 					matNewRoi = (*m_rois[i])(Rect(num_location[m + n].x, num_location[m + n].y, num_location[m + n].width, num_location[m + n].height));//在输入图像上选取roi
 					//cout << num_location[i].x << " " << num_location[i].y << endl;
 					matNewRoi.adjustROI(3, 3, 0, 0);//将roi调整为7*7	
-					smallROI[n] = matNewRoi;		
+					smallROI[n] = matNewRoi;
+				/*	print_px_value(smallROI[n]);
+					cout << " " << endl;*/
 				}		
 				
-				/*拟合直线*/
-				vector<Vec4f> line_paras;//拟合出直线的参数	           
+				/*拟合直线*/			
+				vector<Vec3f> line_stds;//拟合出标准形式直线的参数
+				vector<Vec2d> endpoints;//线段端点	 
+				//for (int n = 0; n < 3; n++)
 				for (int n = 0; n < 3; n++)
 				{
 					/*亚像素精确边缘位置*/
 					vector<Vec4d> vecPara;
 					vector<Point2d> subPixelRela;
+					/*print_px_value(smallROI[n]);
+					cout << " " << endl;*/
+
 					m_calEdgePara(smallROI[n], vecPara, subPixelRela);//亚像素边缘计算
+					sort(subPixelRela.begin(), subPixelRela.end(), cmpSubPix); // 重排亚像素边缘
+					//print_px_value(smallROI[n]);
+					//cout << " " << endl;
+					//imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(n) + "(ttt).jpg", smallROI[n]);//保存多幅平均滤波后的图像
+					
 					for (int k = 0; k < subPixelRela.size(); k++)//转换为在大ROI中的坐标
 					{
 						subPixelRela[k].x += num_location[m + n ].x;
 						subPixelRela[k].y += num_location[m + n ].y;
 					}
+					//记录线段端点
+					Vec2d Endpoint;//[左端点.x,右端点.x]
+					const size_t size = subPixelRela.size();
+					Endpoint[0] = subPixelRela[0].x;					
+					Endpoint[1] = subPixelRela[size - 1].x;
+					endpoints.push_back(Endpoint);
+
 
 					/*直线拟合*/
 					Vec4f line_para;//拟合出直线的参数
+					Vec3f line_std;//拟合出标准形式直线的参数	 
 					fitLine(subPixelRela, line_para, DIST_HUBER, 0, 0.000001, 0.000001);
-					line_paras.push_back(line_para);
+					changeLine2std(line_para, line_std);//转换为标准形式				
+					line_stds.push_back(line_std);
 				}	
+
+
+				double distance_1 = calDist(line_stds[0], endpoints[0], line_stds[1], endpoints[1]);//计算距离1
+				double distance_2;
 
 
 											   //vector<Vec4f> line_paras;
@@ -282,21 +359,12 @@ void Calibration::getSmallEdgePoint(const Mat Input,Mat &Output, vector<Rect> &n
 	findContours(Edge_XY, contours_out, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_NONE);
 	// re-arrange location according to the real position in the original image 
 	const size_t size = contours_out.size();
-	//vector<Rect> num_location;//粗边缘的轮廓
-	for (int i = 0; i < contours_out.size(); i++)
+
+	for (int i = 0; i < size; i++)
 	{
 		num_location.push_back(boundingRect(Mat(contours_out[i])));// 转换为矩形轮廓
 	}
-	sort(num_location.begin(), num_location.end(), cmp); // 重排轮廓信息
-	
-
-	
-	
-	
-	
-	
-	
-	
+	sort(num_location.begin(), num_location.end(), cmp); // 重排轮廓信息	
 }
 
 
