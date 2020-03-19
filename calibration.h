@@ -14,6 +14,7 @@ class Calibration : public SingleBattery
 {
 public:
 	void getK();//获取标定值
+	double REALSIZE = 5.5;//标定板每一小格的实际尺寸
 private:
 	int realSize;//标定板上小格格的实际间隔
 	Mat calImg;//标定板图像

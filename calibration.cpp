@@ -36,6 +36,24 @@ bool cmpSubPix(const Point2d& a, const Point2d& b)
 		return false;
 }
 
+
+/*
+遍历二维数组
+*/
+void reverse_index(vector<vector<double>> vec)
+{ 
+	int i, j;  
+	cout << "Use index : " << endl;   
+	for (j = 0; j < vec[0].size(); j++)	
+	{ 
+		for (i = 0; i < vec.size(); i++)
+			cout << vec[i][j] << " ";    
+		cout << endl;
+		cout << " " << endl;
+	} 
+}
+
+
 /*
 计算粗边缘轮廓分类标准
 Input:输入图像
@@ -156,7 +174,7 @@ void Calibration::getK()
 		Mat BinImg = m_rois[i]->clone();//克隆一份roi用于存放处理后的二值图
 		getSmallEdgePoint(*m_rois[i], BinImg, num_location);//只保留水平及垂直方向的边缘点
 
-	/*	imshow("BinImg", BinImg);
+	   /* imshow("BinImg", BinImg);
 		waitKey(0);*/
 
 		/*建立粗边缘轮廓分类标准*/
@@ -170,14 +188,18 @@ void Calibration::getK()
 			//BinImg.adjustROI(0, 0, - num_location[1].x, 0);
 			//num_location.erase(num_location.begin());//将第一个粗边缘轮廓删除
 		}
-		const int max = num_location.size();
-		if (Classify(num_location[max - 1], Sequence) == MIDDLE)//去尾
+
+	/*	imshow("newmrois[i]", *m_rois[i]);
+		waitKey(0);*/
+
+		const int max_s = num_location.size();
+		if (Classify(num_location[max_s - 1], Sequence) == MIDDLE)//去尾
 		{			
-			m_rois[i]->adjustROI(0, 0, 0, - num_location[max - 2].x);
-			//BinImg.adjustROI(0, 0, 0, - num_location[max - 2].x);
-			//num_location.erase(num_location.end());
+			m_rois[i]->adjustROI(0, 0, 0, - (m_rois[i]->cols - 1 - num_location[max_s - 1].x));			
 		}	
 
+	/*	imshow("newmrois[i]", *m_rois[i]);
+		waitKey(0);*/
 
 		//重新提取粗边缘轮廓
 		num_location.clear();
@@ -187,14 +209,13 @@ void Calibration::getK()
 		waitKey(0);*/
 
 
-		vector<vector<double> > Ks(m_rois[i]->rows, vector<double>(m_rois[i]->cols));;//计算出的K值,> >中间空格不能省略
-		for (int m = 0; m < m_rois[i]->rows; m++) //初始化为0
-			for (int n = 0; n < m_rois[i]->cols; n++)
+		vector<vector<double> > Ks(m_rois[i]->cols, vector<double>(m_rois[i]->rows));//计算出的K值,> >中间空格不能省略
+		for (int m = 0; m < m_rois[i]->cols; m++) //初始化为0
+			for (int n = 0; n < m_rois[i]->rows; n++)
 				Ks[m][n] = 0.0;
 
-
 		//遍历所有粗边缘轮廓
-		for (int m = 0; m < num_location.size(); m++)
+		for (int m = 0; m < num_location.size() - 2; m++)
 		{
 			if (Classify(num_location[m], Sequence) != MIDDLE)//中间的不用
 			{
@@ -205,7 +226,6 @@ void Calibration::getK()
 				{
 					Mat matNewRoi;
 					matNewRoi = (*m_rois[i])(Rect(num_location[m + n].x, num_location[m + n].y, num_location[m + n].width, num_location[m + n].height));//在输入图像上选取roi
-					//cout << num_location[i].x << " " << num_location[i].y << endl;
 					matNewRoi.adjustROI(3, 3, 0, 0);//将roi调整为7*7	
 					smallROI[n] = matNewRoi;
 				/*	print_px_value(smallROI[n]);
@@ -214,27 +234,20 @@ void Calibration::getK()
 				
 				/*拟合直线*/			
 				vector<Vec3f> line_stds;//拟合出标准形式直线的参数
-				vector<Vec2d> endpoints;//线段端点	 
-				//for (int n = 0; n < 3; n++)
+				vector<Vec2d> endpoints;//线段端点			
 				for (int n = 0; n < 3; n++)
 				{
 					/*亚像素精确边缘位置*/
 					vector<Vec4d> vecPara;
 					vector<Point2d> subPixelRela;
-					/*print_px_value(smallROI[n]);
-					cout << " " << endl;*/
-
 					m_calEdgePara(smallROI[n], vecPara, subPixelRela);//亚像素边缘计算
-					sort(subPixelRela.begin(), subPixelRela.end(), cmpSubPix); // 重排亚像素边缘
-					//print_px_value(smallROI[n]);
-					//cout << " " << endl;
-					//imwrite("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(n) + "(ttt).jpg", smallROI[n]);//保存多幅平均滤波后的图像
-					
+					sort(subPixelRela.begin(), subPixelRela.end(), cmpSubPix); // 重排亚像素边缘				
 					for (int k = 0; k < subPixelRela.size(); k++)//转换为在大ROI中的坐标
 					{
 						subPixelRela[k].x += num_location[m + n ].x;
 						subPixelRela[k].y += num_location[m + n ].y;
 					}
+
 					//记录线段端点
 					Vec2d Endpoint;//[左端点.x,右端点.x]
 					const size_t size = subPixelRela.size();
@@ -242,56 +255,70 @@ void Calibration::getK()
 					Endpoint[1] = subPixelRela[size - 1].x;
 					endpoints.push_back(Endpoint);
 
-
 					/*直线拟合*/
 					Vec4f line_para;//拟合出直线的参数
 					Vec3f line_std;//拟合出标准形式直线的参数	 
 					fitLine(subPixelRela, line_para, DIST_HUBER, 0, 0.000001, 0.000001);
 					changeLine2std(line_para, line_std);//转换为标准形式				
 					line_stds.push_back(line_std);
-				}	
 
+					cout << num_location[m + n].x << " " << num_location[m + n].y << " " << num_location[m + n].width << " " << num_location[m + n].height << endl;
+					cout << " " << endl;
+				}
 
 				double distance_1 = calDist(line_stds[0], endpoints[0], line_stds[1], endpoints[1]);//计算距离1
-				double distance_2;
-
-
-											   //vector<Vec4f> line_paras;
-											   ////对每个小roi特征提取
-											   //for (int i = 0; i < num_location.size(); i++)
-											   //{		
-											   //	/*亚像素精确边缘位置*/
-											   //	vector<Vec4d> vecPara;
-											   //	vector<Point2d> subPixelRela;
-											   //	m_calEdgePara(smallROI[i], vecPara, subPixelRela);
-											   //	for (int j = 0; j < subPixelRela.size(); j++)
-											   //	{
-											   //		subPixelRela[j].x += num_location[i].x;
-											   //		subPixelRela[j].y += num_location[i].y;
-											   //	}
-											   //	
-											   //	/*直线拟合*/
-											   //	Vec4f line_para;//拟合出直线的参数
-											   //	fitLine(subPixelRela, line_para, DIST_HUBER, 0, 0.000001, 0.000001);
-											   //	line_paras.push_back(line_para);		
-											   //}	
-				//print_px_value(smallROI);
-				//imshow("SmallROI", smallROI);				
-				//waitKey(0); 
-
-
-				//Mat* smallROI;//为每一小段线段创建ROI
-				//smallROI = new Mat[num_location.size()];
-				//for (int i = 0; i < num_location.size(); i++)
-				//{
-				//	Mat matNewRoi;
-				//	matNewRoi = Input(Rect(num_location[i].x, num_location[i].y, num_location[i].width, num_location[i].height));//在输入图像上选取roi
-				//	//cout << num_location[i].x << " " << num_location[i].y << endl;
-				//	matNewRoi.adjustROI(3, 3, 0, 0);//将roi调整为7*7	
-				//	smallROI[i] = matNewRoi;		
-				//}
-
+				double distance_2 = calDist(line_stds[1], endpoints[1], line_stds[2], endpoints[2]);//计算距离2
+				
+				/*将计算结果保存到K矩阵中*/	
+				//中间部分
+				for (int n = num_location[m].x; n < num_location[m + 2].x; n++)
+				{
+					//上(下)半部分
+					const int part_1 = min(num_location[m].y, num_location[m + 1].y);
+					const int part_1_end = max(num_location[m].y, num_location[m + 1].y);
+					/*for (int k = part_1; k <= part_1 + abs(num_location[m].y - num_location[m + 1].y); k++)
+						Ks[n][k] = REALSIZE / distance_1;*/
+					for (int k = part_1; k < part_1_end; k++)
+						Ks[n][k] = REALSIZE / distance_1; 
+					//下(上)半部分
+					const int part_2 = min(num_location[m + 1].y, num_location[m + 2].y);
+					const int part_2_end = max(num_location[m + 1].y, num_location[m + 2].y);
+					for (int k = part_2; k < part_2_end; k++)
+						Ks[n][k] = REALSIZE / distance_2;
+				}
 			}
+		}
+
+		//两端补齐
+		if (num_location[0].x != 0)//补头
+		{
+			for (int n = 0; n < num_location[0].x; n++)
+			{
+				//上(下)半部分
+				const int part_1 = min(num_location[0].y, num_location[1].y);
+				for (int k = part_1; k < part_1 + abs(num_location[0].y - num_location[1].y); k++)
+					Ks[n][k] = Ks[num_location[0].x][part_1];
+				//下(上)半部分
+				const int part_2 = min(num_location[1].y, num_location[2].y);
+				for (int k = part_2; k < part_2 + abs(num_location[1].y - num_location[2].y); k++)
+					Ks[n][k] = Ks[num_location[0].x][part_2];
+			}
+		}
+
+		//补尾巴
+		const size_t size_of_num = num_location.size();
+		for (int n = num_location[size_of_num - 1].x; n < m_rois[i]->cols; n++)//从最后一段的x开始一直到结束
+		{
+			//上(下)半部分
+			const int part_1 = min(num_location[size_of_num - 1 - 2].y, num_location[size_of_num - 1 - 1].y);
+			for (int k = part_1; k < part_1 + abs(num_location[size_of_num - 1 - 2].y - num_location[size_of_num - 1 - 1].y); k++)
+				Ks[n][k] = Ks[num_location[size_of_num - 1 - 2].x][part_1];
+				//Ks[n][k] = 100.0;
+			   
+			//下(上)半部分
+			const int part_2 = min(num_location[size_of_num - 1 - 1].y, num_location[size_of_num - 1].y);
+			for (int k = part_2; k < part_2 + abs(num_location[size_of_num - 1 - 1].y - num_location[size_of_num - 1].y); k++)
+				Ks[n][k] = Ks[num_location[size_of_num - 1 - 2].x][part_2];
 		}
 	}
 }
