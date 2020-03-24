@@ -19,84 +19,150 @@
   <property name="windowTitle">
    <string>Setting</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
+  <widget class="QPushButton" name="saveSetting">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>610</y>
-     <width>111</width>
-     <height>135</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QPushButton" name="New">
-      <property name="text">
-       <string>新建配置</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="Edit">
-      <property name="text">
-       <string>编辑已有配置</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="Save">
-      <property name="text">
-       <string>保存当前配置</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="Exist">
-      <property name="text">
-       <string>退出</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>660</y>
-     <width>321</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="createRect">
-      <property name="text">
-       <string>创建矩形</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="getRect">
-      <property name="text">
-       <string>获取矩形坐标</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="look">
-   <property name="geometry">
-    <rect>
-     <x>600</x>
-     <y>650</y>
-     <width>93</width>
+     <x>660</x>
+     <y>630</y>
+     <width>271</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>查看</string>
+    <string>保存设置</string>
    </property>
+  </widget>
+  <widget class="QPushButton" name="Exist">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>680</y>
+     <width>221</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>610</y>
+     <width>541</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>roi</string>
+    </attribute>
+    <widget class="QPushButton" name="selectExample">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>191</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>选取示例图片</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="createROI">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>181</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>创建ROI</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="getsb">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>40</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>获取被选择矩形</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>任务</string>
+    </attribute>
+    <widget class="QPushButton" name="newMission">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>新建任务</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>40</y>
+       <width>115</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>RadioButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="confirmMission">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>101</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>确认添加任务</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>标定</string>
+    </attribute>
+    <widget class="QPushButton" name="doCalibration">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>271</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>标定</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

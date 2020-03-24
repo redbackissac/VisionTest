@@ -1,5 +1,6 @@
 #include "graphicsscene.h"
 #include <QGraphicsView>
+//#include <QDebug>
 /*
 1、完成鼠标三事件，mousePressEvent、mouseMoveEvent、mouseReleaseEvent
 2、创建矩形
@@ -20,12 +21,12 @@ SelectMode selectMode = none; //鼠标事件
 
 SizeHandleRect::Direction nDragHandle = SizeHandleRect::None;//检测鼠标位置在矩形的哪个位置句柄
 
-															 /*
-															 构造函数
-															 */
+/*
+构造函数
+*/
 GraphicsScene::GraphicsScene()
 {
-	m_rectItems.reserve(0); //初始化绘制的矩形数为0
+	m_rectItems.reserve(0); //初始化绘制的矩形数为0	
 }
 
 /*
@@ -143,4 +144,20 @@ void GraphicsScene::keyPressEvent(QKeyEvent *event)
 		}
 
 	}
+}
+
+/*
+获取被选择的矩形框序号
+*/
+int GraphicsScene::getSelectedNum() 
+{
+	int Num = 0;
+	if (!this->selectedItems().isEmpty())//若选中的item不为空
+		for (int i = 0; i < m_rectItems.size(); i++)
+			if ((*m_rectItems.at(i)).isSelected())
+			{
+				Num = i;
+				break;
+			}	
+	return Num;
 }
