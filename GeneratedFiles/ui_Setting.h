@@ -11,9 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,17 +21,19 @@ QT_BEGIN_NAMESPACE
 class Ui_Setting
 {
 public:
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QPushButton *New;
-    QPushButton *Edit;
-    QPushButton *Save;
+    QPushButton *saveSetting;
     QPushButton *Exist;
-    QWidget *horizontalLayoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *createRect;
-    QPushButton *getRect;
-    QPushButton *look;
+    QTabWidget *tabWidget;
+    QWidget *tab;
+    QPushButton *selectExample;
+    QPushButton *createROI;
+    QPushButton *getsb;
+    QWidget *tab_3;
+    QPushButton *newMission;
+    QRadioButton *radioButton;
+    QPushButton *confirmMission;
+    QWidget *tab_2;
+    QPushButton *doCalibration;
 
     void setupUi(QWidget *Setting)
     {
@@ -43,53 +45,50 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Setting->sizePolicy().hasHeightForWidth());
         Setting->setSizePolicy(sizePolicy);
-        verticalLayoutWidget = new QWidget(Setting);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 610, 111, 135));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        New = new QPushButton(verticalLayoutWidget);
-        New->setObjectName(QString::fromUtf8("New"));
-
-        verticalLayout->addWidget(New);
-
-        Edit = new QPushButton(verticalLayoutWidget);
-        Edit->setObjectName(QString::fromUtf8("Edit"));
-
-        verticalLayout->addWidget(Edit);
-
-        Save = new QPushButton(verticalLayoutWidget);
-        Save->setObjectName(QString::fromUtf8("Save"));
-
-        verticalLayout->addWidget(Save);
-
-        Exist = new QPushButton(verticalLayoutWidget);
+        saveSetting = new QPushButton(Setting);
+        saveSetting->setObjectName(QString::fromUtf8("saveSetting"));
+        saveSetting->setGeometry(QRect(660, 630, 271, 28));
+        Exist = new QPushButton(Setting);
         Exist->setObjectName(QString::fromUtf8("Exist"));
-
-        verticalLayout->addWidget(Exist);
-
-        horizontalLayoutWidget = new QWidget(Setting);
-        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(220, 660, 321, 61));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        createRect = new QPushButton(horizontalLayoutWidget);
-        createRect->setObjectName(QString::fromUtf8("createRect"));
-
-        horizontalLayout->addWidget(createRect);
-
-        getRect = new QPushButton(horizontalLayoutWidget);
-        getRect->setObjectName(QString::fromUtf8("getRect"));
-
-        horizontalLayout->addWidget(getRect);
-
-        look = new QPushButton(Setting);
-        look->setObjectName(QString::fromUtf8("look"));
-        look->setGeometry(QRect(600, 650, 93, 28));
+        Exist->setGeometry(QRect(670, 680, 221, 28));
+        tabWidget = new QTabWidget(Setting);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setGeometry(QRect(80, 610, 541, 161));
+        tab = new QWidget();
+        tab->setObjectName(QString::fromUtf8("tab"));
+        selectExample = new QPushButton(tab);
+        selectExample->setObjectName(QString::fromUtf8("selectExample"));
+        selectExample->setGeometry(QRect(20, 20, 191, 28));
+        createROI = new QPushButton(tab);
+        createROI->setObjectName(QString::fromUtf8("createROI"));
+        createROI->setGeometry(QRect(20, 60, 181, 28));
+        getsb = new QPushButton(tab);
+        getsb->setObjectName(QString::fromUtf8("getsb"));
+        getsb->setGeometry(QRect(310, 40, 181, 51));
+        tabWidget->addTab(tab, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        newMission = new QPushButton(tab_3);
+        newMission->setObjectName(QString::fromUtf8("newMission"));
+        newMission->setGeometry(QRect(20, 10, 93, 28));
+        radioButton = new QRadioButton(tab_3);
+        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        radioButton->setGeometry(QRect(140, 40, 115, 19));
+        confirmMission = new QPushButton(tab_3);
+        confirmMission->setObjectName(QString::fromUtf8("confirmMission"));
+        confirmMission->setGeometry(QRect(20, 60, 101, 28));
+        tabWidget->addTab(tab_3, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QString::fromUtf8("tab_2"));
+        doCalibration = new QPushButton(tab_2);
+        doCalibration->setObjectName(QString::fromUtf8("doCalibration"));
+        doCalibration->setGeometry(QRect(80, 90, 271, 28));
+        tabWidget->addTab(tab_2, QString());
 
         retranslateUi(Setting);
+
+        tabWidget->setCurrentIndex(1);
+
 
         QMetaObject::connectSlotsByName(Setting);
     } // setupUi
@@ -97,13 +96,18 @@ public:
     void retranslateUi(QWidget *Setting)
     {
         Setting->setWindowTitle(QApplication::translate("Setting", "Setting", nullptr));
-        New->setText(QApplication::translate("Setting", "\346\226\260\345\273\272\351\205\215\347\275\256", nullptr));
-        Edit->setText(QApplication::translate("Setting", "\347\274\226\350\276\221\345\267\262\346\234\211\351\205\215\347\275\256", nullptr));
-        Save->setText(QApplication::translate("Setting", "\344\277\235\345\255\230\345\275\223\345\211\215\351\205\215\347\275\256", nullptr));
+        saveSetting->setText(QApplication::translate("Setting", "\344\277\235\345\255\230\350\256\276\347\275\256", nullptr));
         Exist->setText(QApplication::translate("Setting", "\351\200\200\345\207\272", nullptr));
-        createRect->setText(QApplication::translate("Setting", "\345\210\233\345\273\272\347\237\251\345\275\242", nullptr));
-        getRect->setText(QApplication::translate("Setting", "\350\216\267\345\217\226\347\237\251\345\275\242\345\235\220\346\240\207", nullptr));
-        look->setText(QApplication::translate("Setting", "\346\237\245\347\234\213", nullptr));
+        selectExample->setText(QApplication::translate("Setting", "\351\200\211\345\217\226\347\244\272\344\276\213\345\233\276\347\211\207", nullptr));
+        createROI->setText(QApplication::translate("Setting", "\345\210\233\345\273\272ROI", nullptr));
+        getsb->setText(QApplication::translate("Setting", "\350\216\267\345\217\226\350\242\253\351\200\211\346\213\251\347\237\251\345\275\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Setting", "roi", nullptr));
+        newMission->setText(QApplication::translate("Setting", "\346\226\260\345\273\272\344\273\273\345\212\241", nullptr));
+        radioButton->setText(QApplication::translate("Setting", "RadioButton", nullptr));
+        confirmMission->setText(QApplication::translate("Setting", "\347\241\256\350\256\244\346\267\273\345\212\240\344\273\273\345\212\241", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("Setting", "\344\273\273\345\212\241", nullptr));
+        doCalibration->setText(QApplication::translate("Setting", "\346\240\207\345\256\232", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Setting", "\346\240\207\345\256\232", nullptr));
     } // retranslateUi
 
 };

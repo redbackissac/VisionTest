@@ -32,7 +32,8 @@ public:
 
 	Mat src, dst;
 	QImage dstImg;	
-	ROI_pars m_roipars;	//存储从配置文件中读取的ROI参数
+	//ROI_pars m_roipars;	//存储从配置文件中读取的ROI参数
+	VecRoiParas m_roipars; //存储从配置文件中读取的ROI参数
 
 	int TurnTable_ZeroPos = 0;
 	MainWindow(QWidget *parent = Q_NULLPTR);	//主界面构造函数	
@@ -93,7 +94,8 @@ public:
 
 signals:
 	void StartThread();                             //多线程开始信号
-	void sendparameterstomythread(ROI_pars pars);        //将roi参数传入子线程
+	//void sendparameterstomythread(ROI_pars pars);        //将roi参数传入子线程
+	void sendparameterstomythread(VecRoiParas pars);        //将roi参数传入子线程
 
 //私有槽函数
 private slots:

@@ -7,6 +7,7 @@
 #include <QThread>
 #include "singlebattery.h"
 #include "calibration.h"
+#include "imgAlgorithm.h"
 
 //#include <QFiledialog>
 //#include <QTextStream>
@@ -27,13 +28,15 @@ public:
 	
 	void setFlag(bool flag = true);
 	
-	ROI_pars m_roipars;
+	//ROI_pars m_roipars;	
 	SingleBattery *bat; //图像处理对象
 	Calibration *m_calibration; //标定板对象
+	ImgAlgorithm *m_imgalgorithm;//电池和标定板的父类，此文件中仅作调试用
 
 public slots:
 	void MyWork();     //线程处理函数定义
-	void acceptROIS(ROI_pars m_pars);//接收主线程传递来的roi参数
+	//void acceptROIS(ROI_pars m_pars);//接收主线程传递来的roi参数
+	void acceptROIS(VecRoiParas);//接收主线程传递来的roi参数,并赋给被测对象
 
 signals:
 	void singal_back();   //处理结果返回信号
