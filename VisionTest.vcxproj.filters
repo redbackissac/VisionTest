@@ -93,9 +93,6 @@
     <ClCompile Include="calibration.cpp">
       <Filter>Source Files\ImgProc</Filter>
     </ClCompile>
-    <ClCompile Include="imgAlgorithm.cpp">
-      <Filter>Source Files\ImgProc</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="VisionTest.qrc">
@@ -116,9 +113,6 @@
       <Filter>Header Files\ImgProc</Filter>
     </ClInclude>
     <ClInclude Include="calibration.h">
-      <Filter>Header Files\ImgProc</Filter>
-    </ClInclude>
-    <ClInclude Include="imgAlgorithm.h">
       <Filter>Header Files\ImgProc</Filter>
     </ClInclude>
   </ItemGroup>

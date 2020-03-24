@@ -7,8 +7,6 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
 
-typedef QList<GraphicsRectItem*> rectItems;//存贮所有绘制的矩形的QList
-
 class GraphicsScene : public QGraphicsScene
 {
 	Q_OBJECT
@@ -16,16 +14,14 @@ class GraphicsScene : public QGraphicsScene
 public:
 	GraphicsScene();//构造函数
 	void creatRect();//创建新矩形    
-	int getSelectedNum();//获取被选择的矩形框序号
 
 	GraphicsRectItem *m_RectItem = NULL;//当前item
-	
+	typedef QList<GraphicsRectItem*> rectItems;//存贮所有绘制的矩形的QList
 	rectItems m_rectItems;//存储所有的矩形框的列表
-	
 private:
 	QPointF m_lastMousePos;  // 鼠标最后按下的位置	
 	void setCursor(const QCursor & cursor);//设置光标
-	//鼠标键盘事件
+										   //鼠标键盘事件
 	void mousePressEvent(QGraphicsSceneMouseEvent *event);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);

@@ -32,10 +32,8 @@ MainWindow::MainWindow(QWidget *parent)
 	
 	connect(this,&MainWindow::StartThread,m_thread,&MyThread::MyWork);
 	connect(m_thread, &MyThread::singal_back, this, &MainWindow::slot_handle_finish);
-	//qRegisterMetaType<ROI_pars >("ROI_pars");    //注册参数类型
-	qRegisterMetaType<VecRoiParas >("VecRoiParas");    //注册参数类型
-	//connect(this, SIGNAL(sendparameterstomythread(ROI_pars)),m_thread, SLOT(acceptROIS(ROI_pars)));//向子线程传递参数
-	connect(this, SIGNAL(sendparameterstomythread(VecRoiParas)), m_thread, SLOT(acceptROIS(VecRoiParas)));//向子线程传递参数
+	qRegisterMetaType<ROI_pars >("ROI_pars");    //注册参数类型
+	connect(this, SIGNAL(sendparameterstomythread(ROI_pars)),m_thread, SLOT(acceptROIS(ROI_pars)));
 
 }
 
@@ -506,56 +504,13 @@ void MainWindow::on_Open_clicked()
 	{		
 		m_thread->setFlag(false);
 		subthread->start();
-		//emit(sendparameterstomythread(m_roipars));//向子线程传递参数
-		emit(sendparameterstomythread(m_roipars));//向子线程传递参数Roi_Paras
+		emit(sendparameterstomythread(m_roipars));//向子线程传递参数
 		//启动了线程，但是并没有进入子线程
 		//必须通过信号/槽的方式进入子线程
 		//直接通过m_thread->Mywork()是不行的，这样Mywork()中的线程就是主线程
 		emit StartThread();	
 	}		
 }
-
-///*
-//加载ROI参数
-//*/
-//void MainWindow::on_Import_clicked()
-//{
-//	QString  csvFileName = QFileDialog::getOpenFileName(this, "加载配置文件", ".", "csv files(*.csv)");  //配置文件路径	
-//	QFile file(csvFileName);
-//	if (csvFileName.isEmpty())		
-//		return; //未选择文件   
-//	else
-//	{
-//		//打开文件
-//		if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
-//		QStringList list;//用于记录加载文件中的数据
-//		list.clear();//清空列表
-//		QTextStream in(&file);
-//		//逐行读取，直到最后一行
-//		int i = 0;
-//		m_roipars.reserve(0);//先清空参数列表，为读取参数做好准备
-//		while (!in.atEnd())
-//		{
-//			QString fileLine = in.readLine();//逐行读取
-//			list = fileLine.split(",", QString::SkipEmptyParts);//将每行的数据以","分割	
-//																//读取表中内容
-//			if (i >= 2)
-//			{
-//				roi_parameters *m_roi_parameters = new roi_parameters;//为用于读取数据的临时结构体分配内存
-//																	  //读取表中的数据
-//				m_roi_parameters->x = list.at(0).toInt();
-//				m_roi_parameters->y = list.at(1).toInt();
-//				m_roi_parameters->width = list.at(2).toInt();
-//				m_roi_parameters->height = list.at(3).toInt();
-//				m_roipars.push_back(m_roi_parameters);//将新读取的参数存入参数列表中													 
-//			}
-//			i++;
-//		}
-//
-//	}
-//	file.close();//读取完毕，关闭文件
-//}
-
 
 /*
 加载ROI参数
@@ -564,8 +519,7 @@ void MainWindow::on_Import_clicked()
 {
 	QString  csvFileName = QFileDialog::getOpenFileName(this, "加载配置文件", ".", "csv files(*.csv)");  //配置文件路径	
 	QFile file(csvFileName);
-	if (csvFileName.isEmpty())
-		return; //未选择文件   
+	if (csvFileName.isEmpty())		return; //未选择文件   
 	else
 	{
 		//打开文件
@@ -575,7 +529,7 @@ void MainWindow::on_Import_clicked()
 		QTextStream in(&file);
 		//逐行读取，直到最后一行
 		int i = 0;
-		m_roipars.clear();//先清空参数列表，为读取参数做好准备
+		m_roipars.reserve(0);//先清空参数列表，为读取参数做好准备
 		while (!in.atEnd())
 		{
 			QString fileLine = in.readLine();//逐行读取
@@ -583,16 +537,12 @@ void MainWindow::on_Import_clicked()
 																//读取表中内容
 			if (i >= 2)
 			{
-				//roi_parameters *m_roi_parameters = new roi_parameters;//为用于读取数据的临时结构体分配内存
-				Vec4i m_roi_parameters;
-				 //读取表中的数据
-				for (int j = 0; j < 4; j++)
-					m_roi_parameters[j] = list.at(j).toInt();
-
-				/*m_roi_parameters->x = list.at(0).toInt();
+				roi_parameters *m_roi_parameters = new roi_parameters;//为用于读取数据的临时结构体分配内存
+																	  //读取表中的数据
+				m_roi_parameters->x = list.at(0).toInt();
 				m_roi_parameters->y = list.at(1).toInt();
 				m_roi_parameters->width = list.at(2).toInt();
-				m_roi_parameters->height = list.at(3).toInt();*/
+				m_roi_parameters->height = list.at(3).toInt();
 				m_roipars.push_back(m_roi_parameters);//将新读取的参数存入参数列表中													 
 			}
 			i++;
@@ -601,8 +551,6 @@ void MainWindow::on_Import_clicked()
 	}
 	file.close();//读取完毕，关闭文件
 }
-
-
 
 /*
 图像处理结束后槽函数

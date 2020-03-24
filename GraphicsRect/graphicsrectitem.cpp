@@ -21,7 +21,7 @@ GraphicsRectItem::GraphicsRectItem(const QRect &rect, QGraphicsItem *parent) :
 	m_handles.reserve(SizeHandleRect::None);
 	//依次初始化各个小矩形
 	for (int i = SizeHandleRect::LeftTop; i <= SizeHandleRect::Left; ++i) {
-		SizeHandleRect *shr = new SizeHandleRect(this, QRectF(0, 0, 8, 8), static_cast<SizeHandleRect::Direction>(i));
+		SizeHandleRect *shr = new SizeHandleRect(this, QRectF(0, 0, 4, 4), static_cast<SizeHandleRect::Direction>(i));
 		m_handles.push_back(shr);
 	}
 	updateGeometry();
@@ -138,7 +138,7 @@ SizeHandleRect::Direction GraphicsRectItem::hitTest(const QPointF &point) const
 void GraphicsRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	QPen pen = painter->pen();
-	pen.setWidth(4);
+	pen.setWidth(1);
 	pen.setColor(QColor(0, 0, 150));
 	painter->setPen(pen);
 	painter->drawRect(rect());
