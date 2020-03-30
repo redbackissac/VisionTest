@@ -36,7 +36,56 @@ void SingleBattery::MeasureOneBattery()
 		/*直线拟合*/
 		Vec4f line_para;//拟合出直线的参数
 		fitLine(VecSubPixelEdgePoint, line_para, DIST_HUBER, 0, 0.000001, 0.000001);	
+
+		/*添加到对象向量*/
+		ObjectOfMission objtmp;
+		objtmp.VecEdgePoint = VecSubPixelEdgePoint;//实际边缘点
+		Vec3f line_tmp;
+		changeLine2std(line_para, line_tmp);
+		objtmp.line_stds = line_tmp;//拟合的直线
+		vecObj.push_back(objtmp);
 	}
+	double Straightness;//直线度
+	cal_Straightness(vecObj[0], Straightness);
+
+	int aaa = 000;
+}
+
+
+/*
+直线度计算
+vecPoints:被测对象
+straightness:计算结果,直线度
+n:取n个点计算
+*/
+void SingleBattery::cal_Straightness(const ObjectOfMission obj, double &straightness,int n)
+{
+	//点到直线距离:设直线 L 的方程为Ax + By + C = 0，点 P 的坐标为（X0，Y0），则点 P 到直线 L 的距离为 : | AX0 + BY0 + C | / sqrt(A ^ 2 + B ^ 2)
+	vector<Point2d> vecPoints_tmp(obj.VecEdgePoint);//复制一份边缘点
+	Vec3f line_std(obj.line_stds);//复制一份拟合出的直线参数
+	vector<double>vecDis;//所有点到拟合出的直线的距离
+	int a = 0, b = 1, c = 2;
+	const double Den = sqrt(line_std[a] * line_std[a] + line_std[b] * line_std[b]);//计算距离时的分母
+	for (auto it_Ptmp : vecPoints_tmp)
+	{
+		double dis;//各个点到拟合出的直线的距离	
+		dis = (line_std[a] * it_Ptmp.x + line_std[b] * it_Ptmp.y + line_std[c])/Den;//为区分点的位置，距离有正负
+		vecDis.push_back(dis);
+	}
+	sort(vecDis.begin(), vecDis.end());//默认从小到大排序
+	/*计算到直线的最大和最小距离*/
+	double a_max = 0,b_min = 0;
+	const size_t sizeOfDis= vecDis.size();
+	for (int i = 0; i < n; i++)//取n个点取平均
+	{
+		a_max += vecDis[i];//最大距离
+		b_min += vecDis[sizeOfDis - 1 - i];//最小距离
+	}
+	a_max /= n;//取平均
+	b_min /= n;//取平均
+
+	/*得到直线度*/
+	straightness = a_max - b_min;
 }
 
 

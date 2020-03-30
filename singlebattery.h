@@ -46,10 +46,14 @@ public:
 	//void print_px_value(Mat& im);//打印所有像素值,调试用
 private:
 	Mat batImg; //电池图像
-	
+	vector<ObjectOfMission> vecObj;//任务对象向量
+	void cal_Straightness(const ObjectOfMission obj, double &straightness, int n = 3);//直线度计算
+	//void perpendicularity();//垂直度计算
+	//void parallelism();//平行度计算
+	//void distance();//距离计算
 	
 };
 
-void subpixeltest(Mat OriginalImage);
+//void subpixeltest(Mat OriginalImage);
 
 #endif

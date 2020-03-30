@@ -258,6 +258,25 @@ void ImgAlgorithm::getNeiborROI(const vector<Point2i> EdgePoint, const Mat matIn
 }
 
 
+/*
+将拟合的直线转换为ax + by + c = 0的标准形式
+y0=(m/n)x0+b  -> mx-ny+(-mx0+ny0)=0
+m=InputLine[1]
+n=InputLine[0]
+x0=InputLine[2]
+y0=InputLine[3]
+*/
+void ImgAlgorithm::changeLine2std(const Vec4f InputLine, Vec3f &OutputLine)
+{
+	float a, b, c;
+	a = InputLine[1];
+	b = -InputLine[0];
+	c = -InputLine[1] * InputLine[2] + InputLine[0] * InputLine[3];
+	OutputLine[0] = a;
+	OutputLine[1] = b;
+	OutputLine[2] = c;
+}
+
 
 /*
 获得边缘7 * 7邻域

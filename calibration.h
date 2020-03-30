@@ -22,7 +22,7 @@ private:
 	void getStdPixel(const Mat Input,Vec3i &Sequence);//计算粗边缘轮廓分类标准标准
 	int Classify(const Rect num_location, const Vec3i Sequence);//判断粗边缘轮廓属于边缘的哪一类
 	void resetROI(Mat &Input, vector<Rect> num_location, const Vec3i Sequence);//校准ROI，去除两端无法计算标定值的部分
-	void changeLine2std(const Vec4f InputLine,Vec3f &OutputLine);//将拟合的直线转换为ax + by + c = 0的标准形式
+	//void changeLine2std(const Vec4f InputLine,Vec3f &OutputLine);//将拟合的直线转换为ax + by + c = 0的标准形式
 	double calDist(const Vec3f Line_1, const Vec2d EndPoint_1, const Vec3f Line_2, const Vec2d EndPoint_2);//计算两条直线距离
 };
 
