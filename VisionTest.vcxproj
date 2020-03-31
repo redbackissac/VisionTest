@@ -57,8 +57,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;E:\QT\5.12.2\msvc2015_64\include;.\GeneratedFiles\$(ConfigurationName);E:\QT\5.12.2\msvc2015_64\include\QtCore;E:\QT\5.12.2\msvc2015_64\include\QtGui;E:\QT\5.12.2\msvc2015_64\include\QtANGLE;E:\QT\5.12.2\msvc2015_64\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_SQL_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;E:\QT\5.12.2\msvc2015_64\include;.\GeneratedFiles\$(ConfigurationName);E:\QT\5.12.2\msvc2015_64\include\QtCore;E:\QT\5.12.2\msvc2015_64\include\QtGui;E:\QT\5.12.2\msvc2015_64\include\QtANGLE;E:\QT\5.12.2\msvc2015_64\include\QtWidgets;E:\QT\5.12.2\msvc2015_64\include\QtSql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -69,7 +69,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>E:\QT\5.12.2\msvc2015_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>E:\QT\5.12.2\msvc2015_64\lib\qtmaind.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Cored.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Guid.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Widgetsd.lib;E:\Opencv\opencv\build\x64\vc15\lib\opencv_world410d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>E:\QT\5.12.2\msvc2015_64\lib\qtmaind.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Cored.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Guid.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Widgetsd.lib;E:\Opencv\opencv\build\x64\vc15\lib\opencv_world410d.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Sqld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <StackReserveSize>16000000</StackReserveSize>
     </Link>
     <QtMoc>
@@ -93,8 +93,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;E:\QT\5.12.2\msvc2015_64\include;.\GeneratedFiles\$(ConfigurationName);E:\QT\5.12.2\msvc2015_64\include\QtCore;E:\QT\5.12.2\msvc2015_64\include\QtGui;E:\QT\5.12.2\msvc2015_64\include\QtANGLE;E:\QT\5.12.2\msvc2015_64\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_SQL_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;E:\QT\5.12.2\msvc2015_64\include;.\GeneratedFiles\$(ConfigurationName);E:\QT\5.12.2\msvc2015_64\include\QtCore;E:\QT\5.12.2\msvc2015_64\include\QtGui;E:\QT\5.12.2\msvc2015_64\include\QtANGLE;E:\QT\5.12.2\msvc2015_64\include\QtWidgets;E:\QT\5.12.2\msvc2015_64\include\QtSql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -104,7 +104,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>E:\QT\5.12.2\msvc2015_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>E:\QT\5.12.2\msvc2015_64\lib\qtmain.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Core.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Gui.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Widgets.lib;E:\Opencv\opencv\build\x64\vc15\lib\opencv_world410.lib;E:\Opencv\opencv\build\x64\vc15\lib\opencv_world410d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>E:\QT\5.12.2\msvc2015_64\lib\qtmain.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Core.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Gui.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Widgets.lib;E:\Opencv\opencv\build\x64\vc15\lib\opencv_world410.lib;E:\Opencv\opencv\build\x64\vc15\lib\opencv_world410d.lib;E:\QT\5.12.2\msvc2015_64\lib\Qt5Sql.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <Profile>true</Profile>
     </Link>
     <QtMoc>
@@ -128,6 +128,7 @@
   <ItemGroup>
     <ClCompile Include="calibration.cpp" />
     <ClCompile Include="imgAlgorithm.cpp" />
+    <ClCompile Include="mydatabase.cpp" />
     <ClCompile Include="singlebattery.cpp" />
     <ClCompile Include="CQueue.cpp" />
     <ClCompile Include="GraphicsRect\graphicsrectitem.cpp" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="calibration.h" />
     <ClInclude Include="imgAlgorithm.h" />
+    <QtMoc Include="mydatabase.h" />
     <ClInclude Include="subPixelCal.h" />
     <ClInclude Include="zernikeMask.h" />
     <QtMoc Include="GraphicsRect\graphicsscene.h" />

@@ -137,6 +137,9 @@ void Setting::on_confirmMission_clicked()
 {
 	vec_Missions.push_back(m_mission);
 	m_mission.clear();//清空临时任务
+	MyDataBase m_database;//数据库
+	m_database.ConnectAccessDB("VisionTest","szlg","123456");
+	
 }
 
 void Setting::on_getsb_clicked()

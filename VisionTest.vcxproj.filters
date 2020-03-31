@@ -46,6 +46,12 @@
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
     </Filter>
+    <Filter Include="Source Files\Database">
+      <UniqueIdentifier>{6d596bd2-7579-44a3-ba4f-ca81ceef4ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Database">
+      <UniqueIdentifier>{c0129758-6446-40eb-9269-2be907cd3534}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="imgAlgorithm.cpp">
       <Filter>Source Files\ImgProc</Filter>
+    </ClCompile>
+    <ClCompile Include="mydatabase.cpp">
+      <Filter>Source Files\Database</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,9 @@
     </QtMoc>
     <QtMoc Include="GraphicsRect\sizehandlerect.h">
       <Filter>Header Files\Setting</Filter>
+    </QtMoc>
+    <QtMoc Include="mydatabase.h">
+      <Filter>Header Files\Database</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

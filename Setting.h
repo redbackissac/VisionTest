@@ -12,6 +12,7 @@
 #include "interactive_view.h"
 #include "GraphicsRect/graphicsscene.h"
 #include "calibration.h"
+#include "mydatabase.h"
 
 //用于打印调试信息
 #include <iostream>
