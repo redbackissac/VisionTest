@@ -20,6 +20,7 @@ using namespace std;
 
 struct ObjectOfMission//任务对象
 {
+	Vec4i roipars;//
 	Mat roi;//对象区域
 	vector<Point2d> VecEdgePoint;//计算出的实际边缘点
 	Vec3f line_stds;//拟合出标准形式直线的参数
@@ -42,6 +43,7 @@ struct Mission  //要处理的任务
 {
 	TypeOfMission type;//任务类型
 	vector<int> vec_object;//任务对象标号向量
+	double result = 0;//计算结果
 	void clear()//清空任务
 	{
 		type = NONE;
@@ -71,7 +73,7 @@ public:
 	void getNeiborOfPoints(const vector<Point2i> EdgePoint, const Mat matIn, vector<Mat> &matNeibor, int nbsize = 7);//获得单个点的n*n邻域
 	void getSubPixEdge(const Mat InputNeibor, vector<Vec4d>& vecPara, vector<Point2d>& subPixelRela, int nbsize = N, int ZerBgrL = 120, int ZerBgrH = 255);//获取亚像素边缘
 	void changeLine2std(const Vec4f InputLine, Vec3f &OutputLine);//将拟合的直线转换为ax + by + c = 0的标准形式
-	//void MeasureOneBattery();  //处理一块电池
+	//void getObjs();  //处理一块电池
 	//
 	//Mat ImageAverage(int imgNum);
 	//Mat getEdgeVal(Mat srcImg);

@@ -14,9 +14,9 @@ MyThread::MyThread(QObject* parent) : QObject(parent)
 */
 void MyThread::MyWork()
 {
-	bat->MeasureOneBattery();
+	bat->getObjs();
 	//Calibration *m_calibration = new Calibration;
-	//m_calibration->MeasureOneBattery();
+	//m_calibration->getObjs();
 	//m_calibration->getK();
 	//m_imgalgorithm->test();
 	emit singal_back();

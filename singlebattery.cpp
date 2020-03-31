@@ -1,9 +1,9 @@
 #include "singlebattery.h"
 
 /*
-测量一块电池
+获得所有测量对象的参数
 */
-void SingleBattery::MeasureOneBattery()
+void SingleBattery::getObjs()
 {
 	openImg(srcImg);//打开图像
 	createROI(srcImg, vec_rois);//创建roi
@@ -49,6 +49,30 @@ void SingleBattery::MeasureOneBattery()
 	cal_Straightness(vecObj[0], Straightness);
 
 	int aaa = 000;
+}
+
+/*
+执行所有的任务
+*/
+void SingleBattery::doMissions()
+{
+	//遍历任务
+	for(auto it_mission: vecMissions)
+		switch (it_mission.type)
+		{
+		case NONE:
+			break;
+		case STRAIGHTNESS:			
+			cal_Straightness(vecObj[it_mission.vec_object[0]],it_mission.result);
+			break;
+		case PERPENDICULARITY:
+			break;
+		case PARALLELISM:
+			break;
+		case DISTANCE:
+			break;
+
+		}
 }
 
 
@@ -167,7 +191,7 @@ void SingleBattery::cal_Straightness(const ObjectOfMission obj, double &straight
 ///*
 //测量一块电池
 //*/
-//void SingleBattery::MeasureOneBattery()
+//void SingleBattery::getObjs()
 //{
 //	//Mat src;//输入图像	
 //	//batImg = ImageAverage(1);//多幅平均

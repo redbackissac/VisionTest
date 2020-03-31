@@ -26,7 +26,8 @@ class SingleBattery : public ImgAlgorithm
 public:	
 	//typedef QList<Mat*> ROIS;//存储建立的ROI区域的列表
 	//ROIS m_rois;
-	void MeasureOneBattery();  //处理一块电池
+	void getObjs();  //获得所有测量对象的参数
+	void doMissions();//执行所有的测量任务
 	//ROI_pars m_roipars;//存放ROI参数
 	//Mat ImageAverage(int imgNum);  
 	//Mat getEdgeVal(Mat srcImg);
@@ -47,6 +48,7 @@ public:
 private:
 	Mat batImg; //电池图像
 	vector<ObjectOfMission> vecObj;//任务对象向量
+	vector<Mission> vecMissions;//任务向量
 	void cal_Straightness(const ObjectOfMission obj, double &straightness, int n = 3);//直线度计算
 	//void perpendicularity();//垂直度计算
 	//void parallelism();//平行度计算

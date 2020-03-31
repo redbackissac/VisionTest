@@ -71,3 +71,14 @@ private slots:
 	void on_look_clicked();       //点击查看调试信息
 	void on_getsb_clicked();
 };
+
+
+//每个类型电池的配置
+class MConfiguration
+{
+public:
+	vector<ObjectOfMission> vec_Obj;//任务对象向量
+	//VecRoiParas vec_roipars;//roi参数向量
+	vector<Mission> vec_Missions;//任务向量
+
+};
