@@ -64,31 +64,11 @@ MyDataBase * MyDataBase::GetInstance()
 
 bool MyDataBase::ConnectAccessDB(const QString &strDBName, const QString &strUser, const QString &strPwd) const
 
-{
-	/*QStringList drivers = QSqlDatabase::drivers();
-	foreach(QString driver, drivers)
-		qDebug() << driver;*/
-	
-	/*QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "MyAccessDB");*/
-	
+{	
+	//odbc配置方法:http://blog.sina.com.cn/s/blog_6ff019f90102vpcs.html
 	QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-	//const QString strName(QString("DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};FIL={MS Access};DBQ=%1;Uid=%2;Pwd=%3")
-
-	//	.arg(strDBName)
-
-	//	.arg(strUser)
-
-	//	.arg(strPwd));
-	//db.setDatabaseName(strName);
 	db.setDatabaseName("VisionTest");
-	//db.setDatabaseName("DRIVER={Microsoft Access Driver (*.mdb)};FIL={MS Access};DBQ=VisionTest.mdb");
-	//db.setDatabaseName("DRIVER={Microsoft Access Driver (*.mdb)};FIL={MS Access};DBQ=bacode.mdb");
-	//db.setDatabaseName("barcode");
-	/*db.setHostName("acidalia");
-	db.setDatabaseName("customdb");*/
-	/*db.setUserName("szlg");
-	db.setPassword("123456");*/
-	//qDebug() << strName;
+
 
 	if (!db.isValid())
 
@@ -111,25 +91,27 @@ bool MyDataBase::ConnectAccessDB(const QString &strDBName, const QString &strUse
 
 
 	if (db.open())
+	{		
+		//插入一条记录
+		QSqlQuery query;
+		bool resultt;
+		//resultt = query.exec("create table student (id int primary key, "
+		//	"name varchar(20))");
+		//创建一个students表,标题分别为id、name、score、class
+		query.exec("insert into student values(0, 'first')");
+		query.exec("insert into student values(1, 'second')");
+		query.exec("insert into student values(2, 'third')");
+		query.exec("insert into student values(3, 'fourth')");
+		resultt = query.exec("insert into student values(4, 'fifth')");
+		qDebug() << resultt;
+				
 
-	{
-
-		        QStringList p=db.tables(QSql::AllTables);
-
-		        for(int i=0;i<p.count();i++)
-
-		        {
-
-		            qDebug()<<p[i];
-
-		        }
-
+		db.close();
 		return true;
-
 	}
+	
 
 	else
-
 	{
 
 		qDebug() << db.lastError().text();
