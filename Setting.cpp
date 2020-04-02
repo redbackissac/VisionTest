@@ -139,6 +139,7 @@ void Setting::on_confirmMission_clicked()
 	m_mission.clear();//清空临时任务
 	MyDataBase m_database;//数据库
 	m_database.ConnectAccessDB("VisionTest","szlg","123456");
+	//m_database.insert_roi();
 	
 }
 
@@ -155,60 +156,69 @@ void Setting::on_getsb_clicked()
 */
 void Setting::on_saveSetting_clicked()
 {	
-	
-	//保存数据的文件路径
-	QString csvFileName = QFileDialog::getSaveFileName(this, "保存设置", ".", "csv files(*.csv)");  //选择保存位置，编辑文件名称
-	QFile file(csvFileName);
-	if (!file.exists())		//文件不存在的时新建
-	{
-		file.open(QIODevice::WriteOnly);
-		QTextStream txtOutPut(&file);
-		//标题
-		txtOutPut << "Unit(%)\n";
-		txtOutPut << "TopLeft_x,TopLeft_y,width,height\n";	//注意，每行数据结束后要加换行符
-		file.close();
-	}
-	//打开文件
-	file.open(QIODevice::WriteOnly | QIODevice::Append);
-	QTextStream txtOutPut(&file);
-	calROIPars(myScene->m_rectItems,Pic,vec_roipars);
+	MyDataBase my_db;	
+	calROIPars(myScene->m_rectItems, Pic, vec_roipars);
+	int roi_ID = 0;
 	for (auto it_roipars : vec_roipars)
-	{
+	{		
 		//保存数据
-		QString msg = QString::number(it_roipars[0]) + ","\
-			+ QString::number(it_roipars[1]) + ","\
-			+ QString::number(it_roipars[2]) + ","\
-			+ QString::number(it_roipars[3]) + "\n";
-	    txtOutPut << msg;
-	    file.flush();//向文件中写入数据
+		my_db.insert_roi(roi_ID,it_roipars[0], it_roipars[1], it_roipars[2], it_roipars[3]);
+		roi_ID++;
 	}
-	file.close();//保存完成后关闭文件
-	//遍历所有item	
-	//for (rectItems::iterator it = myScene->m_rectItems.begin(); it != myScene->m_rectItems.end(); ++it)
-	//{		
-	//	GraphicsRectItem *item = *it;//类型转换
-	//	QRect rect = item->sceneBoundingRect().toRect();//item的边界框
-	//	//相对坐标计算
-	//	Vec4i roipar;
-	//	roipar[0] = rect.topLeft().x() - pic_x;
-	//	roipar[1] = rect.topLeft().y() - pic_y;
-	//	roipar[2] = rect.width();
-	//	roipar[3] = rect.height();
-	//	vec_roipars.push_back(roipar);
-	//	/*item_rect rectSize;
-	//	rectSize.x = rect.topLeft().x() - pic_x;
-	//	rectSize.y = rect.topLeft().y() - pic_y;
-	//	rectSize.width = rect.width();
-	//	rectSize.height = rect.height();*/
-	//	//保存数据
-	///*	QString msg = QString::number(rectSize.x) + ","\
-	//		+ QString::number(rectSize.y) + ","\
-	//		+ QString::number(rectSize.width) + ","\
-	//		+ QString::number(rectSize.height) + "\n";*/
-	//	//txtOutPut << msg;
-	//	file.flush();//向文件中写入数据
-	//}	
 	
+	////保存数据的文件路径
+	//QString csvFileName = QFileDialog::getSaveFileName(this, "保存设置", ".", "csv files(*.csv)");  //选择保存位置，编辑文件名称
+	//QFile file(csvFileName);
+	//if (!file.exists())		//文件不存在的时新建
+	//{
+	//	file.open(QIODevice::WriteOnly);
+	//	QTextStream txtOutPut(&file);
+	//	//标题
+	//	txtOutPut << "Unit(%)\n";
+	//	txtOutPut << "TopLeft_x,TopLeft_y,width,height\n";	//注意，每行数据结束后要加换行符
+	//	file.close();
+	//}
+	////打开文件
+	//file.open(QIODevice::WriteOnly | QIODevice::Append);
+	//QTextStream txtOutPut(&file);
+	//calROIPars(myScene->m_rectItems,Pic,vec_roipars);
+	//for (auto it_roipars : vec_roipars)
+	//{
+	//	//保存数据
+	//	QString msg = QString::number(it_roipars[0]) + ","\
+	//		+ QString::number(it_roipars[1]) + ","\
+	//		+ QString::number(it_roipars[2]) + ","\
+	//		+ QString::number(it_roipars[3]) + "\n";
+	//    txtOutPut << msg;
+	//    file.flush();//向文件中写入数据
+	//}
+	//file.close();//保存完成后关闭文件
+	////遍历所有item	
+	////for (rectItems::iterator it = myScene->m_rectItems.begin(); it != myScene->m_rectItems.end(); ++it)
+	////{		
+	////	GraphicsRectItem *item = *it;//类型转换
+	////	QRect rect = item->sceneBoundingRect().toRect();//item的边界框
+	////	//相对坐标计算
+	////	Vec4i roipar;
+	////	roipar[0] = rect.topLeft().x() - pic_x;
+	////	roipar[1] = rect.topLeft().y() - pic_y;
+	////	roipar[2] = rect.width();
+	////	roipar[3] = rect.height();
+	////	vec_roipars.push_back(roipar);
+	////	/*item_rect rectSize;
+	////	rectSize.x = rect.topLeft().x() - pic_x;
+	////	rectSize.y = rect.topLeft().y() - pic_y;
+	////	rectSize.width = rect.width();
+	////	rectSize.height = rect.height();*/
+	////	//保存数据
+	/////*	QString msg = QString::number(rectSize.x) + ","\
+	////		+ QString::number(rectSize.y) + ","\
+	////		+ QString::number(rectSize.width) + ","\
+	////		+ QString::number(rectSize.height) + "\n";*/
+	////	//txtOutPut << msg;
+	////	file.flush();//向文件中写入数据
+	////}	
+	//
 }
 
 

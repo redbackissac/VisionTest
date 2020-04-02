@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NTACCESSMANAGER_H
-#define NTACCESSMANAGER_H
+#ifndef MYDATABASE_H
+#define MYDATABASE_H
 #endif 
 #include <QString>
 #include <QtCore/QCoreApplication>
@@ -14,6 +14,7 @@
 #include <QSqlQuery>
 #include <QVariant>
 #include <QMutex>
+#include <QMessageBox>
 
 
 class MyDataBase
@@ -31,9 +32,14 @@ private:
 	MyDataBase(const MyDataBase &);
 
 	MyDataBase operator =(const MyDataBase &);
+	QSqlDatabase db;
 
 public:
 
+	void insert_roi(const int id, const int x, const int y, const int weight, const int height);
+	void show_all();//显示所有内容
+	//QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+	//QSqlDatabase db;
 	static MyDataBase * GetInstance();
 
 	bool ConnectAccessDB(const QString &strDBName,
