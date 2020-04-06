@@ -8,6 +8,7 @@
 #include "singlebattery.h"
 #include "calibration.h"
 #include "imgAlgorithm.h"
+#include "configdatabase.h"
 
 //#include <QFiledialog>
 //#include <QTextStream>

@@ -15,10 +15,15 @@ MyThread::MyThread(QObject* parent) : QObject(parent)
 */
 void MyThread::MyWork()
 {
-	//bat->getObjs();
-	m_imgalgorithm->vec_roipars.clear();//先清空参数列表，为接收参数做好准备
+	
+	//m_imgalgorithm->vec_roipars.clear();//先清空参数列表，为接收参数做好准备
+	bat->vec_roipars.clear();
+	bat->vecMissions.clear();
 	ConfigDataBase db;
-	db.read_roi(m_imgalgorithm->vec_roipars);
+	//db.read_roi(m_imgalgorithm->vec_roipars);//读取roi参数
+	db.read_roi(bat->vec_roipars);
+	db.read_mission(bat->vecMissions);
+	bat->getObjs();
 	//Calibration *m_calibration = new Calibration;
 	//m_calibration->getObjs();
 	//m_calibration->getK();

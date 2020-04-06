@@ -189,6 +189,21 @@ void ConfigDataBase::read_roi(VecRoiParas &vec_roipars)
 	}
 }
 
+void ConfigDataBase::read_mission(vector<Mission>& vec_mission)
+{
+	QSqlQuery query;	
+	query.exec("select * from Mission");
+	while (query.next())
+	{
+		Mission temp_mission;
+		temp_mission.type = TypeOfMission(query.value(1).toInt());//类型
+		temp_mission.vec_object.push_back(query.value(3).toInt());//对象1
+		if(!query.value(3).isNull())//对象2不为空
+			temp_mission.vec_object.push_back(query.value(3).toInt());//对象2	
+		vec_mission.push_back(temp_mission);
+	}
+}
+
 void ConfigDataBase::show_all()
 {
 	QSqlQuery query;

@@ -7,11 +7,11 @@ void SingleBattery::getObjs()
 {
 	openImg(srcImg);//打开图像
 	createROI(srcImg, vec_rois);//创建roi
-	/*for (auto it_roi : vec_rois)
+	for (auto it_roi : vec_rois)
 	{
 		imshow("rois", it_roi);
 		waitKey(0);
-	}*/
+	}
 
 
 	//只读方式遍历roi
