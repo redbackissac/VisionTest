@@ -1,6 +1,7 @@
 #pragma execution_character_set("utf-8")
 #include "mythread.h"
 #include "MainWindow.h"
+#include "configdatabase.h"
 
 MyThread::MyThread(QObject* parent) : QObject(parent)
 {
@@ -14,11 +15,14 @@ MyThread::MyThread(QObject* parent) : QObject(parent)
 */
 void MyThread::MyWork()
 {
-	bat->getObjs();
+	//bat->getObjs();
+	m_imgalgorithm->vec_roipars.clear();//先清空参数列表，为接收参数做好准备
+	ConfigDataBase db;
+	db.read_roi(m_imgalgorithm->vec_roipars);
 	//Calibration *m_calibration = new Calibration;
 	//m_calibration->getObjs();
 	//m_calibration->getK();
-	//m_imgalgorithm->test();
+	m_imgalgorithm->test();
 	emit singal_back();
 }
 
@@ -34,8 +38,7 @@ void MyThread::setFlag(bool flag)
 从主线程接收roi参数
 */
 void MyThread::acceptROIS(VecRoiParas m_pars)
-{
-	m_imgalgorithm->vec_roipars.clear();//先清空参数列表，为接收参数做好准备
+{	
 	//遍历参数列表
 	//C++11新增的关键字 auto，老快了，但是是只读的,auto&是可写的
 	for (auto it : m_pars)
@@ -43,9 +46,6 @@ void MyThread::acceptROIS(VecRoiParas m_pars)
 		bat->vec_roipars.push_back(it);
 		m_calibration->vec_roipars.push_back(it);
 	}		
-		//m_imgalgorithm->vec_roipars.push_back(it);
-		//bat->vec_roipars.push_back(it);
-		
 }
 
 

@@ -9,10 +9,12 @@
 #include <QTextStream>
 #include <QGraphicsPixmapItem>
 #include <thread>
+#include <QButtonGroup>
+#include <QThread>
 #include "interactive_view.h"
 #include "GraphicsRect/graphicsscene.h"
 #include "calibration.h"
-#include "mydatabase.h"
+#include "configdatabase.h"
 
 //用于打印调试信息
 #include <iostream>
@@ -39,15 +41,13 @@ public:
 
 public:
 	Point2i Pic;                     //图像左上角在场景中的坐标(x,y)
-    //int32_t pic_width ;            //图像在场景中的宽度
-	//int32_t pic_height ;           //图像在场景中的高度
-	//int32_t pic_x ;                //图像在场景中左上角的x坐标
-	//int32_t pic_y ;                //图像在场景中左上角的y坐标
 	struct item_rect               //记录画出的矩形框的几何坐标的结构体
 	{
 		int32_t x, y, width, height;
 	};
 private:
+
+	QButtonGroup *btngroup_missions;//选择任务类型的buttongroup
 	typedef QList<GraphicsRectItem*> rectItems;//存贮所有绘制的矩形的QList
 	
 	VecRoiParas vec_roipars;//roi参数向量
@@ -58,28 +58,32 @@ private:
 	Mission m_mission = {};//临时任务
 	int tmp_ObjNum = 0;//临时对象标号
 
-	void calROIPars(const rectItems m_rectItems, const Point2i Pic, VecRoiParas &vec_roipars);//根据画出的矩形框计算roi参数
+	
+	void setTypeButton();//设置类型按钮状态
+	bool obj_isComp();//判断任务是否一建立完全
+	void setObjIDButton();//设置选取对象按钮状态
+	void setConfirmButton();//设置确认任务按钮状态
+	void setLabelObj();//设置任务label显示内容
+	QString missionType2string(const TypeOfMission type);//任务类型转为字符串
+	QString missionObj2string(const int obj);//任务对象转为字符串
+	void addMission2Table();//将建立的任务添加到显示任务的表格中
 
+	void calROIPars(const rectItems m_rectItems, const Point2i Pic, VecRoiParas &vec_roipars);//根据画出的矩形框计算roi参数
+	
 private slots:
-	//void on_selectExamplePic_clicked();        //选取示例图片
+
+	
+    void buildMission();//建立任务
+
+	void on_savemission_clicked();//保存任务
 	void on_createROI_clicked(); //创建ROI
 	void on_selectExample_clicked();//选取标定板图像
-	void on_newMission_clicked();//新建任务
+
 	void on_confirmMission_clicked();//确认任务
 	//void on_doCalibration_clicked();//标定
-	void on_saveSetting_clicked();//保存设置
+	void on_saveRoi_clicked();//保存设置
 	void on_Exist_clicked();      //退出设置界面	
-	void on_look_clicked();       //点击查看调试信息
-	void on_getsb_clicked();
+	void on_selectObj_clicked();
 };
 
 
-//每个类型电池的配置
-class MConfiguration
-{
-public:
-	vector<ObjectOfMission> vec_Obj;//任务对象向量
-	//VecRoiParas vec_roipars;//roi参数向量
-	vector<Mission> vec_Missions;//任务向量
-
-};

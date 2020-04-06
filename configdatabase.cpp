@@ -1,16 +1,16 @@
 
-#include "mydatabase.h"
+#include "configdatabase.h"
 
 #include <QDebug>
 #include <algorithm>
 #include <iostream>
 using namespace std;
 
-MyDataBase * MyDataBase::m_pInstance(NULL);
+ConfigDataBase * ConfigDataBase::m_pInstance(NULL);
 
 
 
-MyDataBase::MyDataBase()
+ConfigDataBase::ConfigDataBase()
 
 {
 	//odbc配置方法:http://blog.sina.com.cn/s/blog_6ff019f90102vpcs.html
@@ -32,7 +32,7 @@ MyDataBase::MyDataBase()
 	}
 }
 
-MyDataBase::~MyDataBase()
+ConfigDataBase::~ConfigDataBase()
 {
 	if (db.isOpen())
 		db.close();	
@@ -40,7 +40,7 @@ MyDataBase::~MyDataBase()
 
 
 
-MyDataBase * MyDataBase::GetInstance()
+ConfigDataBase * ConfigDataBase::GetInstance()
 
 {
 
@@ -56,7 +56,7 @@ MyDataBase * MyDataBase::GetInstance()
 
 		{
 
-			static MyDataBase myDB;
+			static ConfigDataBase myDB;
 
 			m_pInstance = &myDB;
 
@@ -74,7 +74,7 @@ MyDataBase * MyDataBase::GetInstance()
 
 
 
-bool MyDataBase::ConnectAccessDB(const QString &strDBName, const QString &strUser, const QString &strPwd) const
+bool ConfigDataBase::ConnectAccessDB(const QString &strDBName, const QString &strUser, const QString &strPwd) const
 
 {	
 	return true;
@@ -137,15 +137,31 @@ bool MyDataBase::ConnectAccessDB(const QString &strDBName, const QString &strUse
 }
 
 
-void MyDataBase::insert_roi(const int id, const int x, const int y, const int weight, const int height)
+void ConfigDataBase::insert_Mission(const int id, const Mission mission)
+{
+	if (!db.isOpen())//打开数据库
+		db.open();
+	//插入记录
+	QSqlQuery query(db);	
+
+	query.prepare("insert into Mission(id, Type, Object1, Object2) "
+		"values (:id, :Type, :Object1, :Object2)");
+
+	query.bindValue(":id", id);
+	query.bindValue(":Type", mission.type);
+	query.bindValue(":Object1", mission.vec_object[0]);
+	if(mission.vec_object.size() == 2)
+		query.bindValue(":Object2", mission.vec_object[1]);
+	query.exec();
+	db.close();	//关闭数据库
+}
+
+void ConfigDataBase::insert_roi(const int id, const int x, const int y, const int weight, const int height)
 {
 	if (!db.isOpen())//打开数据库
 		db.open();
 	//插入记录
 	QSqlQuery query(db);
-	
-	query.exec("truncate roi");
-	db.close();	//关闭数据库
 	query.prepare("insert into roi(id, x, y, weight, height) "
 		"values (:id, :x, :y, :weight, :height)");
 
@@ -159,7 +175,21 @@ void MyDataBase::insert_roi(const int id, const int x, const int y, const int we
 
 }
 
-void MyDataBase::show_all()
+void ConfigDataBase::read_roi(VecRoiParas &vec_roipars)
+{
+	QSqlQuery query;
+	query.exec("select * from roi");
+	while (query.next())
+	{
+		Vec4i roipar;
+		for (int i = 0; i < 4; i++)
+			roipar[i] = query.value(i + 1).toInt();
+		vec_roipars.push_back(roipar);
+		//qDebug() << query.value(0).toInt() << query.value(1).toInt() << query.value(2).toInt() << query.value(3).toInt() << query.value(4).toInt();
+	}
+}
+
+void ConfigDataBase::show_all()
 {
 	QSqlQuery query;
 	query.exec("select * from roi");

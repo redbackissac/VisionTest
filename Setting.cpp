@@ -7,7 +7,6 @@
 #define VIEW_WIDTH  viewport()->rect().width()
 #define VIEW_HEIGHT viewport()->rect().height()
 
-bool flgObjHasBeenSet = false;//任务对象是否被设置标志位
 
 /*
 构造函数
@@ -19,8 +18,24 @@ Setting::Setting(QWidget*parents )
     SettingView->setGeometry(QRect(0, 0, 1024, 576));      //设置视口在窗口中的位置
 	//SettingView->setGeometry(QRect(0, 0, this->width(), this->width()*0.5625));      //设置视口在窗口中的位置,自适应窗口大小，保持纵横比为1024/576
 	myScene = new GraphicsScene;                             //新建自定义场景
-	SettingView->setScene(myScene);	                       //向界面的图像口添加场景	
+	SettingView->setScene(myScene);	                       //向界面的图像口添加场景
 	
+	m_mission.clear();//临时任务清空
+
+	/*按钮组初始化*/
+	btngroup_missions = new QButtonGroup;
+	btngroup_missions->addButton(ui.radioButton_none,0);
+	btngroup_missions->addButton(ui.radioButton_straightness,1);
+	btngroup_missions->addButton(ui.radioButton_perpendicularity, 2);
+	btngroup_missions->addButton(ui.radioButton_parallelism,3);
+	btngroup_missions->addButton(ui.radioButton_distance,4);
+	btngroup_missions->setExclusive(true);
+	connect(btngroup_missions, SIGNAL(buttonClicked(int)), this, SLOT(buildMission()));//点击按钮开始建立任务
+		
+	setObjIDButton();
+	setTypeButton();
+	setConfirmButton();
+	setLabelObj();
 }
 
 /*
@@ -48,41 +63,202 @@ void Setting::on_selectExample_clicked()
 			QRect rect_pic = m_pPixmapItem->sceneBoundingRect().toRect();
 			Pic.x = rect_pic.topLeft().x();
 			Pic.y = rect_pic.topLeft().y();	
-
-
-
-			////记录图像在场景中的坐标及尺寸				
-			//QRect rect_pic = m_pPixmapItem->sceneBoundingRect().toRect();
-			//pic_x = rect_pic.topLeft().x();
-			//pic_y = rect_pic.topLeft().y();			
-			//pic_width = rect_pic.width();
-			//pic_height = rect_pic.height();
-			////打印调试信息
-			//cout << "pic_x:" << pic_x << endl;	
-			//cout << "pic_y:" << pic_y << endl;
-			//cout << "pic_width:" << pic_width << endl;	
-			//cout << "pic_height:" << pic_height << endl;
 		}		
 	}		
 }
 
-/*
-退出
-*/
-void Setting::on_Exist_clicked()
-{		
-	this-> close();	
-}
+
+
+
+
 
 /*
-创建新矩形
+创建新roi
 */
 void Setting::on_createROI_clicked()
 {
 	myScene->creatRect();//绘制新矩形	
 }
 
+/*
+保存roi设置
+*/
+void Setting::on_saveRoi_clicked()
+{
+	ConfigDataBase my_db;
+	calROIPars(myScene->m_rectItems, Pic, vec_roipars);
+	int roi_ID = 0;
+	for (auto it_roipars : vec_roipars)
+	{
+		//保存数据
+		my_db.insert_roi(roi_ID, it_roipars[0], it_roipars[1], it_roipars[2], it_roipars[3]);
+		roi_ID++;
+	}
+}
 
+
+
+
+
+
+
+/*
+判断任务是否已建立完成
+*/
+bool Setting::obj_isComp()
+{
+	switch (m_mission.type)
+	{
+	case NONE:
+		return false;
+		break;
+	case STRAIGHTNESS:
+		if (m_mission.vec_object.size() == 1)
+			return true;
+		else return false;
+		break;
+	case PARALLELISM:
+		if (m_mission.vec_object.size() == 2)
+			return true;
+		else return false;
+		break;
+	case PERPENDICULARITY:
+		if (m_mission.vec_object.size() == 2)
+			return true;
+		else return false;
+		break;
+	case DISTANCE:
+		if (m_mission.vec_object.size() == 2)
+			return true;
+		else return false;
+		break;
+	}	
+}
+
+/*
+设置任务类型按钮可选状态
+*/
+void Setting::setTypeButton()
+{
+	if (m_mission.type == NONE)//任务类型未确定时按钮才可用
+		for (auto it_buttons : btngroup_missions->buttons())//遍历group中的按钮
+			it_buttons->setEnabled(true);//按钮可用
+	else //任务类型已确定
+		for (auto it_buttons : btngroup_missions->buttons())//遍历group中的按钮
+			it_buttons->setEnabled(false);//按钮不可用			
+}
+
+/*
+设置添加对象按钮可用状态
+*/
+void Setting::setObjIDButton()
+{
+	if(m_mission.type != NONE)//已确定任务类型
+		if (obj_isComp())//若任务已完全建立
+			ui.selectObj->setEnabled(false);//添加对象按钮不可用
+		else ui.selectObj->setEnabled(true);//添加对象按钮可用
+	else
+		ui.selectObj->setEnabled(false);//添加对象按钮不可用
+	
+}
+
+/*
+设置确认添加任务按钮可用状态
+*/
+void Setting::setConfirmButton()
+{
+	if (!obj_isComp())//若任务未完全建立
+		ui.confirmMission->setEnabled(false);//确认添加任务按钮不可用
+	else//若已完全建立任务
+		ui.confirmMission->setEnabled(true);//确认添加任务按钮可用
+}
+
+/*
+设置任务label显示内容
+*/
+void Setting::setLabelObj()
+{
+	
+	if (m_mission.type != NONE)//任务类型已经确定
+	{
+		/*obj1*/
+		if (m_mission.vec_object.size() == 0)//一个对象都没选择
+			ui.label_obj1->setText("选择对象1");
+		else
+			ui.label_obj1->setText("FAI" + QString::number(m_mission.vec_object[0]));
+			/*obj2*/
+		if (m_mission.type == STRAIGHTNESS)//若类型为直线度，只有一个对象
+			ui.label_obj2->setText("");//啥都不显示
+		else
+		{
+			if (m_mission.vec_object.size() == 0)//啥都还没选
+				ui.label_obj2->setText("");//啥都不显示
+			else if (m_mission.vec_object.size() == 1)//只选择了一个对象
+				ui.label_obj2->setText("选择对象2");				
+			else
+				ui.label_obj2->setText("FAI" + QString::number(m_mission.vec_object[1]));
+		}
+	}
+	else //任务类型未确定，啥都不显示
+	{
+		ui.label_obj1->setText("");
+		ui.label_obj2->setText("");
+	}
+	
+}
+
+QString Setting::missionType2string(const TypeOfMission type)
+{
+	QString missionType;
+	switch (type)
+	{
+	case NONE:
+		missionType = "无";
+		break;
+	case STRAIGHTNESS:
+		missionType = "直线度";
+		break;
+	case PERPENDICULARITY:
+		missionType = "垂直度";
+		break;
+	case PARALLELISM:
+		missionType = "平行度";
+		break;
+	case DISTANCE:
+		missionType = "距离";
+		break;
+	default:
+		missionType = "错误";
+		break;
+	}
+	return missionType;
+}
+
+QString Setting::missionObj2string(const int obj)
+{
+	QString strobj = "FAI" + QString::number(obj);
+	return strobj;
+}
+
+/*
+向显示任务的表格中添加最新一条任务
+*/
+void Setting::addMission2Table()
+{
+	int rowCount = ui.missiontable->rowCount();
+	ui.missiontable->insertRow(rowCount);//添加一行
+	ui.missiontable->setItem(rowCount, 0, new QTableWidgetItem(QString::number(rowCount)));
+	ui.missiontable->setItem(rowCount,1,new QTableWidgetItem(missionType2string(m_mission.type)));
+	ui.missiontable->setItem(rowCount, 2, new QTableWidgetItem(missionObj2string(m_mission.vec_object[0])));
+	if (m_mission.vec_object.size() == 2)
+		ui.missiontable->setItem(rowCount, 3, new QTableWidgetItem(missionObj2string(m_mission.vec_object[1])));
+	else
+		ui.missiontable->setItem(rowCount, 3, new QTableWidgetItem("无"));	
+}
+
+/*
+将rectitems转换为roi参数
+*/
 void Setting::calROIPars(const rectItems m_rectItems, const Point2i Pic, VecRoiParas &vec_roipars)
 {
 	//遍历所有item	
@@ -97,155 +273,90 @@ void Setting::calROIPars(const rectItems m_rectItems, const Point2i Pic, VecRoiP
 		roipar[3] = rect.height();
 		vec_roipars.push_back(roipar);
 	}
-	//for (rectItems::iterator it = m_rectItems.begin(); it != m_rectItems.end(); ++it)
-	//{
-	//	GraphicsRectItem *item = *it;//类型转换
-	//	QRect rect = item->sceneBoundingRect().toRect();//item的边界框
-	//	//相对坐标计算
-	//	Vec4i roipar;
-	//	roipar[0] = rect.topLeft().x() - pic_x;
-	//	roipar[1] = rect.topLeft().y() - pic_y;
-	//	roipar[2] = rect.width();
-	//	roipar[3] = rect.height();
-	//	vec_roipars.push_back(roipar);	
-	//}
 }
 
-//获取任务对象子线程
-void waitForObj(bool &flg,  Mission &m_mission, int &tmp_ObjNum)
-{
-	//cout << "subID: " << this_thread::get_id() << endl;
-	while (!flg) {}//等待obj被选择
-	flgObjHasBeenSet = false;//标志位置位
-	(m_mission.vec_object).push_back(tmp_ObjNum);
-	tmp_ObjNum = 0;//临时任务编号清零
-	cout << "对象已选择" << endl;
-}
-//新建任务
-void Setting::on_newMission_clicked()
-{
-	bool j = 1;
-	m_mission.clear();//临时任务清空
-	std::thread waitOBJ(waitForObj, std::ref(flgObjHasBeenSet), std::ref(m_mission), std::ref(tmp_ObjNum));
-	waitOBJ.detach();
-	//cout << "MainID:" << this_thread::get_id() << endl;
-	j = 0;
+/*
+建立任务
+*/
+void Setting::buildMission()
+{	
+	switch (btngroup_missions->checkedId())//选中的按钮
+	{
+	case 1:
+		m_mission.type = STRAIGHTNESS;
+		break;
+	case 2:
+		m_mission.type = PERPENDICULARITY;
+		break;
+	case 3:
+		m_mission.type = PARALLELISM;
+		break;
+	case 4:
+		m_mission.type = DISTANCE;
+		break;
+	default:
+		m_mission.type = NONE;
+		break;
+	}
+	//重新设置按钮状态
+	setObjIDButton();//选取对象按钮可用
+	setTypeButton();//任务类型按钮不可用
+	setLabelObj();
 }
 
-//确认任务
+/*
+选取对象
+*/
+void Setting::on_selectObj_clicked()
+{
+	(m_mission.vec_object).push_back(myScene->getSelectedNum());//获取对象id	
+	setObjIDButton();//根据任务建立状况设置选取对象按钮可用状态
+	setConfirmButton();//根据任务建立状况设置确认添加任务按钮可用状态
+	setLabelObj();
+}
+
+/*
+确认任务
+*/
 void Setting::on_confirmMission_clicked()
 {
-	vec_Missions.push_back(m_mission);
+	vec_Missions.push_back(m_mission);//将临时任务添加到任务向量中
+	addMission2Table();
+	setObjIDButton();//任务已完全建立，设置添加对象按钮不可用
 	m_mission.clear();//清空临时任务
-	MyDataBase m_database;//数据库
-	m_database.ConnectAccessDB("VisionTest","szlg","123456");
-	//m_database.insert_roi();
 	
+	setConfirmButton();//任务已确认，将确认按钮设为不可用
+	btngroup_missions->button(0)->setChecked(true);//重置任务类型按钮为NONE
+	setTypeButton();//本轮任务已结束，回到初始状态，类型选择按钮可用
+	setLabelObj();
 }
 
-void Setting::on_getsb_clicked()
+/*
+保存设定的任务
+*/
+void Setting::on_savemission_clicked()
 {
-	tmp_ObjNum = myScene->getSelectedNum();
-	flgObjHasBeenSet = true;
-	
+	ConfigDataBase my_db;
+	int mission_ID = 0;
+	for (auto it_mission : vec_Missions)//遍历所有任务
+	{
+		my_db.insert_Mission(mission_ID, it_mission);		
+		mission_ID++;
+	}
 }
 
 
 /*
-保存设置
+退出设置界面
 */
-void Setting::on_saveSetting_clicked()
-{	
-	MyDataBase my_db;	
-	calROIPars(myScene->m_rectItems, Pic, vec_roipars);
-	int roi_ID = 0;
-	for (auto it_roipars : vec_roipars)
-	{		
-		//保存数据
-		my_db.insert_roi(roi_ID,it_roipars[0], it_roipars[1], it_roipars[2], it_roipars[3]);
-		roi_ID++;
-	}
-	
-	////保存数据的文件路径
-	//QString csvFileName = QFileDialog::getSaveFileName(this, "保存设置", ".", "csv files(*.csv)");  //选择保存位置，编辑文件名称
-	//QFile file(csvFileName);
-	//if (!file.exists())		//文件不存在的时新建
-	//{
-	//	file.open(QIODevice::WriteOnly);
-	//	QTextStream txtOutPut(&file);
-	//	//标题
-	//	txtOutPut << "Unit(%)\n";
-	//	txtOutPut << "TopLeft_x,TopLeft_y,width,height\n";	//注意，每行数据结束后要加换行符
-	//	file.close();
-	//}
-	////打开文件
-	//file.open(QIODevice::WriteOnly | QIODevice::Append);
-	//QTextStream txtOutPut(&file);
-	//calROIPars(myScene->m_rectItems,Pic,vec_roipars);
-	//for (auto it_roipars : vec_roipars)
-	//{
-	//	//保存数据
-	//	QString msg = QString::number(it_roipars[0]) + ","\
-	//		+ QString::number(it_roipars[1]) + ","\
-	//		+ QString::number(it_roipars[2]) + ","\
-	//		+ QString::number(it_roipars[3]) + "\n";
-	//    txtOutPut << msg;
-	//    file.flush();//向文件中写入数据
-	//}
-	//file.close();//保存完成后关闭文件
-	////遍历所有item	
-	////for (rectItems::iterator it = myScene->m_rectItems.begin(); it != myScene->m_rectItems.end(); ++it)
-	////{		
-	////	GraphicsRectItem *item = *it;//类型转换
-	////	QRect rect = item->sceneBoundingRect().toRect();//item的边界框
-	////	//相对坐标计算
-	////	Vec4i roipar;
-	////	roipar[0] = rect.topLeft().x() - pic_x;
-	////	roipar[1] = rect.topLeft().y() - pic_y;
-	////	roipar[2] = rect.width();
-	////	roipar[3] = rect.height();
-	////	vec_roipars.push_back(roipar);
-	////	/*item_rect rectSize;
-	////	rectSize.x = rect.topLeft().x() - pic_x;
-	////	rectSize.y = rect.topLeft().y() - pic_y;
-	////	rectSize.width = rect.width();
-	////	rectSize.height = rect.height();*/
-	////	//保存数据
-	/////*	QString msg = QString::number(rectSize.x) + ","\
-	////		+ QString::number(rectSize.y) + ","\
-	////		+ QString::number(rectSize.width) + ","\
-	////		+ QString::number(rectSize.height) + "\n";*/
-	////	//txtOutPut << msg;
-	////	file.flush();//向文件中写入数据
-	////}	
-	//
-}
-
-
-void Setting::on_look_clicked()
+void Setting::on_Exist_clicked()
 {
-	////遍历所有item	
-	//for (rectItems::iterator it = myScene->m_rectItems.begin(); it != myScene->m_rectItems.end(); ++it)
-	//{
-	//	GraphicsRectItem *item = *it;//类型转换
-	//	QRect rect = item->sceneBoundingRect().toRect();//item的边界框
-	//													//相对坐标计算
-	//													//打印数据
-	//	cout << "rectregion.x" << rect.topLeft().x() - pic_x << endl;
-	//	cout << "rectregion.y" << rect.topLeft().y() - pic_y << endl;
-	//	cout << "rectregion.width" << rect.width() << endl;
-	//	cout << "rectregion.height" << rect.height() << endl;
-
-		//item_rect rectSize;
-		//rectSize.x = (rect.topLeft().x() - pic_x) * 100 / pic_width;
-		//rectSize.y = (rect.topLeft().y() - pic_y) * 100 / pic_height;
-		//rectSize.width = rect.width() * 100 / pic_width;
-		//rectSize.height = rect.height() * 100 / pic_height;
-
-	/*	item_rect rectSize;
-		rectSize.x = rect.topLeft().x() - pic_x;
-		rectSize.y = rect.topLeft().y() - pic_y;
-		rectSize.width = rect.width();
-		rectSize.height = rect.height();		*/
-	//}
+	this->close();
 }
+
+
+
+
+
+
+

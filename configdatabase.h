@@ -1,6 +1,6 @@
 #pragma once
-#ifndef MYDATABASE_H
-#define MYDATABASE_H
+#ifndef CONFIGDATABASE_H
+#define CONFIGDATABASE_H
 #endif 
 #include <QString>
 #include <QtCore/QCoreApplication>
@@ -15,32 +15,36 @@
 #include <QVariant>
 #include <QMutex>
 #include <QMessageBox>
+#include <opencv2\opencv.hpp>
+#include "imgAlgorithm.h"
 
 
-class MyDataBase
+class ConfigDataBase
 
 {
 
 public:
 
-	MyDataBase();
+	ConfigDataBase();
 
-	~MyDataBase();
+	~ConfigDataBase();
 
 private:
 
-	MyDataBase(const MyDataBase &);
+	ConfigDataBase(const ConfigDataBase &);
 
-	MyDataBase operator =(const MyDataBase &);
+	ConfigDataBase operator =(const ConfigDataBase &);
 	QSqlDatabase db;
 
 public:
-
+	//void insert_Mission(const int id, const int Type,const int obj1,const int obj2);
+	void insert_Mission(const int id, const Mission mission);
 	void insert_roi(const int id, const int x, const int y, const int weight, const int height);
+	void read_roi(VecRoiParas &vec_roipars);//从数据库中读取roi参数;
 	void show_all();//显示所有内容
 	//QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
 	//QSqlDatabase db;
-	static MyDataBase * GetInstance();
+	static ConfigDataBase * GetInstance();
 
 	bool ConnectAccessDB(const QString &strDBName,
 
@@ -90,7 +94,7 @@ public:
 
 private:
 
-	static MyDataBase *m_pInstance;
+	static ConfigDataBase *m_pInstance;
 
 
 

@@ -128,7 +128,7 @@
   <ItemGroup>
     <ClCompile Include="calibration.cpp" />
     <ClCompile Include="imgAlgorithm.cpp" />
-    <ClCompile Include="mydatabase.cpp" />
+    <ClCompile Include="configdatabase.cpp" />
     <ClCompile Include="singlebattery.cpp" />
     <ClCompile Include="CQueue.cpp" />
     <ClCompile Include="GraphicsRect\graphicsrectitem.cpp" />
@@ -157,7 +157,7 @@
   <ItemGroup>
     <ClInclude Include="calibration.h" />
     <ClInclude Include="imgAlgorithm.h" />
-    <QtMoc Include="mydatabase.h" />
+    <QtMoc Include="configdatabase.h" />
     <ClInclude Include="subPixelCal.h" />
     <ClInclude Include="zernikeMask.h" />
     <QtMoc Include="GraphicsRect\graphicsscene.h" />

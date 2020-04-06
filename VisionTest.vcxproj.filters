@@ -102,7 +102,7 @@
     <ClCompile Include="imgAlgorithm.cpp">
       <Filter>Source Files\ImgProc</Filter>
     </ClCompile>
-    <ClCompile Include="mydatabase.cpp">
+    <ClCompile Include="configdatabase.cpp">
       <Filter>Source Files\Database</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,7 +170,7 @@
     <QtMoc Include="GraphicsRect\sizehandlerect.h">
       <Filter>Header Files\Setting</Filter>
     </QtMoc>
-    <QtMoc Include="mydatabase.h">
+    <QtMoc Include="configdatabase.h">
       <Filter>Header Files\Database</Filter>
     </QtMoc>
   </ItemGroup>

@@ -31,8 +31,7 @@ class MainWindow : public QMainWindow
 public:
 
 	Mat src, dst;
-	QImage dstImg;	
-	//ROI_pars m_roipars;	//存储从配置文件中读取的ROI参数
+	QImage dstImg;		
 	VecRoiParas m_roipars; //存储从配置文件中读取的ROI参数
 
 	int TurnTable_ZeroPos = 0;
@@ -109,8 +108,8 @@ private slots:
 private:
 	
 	Setting sss;
-	QThread *subthread;                                          //子线程容器
-	MyThread *m_thread;                                          //自定义线程	
+	QThread *subthread;                                          //子线程容器	
+	MyThread *m_thread;                                          //自定义线程
 
 	MyMovie *mymovie;                                            //转盘动画
 

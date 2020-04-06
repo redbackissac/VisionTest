@@ -27,11 +27,14 @@ MainWindow::MainWindow(QWidget *parent)
 
 	subthread = new QThread(this);           //创建一个子线程
 	m_thread = new MyThread();               //创建一个新的目标自定义线程
-	m_thread->moveToThread(subthread);       //将新的目标自定义线程移入子线程中
+	m_thread->moveToThread(subthread);       //将新的目标自定义线程移入子线程中	
   
 	
 	connect(this,&MainWindow::StartThread,m_thread,&MyThread::MyWork);
 	connect(m_thread, &MyThread::singal_back, this, &MainWindow::slot_handle_finish);
+
+	
+
 	//qRegisterMetaType<ROI_pars >("ROI_pars");    //注册参数类型
 	qRegisterMetaType<VecRoiParas >("VecRoiParas");    //注册参数类型
 	//connect(this, SIGNAL(sendparameterstomythread(ROI_pars)),m_thread, SLOT(acceptROIS(ROI_pars)));//向子线程传递参数
@@ -506,8 +509,8 @@ void MainWindow::on_Open_clicked()
 	{		
 		m_thread->setFlag(false);
 		subthread->start();
-		//emit(sendparameterstomythread(m_roipars));//向子线程传递参数
-		emit(sendparameterstomythread(m_roipars));//向子线程传递参数Roi_Paras
+		//emit(sendparameterstomythread(m_roipars));//向子线程传递参数,此方法已弃用
+		//emit(sendparameterstomythread(m_roipars));//向子线程传递参数Roi_Paras
 		//启动了线程，但是并没有进入子线程
 		//必须通过信号/槽的方式进入子线程
 		//直接通过m_thread->Mywork()是不行的，这样Mywork()中的线程就是主线程
@@ -559,6 +562,7 @@ void MainWindow::on_Open_clicked()
 
 /*
 加载ROI参数
+此方法已弃用
 */
 void MainWindow::on_Import_clicked()
 {
