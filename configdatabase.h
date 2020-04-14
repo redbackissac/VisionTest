@@ -40,8 +40,10 @@ public:
 	
 	void insert_Mission(const int id, const Mission mission);
 	void insert_roi(const int id, const int x, const int y, const int weight, const int height);
+	void update_LineType(const vector<Line_Type> vec_linetype);//向数据库中添加roi中边缘类型
 	void read_roi(VecRoiParas &vec_roipars);//从数据库中读取roi参数;
 	void read_mission(vector<Mission> &vec_mission);//从数据库中读取任务
+
 	void show_all();//显示所有内容
 	//QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
 	//QSqlDatabase db;

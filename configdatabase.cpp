@@ -175,6 +175,24 @@ void ConfigDataBase::insert_roi(const int id, const int x, const int y, const in
 
 }
 
+void ConfigDataBase::update_LineType(const vector<Line_Type> vec_linetype)
+{
+	if (!db.isOpen())//打开数据库
+		db.open();
+	//插入记录
+	int ID = 0;
+	for (auto it_linetype : vec_linetype)
+	{
+		QSqlQuery query(db);
+		query.prepare("update roi set LineType=? where ID=?");
+		query.addBindValue(it_linetype);
+		query.addBindValue(ID);
+		query.exec();
+		ID++;
+	}
+	db.close();	//关闭数据库
+}
+
 void ConfigDataBase::read_roi(VecRoiParas &vec_roipars)
 {
 	QSqlQuery query;

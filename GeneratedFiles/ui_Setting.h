@@ -51,6 +51,8 @@ public:
     QPushButton *savemission;
     QWidget *tab_2;
     QPushButton *doCalibration;
+    QPushButton *saveCalib;
+    QPushButton *selectCalib;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_2;
     QPushButton *Exist;
@@ -184,7 +186,13 @@ public:
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
         doCalibration = new QPushButton(tab_2);
         doCalibration->setObjectName(QString::fromUtf8("doCalibration"));
-        doCalibration->setGeometry(QRect(20, 70, 131, 28));
+        doCalibration->setGeometry(QRect(40, 70, 131, 28));
+        saveCalib = new QPushButton(tab_2);
+        saveCalib->setObjectName(QString::fromUtf8("saveCalib"));
+        saveCalib->setGeometry(QRect(52, 120, 121, 28));
+        selectCalib = new QPushButton(tab_2);
+        selectCalib->setObjectName(QString::fromUtf8("selectCalib"));
+        selectCalib->setGeometry(QRect(40, 30, 141, 28));
         tabWidget->addTab(tab_2, QString());
         verticalLayoutWidget_2 = new QWidget(Setting);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
@@ -200,7 +208,7 @@ public:
 
         retranslateUi(Setting);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Setting);
@@ -235,6 +243,8 @@ public:
         savemission->setText(QApplication::translate("Setting", "\344\277\235\345\255\230", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("Setting", "\344\273\273\345\212\241", nullptr));
         doCalibration->setText(QApplication::translate("Setting", "\346\240\207\345\256\232", nullptr));
+        saveCalib->setText(QApplication::translate("Setting", "\344\277\235\345\255\230\346\240\207\345\256\232\347\273\223\346\236\234", nullptr));
+        selectCalib->setText(QApplication::translate("Setting", "\351\200\211\346\213\251\346\240\207\345\256\232\346\235\277\345\233\276\347\211\207", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Setting", "\346\240\207\345\256\232", nullptr));
         Exist->setText(QApplication::translate("Setting", "\351\200\200\345\207\272", nullptr));
     } // retranslateUi

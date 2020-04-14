@@ -29,7 +29,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -307,7 +307,7 @@
     <widget class="QPushButton" name="doCalibration">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>40</x>
        <y>70</y>
        <width>131</width>
        <height>28</height>
@@ -315,6 +315,32 @@
      </property>
      <property name="text">
       <string>标定</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="saveCalib">
+     <property name="geometry">
+      <rect>
+       <x>52</x>
+       <y>120</y>
+       <width>121</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>保存标定结果</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="selectCalib">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>141</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>选择标定板图片</string>
      </property>
     </widget>
    </widget>

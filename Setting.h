@@ -47,6 +47,8 @@ public:
 	};
 private:
 
+	Calibration *m_calibration;//标定
+
 	QButtonGroup *btngroup_missions;//选择任务类型的buttongroup
 	typedef QList<GraphicsRectItem*> rectItems;//存贮所有绘制的矩形的QList
 	
@@ -80,10 +82,14 @@ private slots:
 	void on_selectExample_clicked();//选取标定板图像
 
 	void on_confirmMission_clicked();//确认任务
-	//void on_doCalibration_clicked();//标定
+	void on_doCalibration_clicked();//标定
 	void on_saveRoi_clicked();//保存设置
 	void on_Exist_clicked();      //退出设置界面	
 	void on_selectObj_clicked();
+
+	void on_selectCalib_clicked();//选择标定板图像
+//	void on_saveCalib_clicked();//保存标定结果
+
 };
 
 

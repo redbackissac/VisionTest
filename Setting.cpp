@@ -315,6 +315,32 @@ void Setting::on_selectObj_clicked()
 	setLabelObj();
 }
 
+void Setting::on_selectCalib_clicked()
+{
+	m_calibration = new Calibration;
+	m_calibration->srcImg = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(tt).jpg", IMREAD_UNCHANGED);//读取图像，不改变通道数
+	//fileName_example = QFileDialog::getOpenFileName(this, "打开标定板图片", ".", "Image files(*.bmp *.jpg *.png)");  //打开实例图片
+	//if (fileName_example.isEmpty())
+	//	return; //未选择图像                                    
+	//else
+	//{
+	//	if (!(QSrc.load(fileName_example))) //若加载图像处错   
+	//	{
+	//		QMessageBox::warning(this, tr("错误"), tr("打开图像失败!"));
+	//		return;
+	//	}
+	//	else
+	//	{
+	//		//m_calibration->srcImg = imread("C:\\Users\\16935\\Desktop\\BatteryImg\\" + std::to_string(1) + "(sb).jpg", IMREAD_UNCHANGED);//读取图像，不改变通道数
+	//		//QSrc = QSrc.scaled(1024, 576, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  //将图片缩放为与视图一样大		
+	//		m_pPixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(QSrc));
+	//		m_pPixmapItem->setPos(-m_pPixmapItem->pixmap().width() / 2, -m_pPixmapItem->pixmap().height() / 2);
+	//		myScene->addItem(m_pPixmapItem);			
+	//	}
+	//}
+
+}
+
 /*
 确认任务
 */
@@ -329,6 +355,16 @@ void Setting::on_confirmMission_clicked()
 	btngroup_missions->button(0)->setChecked(true);//重置任务类型按钮为NONE
 	setTypeButton();//本轮任务已结束，回到初始状态，类型选择按钮可用
 	setLabelObj();
+}
+
+void Setting::on_doCalibration_clicked()
+{
+	ConfigDataBase db;
+	m_calibration = new Calibration;
+	m_calibration->vec_roipars.clear();
+	db.read_roi(m_calibration->vec_roipars);//读取roi参数
+	m_calibration->getK();
+	db.update_LineType(m_calibration->vec_linetype);
 }
 
 /*

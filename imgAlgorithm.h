@@ -10,6 +10,13 @@
 using namespace cv;
 using namespace std;
 
+
+enum Line_Type//边缘的类型
+{
+	VERTICAL,	//竖直
+	HORIZONTAL, //水平
+};
+
 struct ObjectOfMission//任务对象
 {
 	Vec4i roipars;//
@@ -51,7 +58,7 @@ public:
 	vector<Mat> vec_rois;//roi向量
 public:
 	void test();//用于测试
-
+	
 	void openImg(Mat &srcImg);//打开待处理图像
 	void createROI(const Mat srcImg, vector<Mat> &vec_rois);//根据子线程中接收的参数向量创建roi区域	
 	void getIGrad(const Mat input, Mat& output, Mat &element);//改进形态学梯度边缘提取

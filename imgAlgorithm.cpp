@@ -151,16 +151,16 @@ void ImgAlgorithm::getRoughEdge_All(const Mat input, vector<Point2i>& vecEdgePoi
 			}
 }
 
-/*
-正交边缘轮廓排序比较规则
-*/
-bool cmp(const Rect& a, const Rect& b)
-{
-	if (a.x < b.x)
-		return true;
-	else
-		return false;
-}
+///*
+//正交边缘轮廓排序比较规则
+//*/
+//bool cmp(const Rect& a, const Rect& b)
+//{
+//	if (a.x < b.x)
+//		return true;
+//	else
+//		return false;
+//}
 
 /*
 获取正交粗边缘点坐标
@@ -210,7 +210,8 @@ void ImgAlgorithm::getRoughEdge_Normal(const Mat Input, Mat &Output, vector<Rect
 
 	addWeighted(Edge_X, 0.5, Edge_Y, 0.5, 0, Edge_XY);   //图像的线性混合，每张图0.5的权重
 	convertScaleAbs(AllEdge, AllEdge, 3.0, 10);	//图像增强
-	threshold(Edge_XY, Output, 100, 255, THRESH_BINARY); //阈值化	
+	threshold(Edge_XY, Output, 100, 255, THRESH_BINARY); //阈值化
+	
 
 	//粗边缘轮廓提取
 	vector<vector<Point> > contours_out;
@@ -223,7 +224,7 @@ void ImgAlgorithm::getRoughEdge_Normal(const Mat Input, Mat &Output, vector<Rect
 	{
 		vecEdgeOutline.push_back(boundingRect(Mat(contours_out[i])));// 转换为矩形轮廓
 	}
-	sort(vecEdgeOutline.begin(), vecEdgeOutline.end(), cmp); // 重排轮廓信息	
+	//sort(vecEdgeOutline.begin(), vecEdgeOutline.end(), cmp); // 重排轮廓信息	
 }
 
 
