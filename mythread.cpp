@@ -22,6 +22,7 @@ void MyThread::MyWork()
 	ConfigDataBase db;
 	//db.read_roi(m_imgalgorithm->vec_roipars);//¶ÁÈ¡roi²ÎÊý
 	db.read_roi(bat->vec_roipars);
+	db.read_lines(bat->vec_linetype,bat->vec_stdLines);
 	db.read_mission(bat->vecMissions);
 	bat->getObjs();
 	//Calibration *m_calibration = new Calibration;

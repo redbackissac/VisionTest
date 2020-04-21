@@ -56,6 +56,8 @@ public:
 	Mat srcImg;//用于处理的源图像
 	VecRoiParas vec_roipars;//roi参数向量
 	vector<Mat> vec_rois;//roi向量
+	vector<Vec3f> vec_stdLines;//标准电池的直线参数(a,b,c)
+	vector<Line_Type> vec_linetype;//边缘类型向量(竖直/水平)
 public:
 	void test();//用于测试
 	

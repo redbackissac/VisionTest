@@ -270,8 +270,8 @@ void Calibration::getK()
 		Mat BinImg;
 		getRoughEdge_Normal(it_rois, BinImg, vecEdgeOutline);//只保留水平及垂直方向的粗边缘点
 
-		imshow("BinImg", BinImg);
-		waitKey(0);
+	/*	imshow("BinImg", BinImg);
+		waitKey(0);*/
 
 		/*建立粗边缘轮廓分类标准并获得边缘类型*/
 		//Vec3i Sequence;//粗边缘轮廓分类标准
@@ -284,7 +284,7 @@ void Calibration::getK()
 			sort(vecEdgeOutline.begin(), vecEdgeOutline.end(), cmp_y); // 重排轮廓信息
 		
 		getStdLinePars(it_rois, vecEdgeOutline, lineType);
-		int aaa = 0;
+		//int aaa = 0;
 
 		///******************校正roi***********************/
 		//if (lineType == HORIZONTAL)//水平线

@@ -175,7 +175,7 @@ void ConfigDataBase::insert_roi(const int id, const int x, const int y, const in
 
 }
 
-void ConfigDataBase::update_LineType(const vector<Line_Type> vec_linetype)
+void ConfigDataBase::update_LineType(const vector<Line_Type> vec_linetype, const vector<Vec3f> vec_stdLines)
 {
 	if (!db.isOpen())//打开数据库
 		db.open();
@@ -189,6 +189,17 @@ void ConfigDataBase::update_LineType(const vector<Line_Type> vec_linetype)
 		query.addBindValue(ID);
 		query.exec();
 		ID++;
+	}
+	ID = 0;
+	for (auto it_stdLine : vec_stdLines)
+	{
+		QSqlQuery query(db);	
+		query.prepare("update roi set a=?, b=?, c=? where ID=?");
+		query.addBindValue((double)it_stdLine[0]);
+		query.addBindValue((double)it_stdLine[1]);
+		query.addBindValue((double)it_stdLine[2]);
+		query.addBindValue(ID);		
+		ID++;		
 	}
 	db.close();	//关闭数据库
 }
@@ -219,6 +230,26 @@ void ConfigDataBase::read_mission(vector<Mission>& vec_mission)
 		if(!query.value(3).isNull())//对象2不为空
 			temp_mission.vec_object.push_back(query.value(3).toInt());//对象2	
 		vec_mission.push_back(temp_mission);
+	}
+}
+
+void ConfigDataBase::read_lines(vector<Line_Type>& vec_linetype, vector<Vec3f> &vec_stdLines)
+{
+	QSqlQuery query;
+	query.exec("select * from roi");
+	while (query.next())
+	{
+		Line_Type linetype = (Line_Type)query.value(5).toInt();
+		vec_linetype.push_back(linetype);
+
+		Vec3f stdline;
+		for (int i = 0; i < 3; i++)
+			stdline[i] = query.value(i + 6).toDouble();
+		
+		vec_stdLines.push_back(stdline);
+	
+			
+		//qDebug() << query.value(0).toInt() << query.value(1).toInt() << query.value(2).toInt() << query.value(3).toInt() << query.value(4).toInt();
 	}
 }
 

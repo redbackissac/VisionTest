@@ -14,8 +14,8 @@ class Calibration : public ImgAlgorithm
 {
 public:
 	void getK();//获取标定值
-	vector<Vec3f> vec_stdLines;//标准电池的直线参数(a,b,c)
-	vector<Line_Type> vec_linetype;//边缘类型向量(竖直/水平)
+	//vector<Vec3f> vec_stdLines;//标准电池的直线参数(a,b,c)
+	//vector<Line_Type> vec_linetype;//边缘类型向量(竖直/水平)
 	double REALSIZE = 5.5;//标定板每一小格的实际尺寸
 private:
 	Vec3i Sequence;//粗边缘轮廓分类标准

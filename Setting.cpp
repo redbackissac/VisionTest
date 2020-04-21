@@ -364,7 +364,7 @@ void Setting::on_doCalibration_clicked()
 	m_calibration->vec_roipars.clear();
 	db.read_roi(m_calibration->vec_roipars);//¶ÁÈ¡roi²ÎÊý
 	m_calibration->getK();
-	db.update_LineType(m_calibration->vec_linetype);
+	db.update_LineType(m_calibration->vec_linetype,m_calibration->vec_stdLines);
 }
 
 /*
