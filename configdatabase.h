@@ -44,6 +44,7 @@ public:
 	void read_roi(VecRoiParas &vec_roipars);//从数据库中读取roi参数;
 	void read_mission(vector<Mission> &vec_mission);//从数据库中读取任务
 	void read_lines(vector<Line_Type> &vec_linetype, vector<Vec3f> &vec_stdLines);//从数据库中读取直线类型及标准板直线参数
+	void read_structroi(vector<struct_roi> &vec_strrois);//读取roi结构体
 
 	void show_all();//显示所有内容
 	//QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");

@@ -15,20 +15,23 @@ MyThread::MyThread(QObject* parent) : QObject(parent)
 */
 void MyThread::MyWork()
 {
-	
+	//读取参数
 	//m_imgalgorithm->vec_roipars.clear();//先清空参数列表，为接收参数做好准备
 	bat->vec_roipars.clear();
 	bat->vecMissions.clear();
+	bat->vec_strrois.clear();
 	ConfigDataBase db;
 	//db.read_roi(m_imgalgorithm->vec_roipars);//读取roi参数
-	db.read_roi(bat->vec_roipars);
-	db.read_lines(bat->vec_linetype,bat->vec_stdLines);
+	/*db.read_roi(bat->vec_roipars);
+	db.read_lines(bat->vec_linetype,bat->vec_stdLines);*/
 	db.read_mission(bat->vecMissions);
+	db.read_structroi(bat->vec_strrois);
+	//真正的任务
 	bat->getObjs();
 	//Calibration *m_calibration = new Calibration;
 	//m_calibration->getObjs();
 	//m_calibration->getK();
-	m_imgalgorithm->test();
+	//m_imgalgorithm->test();
 	emit singal_back();
 }
 

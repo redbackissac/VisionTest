@@ -28,30 +28,30 @@ void ImgAlgorithm::test()//用于测试
 	createROI(srcImg, vec_rois);//创建roi
 	for (auto it_roi : vec_rois)
 	{
-		/*获得粗边缘位置vecEdgePoint*/
-		vector<Point2i> vecEdgePoint;//粗边缘坐标		
-		getRoughEdge_All(it_roi, vecEdgePoint);//提取粗略边缘坐标
+		///*获得粗边缘位置vecEdgePoint*/
+		//vector<Point2i> vecEdgePoint;//粗边缘坐标		
+		//getRoughEdge_All(it_roi, vecEdgePoint);//提取粗略边缘坐标
 
-		/*为每个粗边缘点提取单独的7*7邻域*/
-		vector<Mat> AllNeibors;
-		getNeiborOfPoints(vecEdgePoint,it_roi, AllNeibors);
+		///*为每个粗边缘点提取单独的7*7邻域*/
+		//vector<Mat> AllNeibors;
+		//getNeiborOfPoints(vecEdgePoint,it_roi, AllNeibors);
 
 
 
-	    /*创建粗边缘点的7*7邻域*/
-		int neiborNum;//邻域的数量，即边缘点的数量
-		Mat AllNeibor;//粗边缘点的7*7邻域
-		neiborNum = vecEdgePoint.size();
+	 //   /*创建粗边缘点的7*7邻域*/
+		//int neiborNum;//邻域的数量，即边缘点的数量
+		//Mat AllNeibor;//粗边缘点的7*7邻域
+		//neiborNum = vecEdgePoint.size();
 	
-		getNeiborROI(vecEdgePoint, it_roi, AllNeibor);
-		
+		//getNeiborROI(vecEdgePoint, it_roi, AllNeibor);
+		//
 
 
-		/*亚像素精确边缘位置*/
-		vector<Vec4d> vecPara;
-		vector<Point2d> VecSubPixelEdgePoint;
-		getSubPixEdge(AllNeibor, vecPara, VecSubPixelEdgePoint);
-		int i = 1;
+		///*亚像素精确边缘位置*/
+		//vector<Vec4d> vecPara;
+		//vector<Point2d> VecSubPixelEdgePoint;
+		//getSubPixEdge(AllNeibor, vecPara, VecSubPixelEdgePoint);
+		//int i = 1;
 	}
 	
 	
@@ -83,6 +83,16 @@ void ImgAlgorithm::createROI(const Mat srcImg, vector<Mat> &vec_rois)
 		Mat RoiImgs = srcImg(Rect(it_roipar[0], it_roipar[1], it_roipar[2], it_roipar[3]));//创建roi		
 		vec_rois.push_back(RoiImgs);//将新创建的roi加入roi列表	
 	}	
+}
+
+void ImgAlgorithm::createROI(const Mat srcImg, vector<struct_roi>& vec_strrois)
+{	
+	//遍历参数列表
+	for (auto &it_roi : vec_strrois)
+	{
+		it_roi.roi = srcImg(Rect(it_roi.roipar[0], it_roi.roipar[1], it_roi.roipar[2], it_roi.roipar[3]));//创建roi		
+		//vec_rois.push_back(RoiImgs);//将新创建的roi加入roi列表	
+	}
 }
 
 /*
@@ -236,7 +246,7 @@ matIn:输入矩阵
 matNeibor:输出的邻域矩阵
 nbsize:邻域大小
 */
-void ImgAlgorithm::getNeiborROI(const vector<Point2i> EdgePoint, const Mat matIn, Mat& matNeibor, int nbsize)
+void ImgAlgorithm::getNeiborROI(const Line_Type type, const vector<Point2i> EdgePoint, const Mat matIn, Mat& matNeibor, Point2d &point,int nbsize)
 {
 	Mat matInRoi, matNewRoi;
 	int halfN = (nbsize - 1) / 2;
@@ -253,8 +263,16 @@ void ImgAlgorithm::getNeiborROI(const vector<Point2i> EdgePoint, const Mat matIn
 		if (y_MAX < it_EdgePoint.y) y_MAX = it_EdgePoint.y;
 		if (y_MIN > it_EdgePoint.y) y_MIN = it_EdgePoint.y;
 	}
+	point.y = x_MIN;
+	point.x = y_MIN;
 	matInRoi = matIn(Range(x_MIN, x_MAX), Range(y_MIN, y_MAX));//在输入图像上选取roi
-	matInRoi.adjustROI(halfN, halfN, halfN, halfN);//将roi调整为7*7
+	/*imshow("sex", matInRoi);
+	waitKey(0);*/
+	if (type == HORIZONTAL)//水平线
+		matInRoi.adjustROI(halfN, halfN, 0, 0);//将roi调整为7*7
+	else
+		matInRoi.adjustROI(0, 0, halfN, halfN);//将roi调整为7*7
+	
 	matNeibor = matInRoi;
 }
 

@@ -83,57 +83,6 @@ bool ConfigDataBase::ConnectAccessDB(const QString &strDBName, const QString &st
 	//db = QSqlDatabase::addDatabase("QODBC");
 	//db.setDatabaseName("VisionTest");
 
-
-	//if (!db.isValid())
-
-	//{
-
-	//	return false;
-
-	//}
-
-
-
-	//if (db.isOpen())
-
-	//{
-
-	//	return true;
-
-	//}
-
-
-
-	//if (db.open())
-	//{		
-	//	////插入一条记录
-	//	//QSqlQuery query;
-	//	//bool resultt;
-	//	////resultt = query.exec("create table student (id int primary key, "
-	//	////	"name varchar(20))");
-	//	////创建一个students表,标题分别为id、name、score、class
-	//	//query.exec("insert into student values(0, 'first')");
-	//	//query.exec("insert into student values(1, 'second')");
-	//	//query.exec("insert into student values(2, 'third')");
-	//	//query.exec("insert into student values(3, 'fourth')");
-	//	//resultt = query.exec("insert into student values(4, 'fifth')");
-	//	//qDebug() << resultt;
-	//	//		
-
-	//	//db.close();
-	//	return true;
-	//}
-	//
-
-	//else
-	//{
-
-	//	qDebug() << db.lastError().text();
-
-	//	return false;
-
-	//}
-
 }
 
 
@@ -246,10 +195,32 @@ void ConfigDataBase::read_lines(vector<Line_Type>& vec_linetype, vector<Vec3f> &
 		for (int i = 0; i < 3; i++)
 			stdline[i] = query.value(i + 6).toDouble();
 		
-		vec_stdLines.push_back(stdline);
-	
-			
-		//qDebug() << query.value(0).toInt() << query.value(1).toInt() << query.value(2).toInt() << query.value(3).toInt() << query.value(4).toInt();
+		vec_stdLines.push_back(stdline);		
+	}
+}
+
+void ConfigDataBase::read_structroi(vector<struct_roi>& vec_strrois)
+{
+
+	QSqlQuery query;
+	query.exec("select * from roi");
+	while (query.next())
+	{	
+		struct_roi strroi;
+		//读取roi参数	
+		for (int i = 0; i < 4; i++)
+			strroi.roipar[i] = query.value(i + 1).toInt();
+
+		//读取roi中边缘类型
+		 strroi.linetype = (Line_Type)query.value(5).toInt();
+
+		//读取标准板直线参数
+		Vec3f stdline;
+		for (int i = 0; i < 3; i++)
+			strroi.stdline[i] = query.value(i + 6).toDouble();
+
+		//存入vector
+		vec_strrois.push_back(strroi);		
 	}
 }
 

@@ -49,9 +49,10 @@ public:
 private:
 	Mat batImg; //电池图像
 	vector<ObjectOfMission> vecObj;//任务对象向量
+	void change2err(const Line_Type type, const Vec3f stdline, const vector<Point2d> VecSubPixelEdgePoint, vector<Point2d> &VecSubPixelErr);//将坐标转换为差值
 
 	void cal_Straightness(const ObjectOfMission obj, double &straightness, int n = 3);//直线度计算
-	//void perpendicularity();//垂直度计算
+	void cal_perpendicularity(const ObjectOfMission obj1, const ObjectOfMission obj2, double &perpendicularity, int n = 3);//垂直度计算
 	//void parallelism();//平行度计算
 	//void distance();//距离计算
 	

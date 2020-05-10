@@ -6,32 +6,54 @@
 void SingleBattery::getObjs()
 {
 	openImg(srcImg);//打开图像
-	createROI(srcImg, vec_rois);//创建roi
-	for (auto it_roi : vec_rois)
+	createROI(srcImg, vec_strrois);//创建roi
+	/*for (auto it_roi : vec_strrois)
 	{
-		imshow("rois", it_roi);
+		imshow("rois", it_roi.roi);
 		waitKey(0);
-	}
+	}*/
 
 
 	//只读方式遍历roi
-	for (auto it_roi : vec_rois)
+	for (auto it_roi : vec_strrois)
 	{
+		/*imshow("rois", it_roi.roi);
+		waitKey(0);*/
 		/*获得粗边缘位置vecEdgePoint*/
 		vector<Point2i> vecEdgePoint;//粗边缘坐标		
-		getRoughEdge_All(it_roi, vecEdgePoint);//提取粗略边缘坐标
+		getRoughEdge_All(it_roi.roi, vecEdgePoint);//提取粗略边缘坐标
 
 		/*创建粗边缘点的扩展7*7邻域*/
 		int neiborNum;//邻域的数量，即边缘点的数量
 		Mat AllNeibor;//粗边缘点的7*7邻域
 		//neiborNum = vecEdgePoint.size();
 
-		getNeiborROI(vecEdgePoint, it_roi, AllNeibor);
+
+		//这里要分类！！！！
+		Point2d CornerPoint;//roi左上角坐标
+		getNeiborROI(it_roi.linetype, vecEdgePoint, it_roi.roi, AllNeibor, CornerPoint);
 
 		/*亚像素精确边缘位置*/
 		vector<Vec4d> vecPara;
 		vector<Point2d> VecSubPixelEdgePoint;
 		getSubPixEdge(AllNeibor, vecPara, VecSubPixelEdgePoint);
+		//转换为在大ROI中的坐标
+		if (it_roi.linetype == HORIZONTAL)
+			for (auto &it_subPixelRela : VecSubPixelEdgePoint)
+			{
+						it_subPixelRela.x += CornerPoint.x;
+						it_subPixelRela.y += CornerPoint.y - 3;
+			}
+		else
+			for (auto &it_subPixelRela : VecSubPixelEdgePoint)
+			{
+				it_subPixelRela.x += CornerPoint.x - 3;
+				it_subPixelRela.y += CornerPoint.y;
+			}
+
+		/*将边缘坐标转换为差值*/
+		vector<Point2d> VecSubPixelErr;//与标准板之间的差值
+		change2err(it_roi.linetype, it_roi.stdline, VecSubPixelEdgePoint, VecSubPixelErr);
 
 		/*直线拟合*/
 		Vec4f line_para;//拟合出直线的参数
@@ -39,15 +61,17 @@ void SingleBattery::getObjs()
 
 		/*添加到对象向量*/
 		ObjectOfMission objtmp;
-		objtmp.VecEdgePoint = VecSubPixelEdgePoint;//实际边缘点
-		Vec3f line_tmp;
-		changeLine2std(line_para, line_tmp);
+		objtmp.VecEdgePoint = VecSubPixelErr;//实际边缘点与标准板的差值
+		Vec3f line_tmp;//存放标准形式直线参数的临时变量
+		changeLine2std(line_para, line_tmp);//转换为ax+by+c=0的形式
 		objtmp.line_stds = line_tmp;//拟合的直线
-		vecObj.push_back(objtmp);
+		vecObj.push_back(objtmp);//添加到对象向量
 	}
 	double Straightness;//直线度
 	cal_Straightness(vecObj[0], Straightness);
 
+	double Perpendicularity;//垂直度
+	cal_perpendicularity(vecObj[0], vecObj[1], Perpendicularity);
 	int aaa = 000;
 }
 
@@ -75,6 +99,33 @@ void SingleBattery::doMissions()
 		}
 }
 
+
+void SingleBattery::change2err(const Line_Type type, const Vec3f stdline, const vector<Point2d> VecSubPixelEdgePoint, vector<Point2d> &VecSubPixelErr)
+{
+	VecSubPixelErr.clear();
+	int a = 0, b = 1, c = 2;
+	const double Den = sqrt(stdline[a] * stdline[a] + stdline[b] * stdline[b]);//计算距离时的分母
+	if (type == HORIZONTAL)//水平线
+		for (auto it_SubPixel : VecSubPixelEdgePoint)
+		{
+			Point2d SubPixelErr;
+			double err;//各个点到拟合出的直线的距离	
+			err = (stdline[a] * it_SubPixel.x + stdline[b] * it_SubPixel.y + stdline[c]) / Den;//为区分点的位置，距离有正负
+			SubPixelErr.x = it_SubPixel.x;
+			SubPixelErr.y = err;
+			VecSubPixelErr.push_back(SubPixelErr);
+		}	
+	else//竖直线
+		for (auto it_SubPixel : VecSubPixelEdgePoint)
+		{
+			Point2d SubPixelErr;
+			double err;//各个点到拟合出的直线的距离	
+			err = (stdline[a] * it_SubPixel.x + stdline[b] * it_SubPixel.y + stdline[c]) / Den;//为区分点的位置，距离有正负
+			SubPixelErr.x = err;
+			SubPixelErr.y = it_SubPixel.y;
+			VecSubPixelErr.push_back(SubPixelErr);
+		}	
+}
 
 /*
 直线度计算
@@ -110,6 +161,57 @@ void SingleBattery::cal_Straightness(const ObjectOfMission obj, double &straight
 
 	/*得到直线度*/
 	straightness = a_max - b_min;
+}
+
+void SingleBattery::cal_perpendicularity(const ObjectOfMission obj1, const ObjectOfMission obj2, double &perpendicularity, int n)
+{
+	vector<Point2d> vecPoints_tmp1(obj1.VecEdgePoint);//复制一份边缘点2
+	vector<Point2d> vecPoints_tmp2(obj2.VecEdgePoint);//复制一份边缘点2
+	//obj1的直线参数
+	float aa = obj1.line_stds[0];
+	float bb = obj1.line_stds[1];
+	float cc = obj1.line_stds[2];
+	/********对obj2的点进行刚体变换******/
+	//旋转参数
+	const double Den = sqrt(aa * aa + bb * bb);//计算sin、cos时的分母
+	double sin = - aa / Den;
+	double cos = - bb / Den;
+	//平移参数
+	double xT = vecPoints_tmp1[0].x;
+	double yT = vecPoints_tmp1[0].y;
+	//遍历obj2
+	vector<double> vec_rr;
+	for (auto it_Points_tmp2 : vecPoints_tmp1)
+	{
+		double rr;
+		//根据obj2直线类型判断计算x还是y
+		if (obj2.type == VERTICAL)//水平线计算y
+		{
+			double yNew = -sin * it_Points_tmp2.x + cos * it_Points_tmp2.y + yT;
+			rr = yNew;
+		}
+		else//竖直线计算x
+		{
+			double xNew = cos * it_Points_tmp2.x + sin * it_Points_tmp2.y + xT;
+			rr = xNew;
+		}
+		vec_rr.push_back(rr);
+	}
+	std::sort(vec_rr.begin(), vec_rr.end());
+
+	/*计算最大和最小的r*/
+	double r_max = 0, r_min = 0;
+	const size_t sizeOfr = vec_rr.size();
+	for (int i = 0; i < n; i++)//取n个点取平均
+	{
+		r_max += vec_rr[i];//最大距离
+		r_min += vec_rr[sizeOfr - 1 - i];//最小距离
+	}
+	r_max /= n;//取平均
+	r_min /= n;//取平均
+
+	/*得到直线度*/
+	perpendicularity = r_max - r_min;
 }
 
 
