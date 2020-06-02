@@ -25,9 +25,7 @@ ConfigDataBase::ConfigDataBase()
 	if (!db.open())
 	{
 		QSqlError err = db.lastError();
-
 		db.close();
-
 		QMessageBox::critical(NULL, "提示", err.text());
 	}
 }
@@ -207,6 +205,9 @@ void ConfigDataBase::read_structroi(vector<struct_roi>& vec_strrois)
 	while (query.next())
 	{	
 		struct_roi strroi;
+		//读取roi ID
+		strroi.ID = query.value(0).toInt();
+
 		//读取roi参数	
 		for (int i = 0; i < 4; i++)
 			strroi.roipar[i] = query.value(i + 1).toInt();
@@ -224,6 +225,51 @@ void ConfigDataBase::read_structroi(vector<struct_roi>& vec_strrois)
 	}
 }
 
+bool IsTableExist(QSqlQuery &query, QString table)
+{
+	QString sql = QString("select table_name from information_schema.TABLES WHERE table_name = '%1'").arg(table);
+	qDebug() << sql << endl;
+	query.exec(sql);
+	return query.next();
+}
+
+bool ConfigDataBase::save_stdpoints(const vector<struct_roi> vec_strrois)
+{
+	if (!db.isOpen())//打开数据库
+		db.open();
+	bool flag_save = false;
+	bool flag_build = false;
+	for (auto it_toi : vec_strrois)
+	{
+		//创建子表
+		QSqlQuery query(db);
+		QString subtablename = "roi" + QString::number(it_toi.ID);//子表名称
+		query.prepare(QString("create table %1(ID int primary key,x double,y double)").arg(subtablename));//建表
+		flag_build = query.exec();
+		//存入数据
+		if (!flag_build)//建表失败，返回
+			return flag_build;
+		else//建表成功，填入数据
+		{
+			//遍历边缘点
+			int point_id = 0;
+			bool flag_save = false;
+			for (auto it_SubPixelEdgePoint : it_toi.VecSubPixelEdgePoint)
+			{
+				query.prepare(QString("insert into %1(id, x, y)").arg(subtablename) +
+					"values (:id, :x, :y)");
+				query.bindValue(":id", point_id);
+				query.bindValue(":x", it_SubPixelEdgePoint.x);
+				query.bindValue(":y", it_SubPixelEdgePoint.y);
+				flag_save = query.exec();
+				point_id++;
+			}			
+		}
+	}		
+	db.close();	//关闭数据库
+	return flag_save;;
+}
+
 void ConfigDataBase::show_all()
 {
 	QSqlQuery query;
@@ -234,6 +280,9 @@ void ConfigDataBase::show_all()
 			<< query.value(1).toString();
 	}
 }
+
+
+
 
 
 

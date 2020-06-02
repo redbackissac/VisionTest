@@ -56,10 +56,12 @@ typedef vector<Vec4i> VecRoiParas;//roi区域的参数(x,y,width,height)
 
 struct struct_roi
 {
+	int ID;//roi的id
 	Vec4i roipar; //roi参数(x,y,width,height)
 	Mat roi;            //roi区域图像
 	Line_Type linetype; //roi中边缘类型(水平/竖直)
 	Vec3f stdline;      //标准直线参数(a,b,c)
+	vector<Point2d> VecSubPixelEdgePoint;//标准板边缘点坐标
 };
 
 class ImgAlgorithm

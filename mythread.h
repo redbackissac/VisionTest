@@ -9,6 +9,7 @@
 #include "calibration.h"
 #include "imgAlgorithm.h"
 #include "configdatabase.h"
+#include "stdboard.h"
 
 //#include <QFiledialog>
 //#include <QTextStream>
@@ -33,7 +34,7 @@ public:
 	SingleBattery *bat; //图像处理对象
 	Calibration *m_calibration; //标定板对象
 	ImgAlgorithm *m_imgalgorithm;//电池和标定板的父类，此文件中仅作调试用
-
+	StdBoard *m_stdboard;//标准板
 public slots:
 	void MyWork();     //线程处理函数定义
 	//void acceptROIS(ROI_pars m_pars);//接收主线程传递来的roi参数

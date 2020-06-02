@@ -112,7 +112,7 @@ void  ImgAlgorithm::getIGrad(const Mat input, Mat& output, Mat &element)
 	dilate(open_output, dilate_output, element); //膨胀开操作后的图像
 	erode(close_output, erode_ouput, element); //腐蚀闭操作后的图像
 
-	absdiff(dilate_output, erode_ouput, output);
+	absdiff(dilate_output, erode_ouput, output);//做差
 }
 
 

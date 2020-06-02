@@ -105,6 +105,9 @@
     <ClCompile Include="configdatabase.cpp">
       <Filter>Source Files\Database</Filter>
     </ClCompile>
+    <ClCompile Include="stdboard.cpp">
+      <Filter>Source Files\ImgProc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="VisionTest.qrc">
@@ -128,6 +131,9 @@
       <Filter>Header Files\ImgProc</Filter>
     </ClInclude>
     <ClInclude Include="imgAlgorithm.h">
+      <Filter>Header Files\ImgProc</Filter>
+    </ClInclude>
+    <ClInclude Include="stdboard.h">
       <Filter>Header Files\ImgProc</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,7 @@ MyThread::MyThread(QObject* parent) : QObject(parent)
 	bat = new SingleBattery;
 	m_calibration = new Calibration;
 	m_imgalgorithm = new ImgAlgorithm;
+	m_stdboard = new StdBoard;
 }
 /*
 子线程中的工作，所有处理内容放在此函数中
@@ -20,12 +21,22 @@ void MyThread::MyWork()
 	bat->vec_roipars.clear();
 	bat->vecMissions.clear();
 	bat->vec_strrois.clear();
+
+	m_stdboard->vec_roipars.clear();
+	m_stdboard->vec_strrois.clear();
+
 	ConfigDataBase db;
 	//db.read_roi(m_imgalgorithm->vec_roipars);//读取roi参数
 	/*db.read_roi(bat->vec_roipars);
 	db.read_lines(bat->vec_linetype,bat->vec_stdLines);*/
 	db.read_mission(bat->vecMissions);
 	db.read_structroi(bat->vec_strrois);
+
+
+	db.read_structroi(m_stdboard->vec_strrois);
+
+	m_stdboard->get_stdPoint();
+	db.save_stdpoints(m_stdboard->vec_strrois);
 	//真正的任务
 	bat->getObjs();
 	//Calibration *m_calibration = new Calibration;

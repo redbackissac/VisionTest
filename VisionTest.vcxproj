@@ -140,6 +140,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="mythread.cpp" />
     <ClCompile Include="Setting.cpp" />
+    <ClCompile Include="stdboard.cpp" />
     <ClCompile Include="subPixelCal.cpp" />
     <ClCompile Include="TurnTable.cpp" />
     <ClCompile Include="QMovieChild.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="calibration.h" />
     <ClInclude Include="imgAlgorithm.h" />
     <QtMoc Include="configdatabase.h" />
+    <ClInclude Include="stdboard.h" />
     <ClInclude Include="subPixelCal.h" />
     <ClInclude Include="zernikeMask.h" />
     <QtMoc Include="GraphicsRect\graphicsscene.h" />
